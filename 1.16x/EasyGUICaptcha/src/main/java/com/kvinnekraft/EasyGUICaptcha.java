@@ -12,6 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.*;
@@ -286,7 +287,6 @@ public class EasyGUICaptcha extends JavaPlugin
 
     final class EventHandlers implements Listener
     {
-        final Inventory GUI =  getServer().createInventory(null, 27, Setting.title);
         final Random rand = new Random();
 
         private ItemStack getRandomOtherItem()
@@ -301,8 +301,22 @@ public class EasyGUICaptcha extends JavaPlugin
             return Setting.guiKeyItems.get(id);
         }
 
-        private void ReplenishCaptcha()
+
+        final HashMap<Player, Inventory> playerInventories = new HashMap<>();
+        final HashMap<Player, ItemStack> playerKeys = new HashMap<>();
+        final HashMap<Player, String> playerCache = new HashMap<>();
+
+        private void ResetPlayer(final Player p)
         {
+            playerInventories.remove(p);
+            playerCache.remove(p);
+            playerKeys.remove(p);
+        }
+
+        private void ReplenishCaptcha(final Player p)
+        {
+            final Inventory GUI = getServer().createInventory(null, 27, Setting.title);
+
             for (int s = 0; s < 27; s += 1)
             {
                 if ((s < 10) || (s > 16))
@@ -311,13 +325,25 @@ public class EasyGUICaptcha extends JavaPlugin
                 }
             }
 
+            final ItemStack keyItem = getRandomKeyItem();
+
+            playerKeys.put(p, keyItem);
+
             for (int s = 10; s <= 17; s += 1)
             {
-                GUI.setItem(s, getRandomKeyItem());
-            }
-        }
+                final ItemStack item = getRandomKeyItem();
 
-        final HashMap<Player, String> playerCache = new HashMap<>();
+                if (!item.getType().equals(keyItem.getType()))
+                {
+                    GUI.setItem(s, getRandomKeyItem());
+                    continue;
+                }
+
+                s -= 1;
+            }
+
+            playerInventories.put(p, GUI);
+        }
 
         private String getPlayerIP(final Player p)
         {
@@ -331,6 +357,11 @@ public class EasyGUICaptcha extends JavaPlugin
             return (IP.getAddress().toString());
         }
 
+        private Inventory getInventory(final Player p)
+        {
+            return playerInventories.get(p);
+        }
+
         private void activateCaptchaPopup(final Player p)
         {
             getServer().getScheduler().runTaskLater
@@ -341,13 +372,25 @@ public class EasyGUICaptcha extends JavaPlugin
                 {
                     if (p.isOnline())
                     {
-                        ReplenishCaptcha();
-                        p.openInventory(GUI);
+                        ReplenishCaptcha(p);
+                        p.openInventory(getInventory(p));
                     }
                 },
 
                 5
             );
+        }
+
+
+        @EventHandler
+        public void PlayerInventoryClick(final InventoryClickEvent E)
+        {
+            if ((E.getViewers().size() < 1) || !(E.getViewers().get(0) instanceof Player))
+            {
+                return;
+            }
+
+            final Player p = (Player) E.getViewers().get(0);
         }
 
 
@@ -358,6 +401,14 @@ public class EasyGUICaptcha extends JavaPlugin
 
             if (!playerCache.containsKey(p))
             {
+                if (playerCache.containsValue(getPlayerIP(p)))
+                {
+                    if (Setting.hasIpLock)
+                    {
+                        // Kick player
+                    }
+                }
+
                 playerCache.put(p, getPlayerIP(p));
             }
 
@@ -368,7 +419,7 @@ public class EasyGUICaptcha extends JavaPlugin
         @EventHandler
         public void PlayerOnChat(final AsyncChatEvent E)
         {
-            final Player p = (Player) E.getPlayer();
+            final Player p = E.getPlayer();
 
             if (playerCache.containsKey(p))
             {
@@ -437,7 +488,7 @@ public class EasyGUICaptcha extends JavaPlugin
 
             if (playerCache.containsKey(p))
             {
-                if (E.getView().title().toString().equalsIgnoreCase(Setting.title))
+                if (playerInventories.get(p) == E.getInventory())
                 {
                     E.setCancelled(true);
                 }
