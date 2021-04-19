@@ -15,6 +15,34 @@ public class EasyGUICaptcha extends JavaPlugin
     }
 
 
+    final JavaPlugin Parent = this;
+
+    private void ReloadConfiguration()
+    {
+
+    }
+
+    private void StartAutoReload()
+    {
+        try
+        {
+            getServer().getScheduler().runTaskTimerAsynchronously
+            (
+                Parent,
+
+                this::ReloadConfiguration,
+
+                100,
+                100
+            );
+        }
+
+        catch (Exception E)
+        {
+            ErrorHandler(E);
+        }
+    }
+
     @Override
     public void onEnable()
     {
@@ -22,7 +50,7 @@ public class EasyGUICaptcha extends JavaPlugin
 
         try
         {
-            // Design
+            StartAutoReload();
         }
 
         catch (Exception E)
