@@ -1,10 +1,22 @@
 
 package com.kvinnekraft;
 
+import io.papermc.paper.event.player.AsyncChatEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryInteractEvent;
+import org.bukkit.event.player.*;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,9 +24,9 @@ import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.net.InetAddress;
+import java.net.InetSocketAddress;
+import java.util.*;
 
 public class EasyGUICaptcha extends JavaPlugin
 {
@@ -30,10 +42,6 @@ public class EasyGUICaptcha extends JavaPlugin
 
     final Configuration Setting = new Configuration();
     final JavaPlugin Parent = this;
-
-    //Create class with easy to use things.
-    //Determine true or false by null values.
-    //Clear all lists
 
     class Configuration
     {
@@ -116,6 +124,11 @@ public class EasyGUICaptcha extends JavaPlugin
             Parent.reloadConfig();
             Config = Parent.getConfig();
 
+            Setting.joinPotionEffects.clear();
+            Setting.completeCommands.clear();
+            Setting.guiOtherItems.clear();
+            Setting.guiKeyItems.clear();
+
             String node = ("captcha-settings.interface.");
 
             Setting.title = (Colorize(getString(node, "title")));
@@ -170,7 +183,7 @@ public class EasyGUICaptcha extends JavaPlugin
 
             Setting.disallowDuration = (getInt(node, "disallow-duration")) * 20;
             Setting.maximumAttempts = (getInt(node, "maximum-tries"));
-            
+
             Setting.disallowAccess = (getBoolean(node, "disallow-access"));
             Setting.notifyStaff = (getBoolean(node, "notify-staff"));
             Setting.kickPlayer = (getBoolean(node, "kick-player"));
@@ -271,6 +284,217 @@ public class EasyGUICaptcha extends JavaPlugin
     }
 
 
+    final class EventHandlers implements Listener
+    {
+        final Inventory GUI =  getServer().createInventory(null, 27, Setting.title);
+        final Random rand = new Random();
+
+        private ItemStack getRandomOtherItem()
+        {
+            final int id = rand.nextInt(Setting.guiOtherItems.size());
+            return Setting.guiOtherItems.get(id);
+        }
+
+        private ItemStack getRandomKeyItem()
+        {
+            final int id = rand.nextInt(Setting.guiKeyItems.size());
+            return Setting.guiKeyItems.get(id);
+        }
+
+        private void ReplenishCaptcha()
+        {
+            for (int s = 0; s < 27; s += 1)
+            {
+                if ((s < 10) || (s > 16))
+                {
+                    GUI.setItem(s, getRandomOtherItem());
+                }
+            }
+
+            for (int s = 10; s <= 17; s += 1)
+            {
+                GUI.setItem(s, getRandomKeyItem());
+            }
+        }
+
+        final HashMap<Player, String> playerCache = new HashMap<>();
+
+        private String getPlayerIP(final Player p)
+        {
+            final InetSocketAddress IP = p.getAddress();
+
+            if (IP == null || IP.getAddress() == null)
+            {
+                return "none";
+            }
+
+            return (IP.getAddress().toString());
+        }
+
+        private void activateCaptchaPopup(final Player p)
+        {
+            getServer().getScheduler().runTaskLater
+            (
+                Parent,
+
+                () ->
+                {
+                    if (p.isOnline())
+                    {
+                        ReplenishCaptcha();
+                        p.openInventory(GUI);
+                    }
+                },
+
+                5
+            );
+        }
+
+
+        @EventHandler
+        public void PlayerJoinEvent(final PlayerJoinEvent E)
+        {
+            final Player p = E.getPlayer();
+
+            if (!playerCache.containsKey(p))
+            {
+                playerCache.put(p, getPlayerIP(p));
+            }
+
+            activateCaptchaPopup(p);
+        }
+
+
+        @EventHandler
+        public void PlayerOnChat(final AsyncChatEvent E)
+        {
+            final Player p = (Player) E.getPlayer();
+
+            if (playerCache.containsKey(p))
+            {
+                if (Setting.preventChat)
+                {
+                    E.setCancelled(true);
+                }
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerOnCommand(final PlayerCommandPreprocessEvent E)
+        {
+            final Player p = (Player) E.getPlayer();
+
+            if (playerCache.containsKey(p))
+            {
+                if (Setting.preventChat)
+                {
+                    E.setCancelled(true);
+                }
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerMovement(final PlayerMoveEvent E)
+        {
+            final Player p = E.getPlayer();
+
+            if (playerCache.containsKey(p))
+            {
+                if (Setting.preventMovement)
+                {
+                    E.setCancelled(true);
+                }
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerItemDrop(final PlayerDropItemEvent E)
+        {
+            final Player p = E.getPlayer();
+
+            if (playerCache.containsKey(p))
+            {
+                if (Setting.preventItemDrop)
+                {
+                    E.setCancelled(true);
+                }
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerInventoryInteract(final InventoryInteractEvent E)
+        {
+            if ((E.getViewers().size() < 1) || !(E.getViewers().get(0) instanceof Player))
+            {
+                return;
+            }
+
+            final Player p = (Player) E.getViewers().get(0);
+
+            if (playerCache.containsKey(p))
+            {
+                if (E.getView().title().toString().equalsIgnoreCase(Setting.title))
+                {
+                    E.setCancelled(true);
+                }
+
+                else if (Setting.preventInventoryInteract)
+                {
+                    E.setCancelled(true);
+                }
+            }
+        }
+
+            // Add potion effects, finish effects, tries and shit, ip lock
+        @EventHandler
+        public void PlayerInventoryClose(final InventoryCloseEvent E)
+        {
+            if ((E.getViewers().size() < 1) || !(E.getViewers().get(0) instanceof Player))
+            {
+                return;
+            }
+
+            final Player p = (Player) E.getViewers().get(0);
+
+            if (playerCache.containsKey(p))
+            {
+                activateCaptchaPopup(p);
+            }
+        }
+
+
+        @EventHandler
+        public void EntityDamageEvent(final EntityDamageByEntityEvent E)
+        {
+            if (!(E.getDamager() instanceof Player))
+            {
+                return;
+            }
+
+            final Player p = (Player) E.getDamager();
+
+            if (playerCache.containsKey(p))
+            {
+                if (Setting.preventDamage)
+                {
+                    E.setCancelled(true);
+                }
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerQuitEvent(final PlayerQuitEvent E)
+        {
+
+        }
+    }
+
+
     @Override
     public void onEnable()
     {
@@ -279,6 +503,8 @@ public class EasyGUICaptcha extends JavaPlugin
         try
         {
             StartAutoReload();
+
+            getServer().getPluginManager().registerEvents(new EventHandlers(), Parent);
         }
 
         catch (final Exception E)
