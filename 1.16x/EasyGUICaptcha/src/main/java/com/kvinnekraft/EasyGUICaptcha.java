@@ -1,6 +1,7 @@
 
 package com.kvinnekraft;
 
+import org.bukkit.Material;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class EasyGUICaptcha extends JavaPlugin

@@ -1,0 +1,65 @@
+# Author: Dashie
+# Version: 1.0
+captcha-settings:
+  #Interface customization:
+  interface:
+    #Title of the GUI:
+    title: '&aClick the &b{key} &a!'
+    #Item selection for validation:
+    key-items:
+      display-name: ' '
+      lore: ' '
+      items:
+        - 'RED_MUSHROOM'
+        - 'BROWN_MUSHROOM'
+        - 'CORNFLOWER'
+    other-items:
+      display-name: ' '
+      lore: ' '
+      items:
+        - 'WARPED_FUNGUS'
+        - 'ROSE_BUSH'
+        - 'PINK_TULIP'
+  #As an extra measurement, lock the users-ip until verified:
+  ip-lock:
+    enabled: true
+    cache-duration: 360
+  #How should verification attempts be handled:
+  attempts:
+    #How many attempts do users get:
+    maximum-tries: 3
+    #When the user exceeds the max:
+    disallow-access: true
+    disallow-duration: 30
+    notify-staff: true
+    kick-player: true
+  #Restrictions applied to those yet to be verified:
+  restrictions:
+    inventory-interaction: true
+    item-drop: true
+    movement: true
+    damage: true
+    chat: true
+  #Configuration for potion effects on join:
+  potion-effects:
+    enabled : true
+    effects:
+      - 'CONFUSION'
+      - 'BLINDNESS'
+      - 'SLOW'
+  #How should the user be greeted when completing the captcha:
+  on-complete:
+    messages:
+      message: '&aYou may now roam freely!'
+      send-title: true
+    commands:
+      - ''
+    sound:
+      enabled: true
+      sound-id: 'ENTITY_PLAYER_LEVELUP'
+      permission: 'default'
+    misc:
+      lightning-permission: 'default'
+      firework-permission: 'default'
+      lightning-effect: true
+      firework-effect: true
