@@ -2,6 +2,7 @@
 package com.kvinnekraft;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -52,11 +53,8 @@ public class EasyGUICaptcha extends JavaPlugin
         public String title = "";
         //IP Lock:
         public boolean hasIpLock = false;
-        public int cacheDuration = 360;
         //Attempts:
-        public boolean disallowAccess = false;
         public boolean notifyStaff = false;
-        public boolean kickPlayer = false;
         public int disallowDuration = 30;
         public int maximumAttempts = 3;
         //Restrictions:
@@ -177,17 +175,13 @@ public class EasyGUICaptcha extends JavaPlugin
 
             node = ("captcha-settings.ip-lock.");
 
-            Setting.cacheDuration = (getInt(node, "cache-duration")) * 20;
             Setting.hasIpLock = getBoolean(node, "enabled");
 
             node = ("captcha-settings.attempts.");
 
             Setting.disallowDuration = (getInt(node, "disallow-duration")) * 20;
             Setting.maximumAttempts = (getInt(node, "maximum-tries"));
-
-            Setting.disallowAccess = (getBoolean(node, "disallow-access"));
             Setting.notifyStaff = (getBoolean(node, "notify-staff"));
-            Setting.kickPlayer = (getBoolean(node, "kick-player"));
 
             node = ("captcha-settings.restrictions.");
 
@@ -304,13 +298,26 @@ public class EasyGUICaptcha extends JavaPlugin
 
         final HashMap<Player, Inventory> playerInventories = new HashMap<>();
         final HashMap<Player, ItemStack> playerKeys = new HashMap<>();
+        final HashMap<Player, Integer> playerTries = new HashMap<>();
         final HashMap<Player, String> playerCache = new HashMap<>();
 
         private void ResetPlayer(final Player p)
         {
             playerInventories.remove(p);
             playerCache.remove(p);
+            playerTries.remove(p);
             playerKeys.remove(p);
+        }
+
+        private void SuccessHandler(final Player p)
+        {
+            ResetPlayer(p);
+            // send message; as title?
+            // execute commands;
+            // remove potion effects;
+            // handle fireworks and lightning;
+            // sound? check for permissions yeh!
+            // Scroll around for more notes;
         }
 
         private void ReplenishCaptcha(final Player p)
@@ -391,6 +398,34 @@ public class EasyGUICaptcha extends JavaPlugin
             }
 
             final Player p = (Player) E.getViewers().get(0);
+
+            if (!playerCache.containsKey(p))
+            {
+                return;
+            }
+
+            final ItemStack Item = E.getCurrentItem();
+
+            if (Item != null)
+            {
+                if (playerKeys.get(p).getType() != Item.getType())
+                {
+                    playerTries.put(p, playerTries.get(p) + 1);
+                }
+
+                else
+                {
+                    SuccessHandler(p);
+                }
+            }
+
+            if (playerTries.get(p) >= Setting.maximumAttempts)
+            {
+                p.kick(Component.text(Colorize("&cYou have exceeded maximum attempts!")));
+
+                // Notify Staff
+                // Keep disconnected for disallow duration; add to list, on connect, disconnect if on list; after duration remove from list.
+            }
         }
 
 
@@ -405,12 +440,14 @@ public class EasyGUICaptcha extends JavaPlugin
                 {
                     if (Setting.hasIpLock)
                     {
-                        // Kick player
+                        p.kick(Component.text(Colorize("&cSomeone is already being authenticated using your network.  Please wait.")));
                     }
                 }
 
                 playerCache.put(p, getPlayerIP(p));
             }
+
+            // Apply potion effects
 
             activateCaptchaPopup(p);
         }
@@ -500,7 +537,7 @@ public class EasyGUICaptcha extends JavaPlugin
             }
         }
 
-            // Add potion effects, finish effects, tries and shit, ip lock
+
         @EventHandler
         public void PlayerInventoryClose(final InventoryCloseEvent E)
         {
