@@ -1,8 +1,14 @@
 
 package com.kvinnekraft;
 
-import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.potion.PotionEffect;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EasyGUICaptcha extends JavaPlugin
 {
@@ -16,11 +22,56 @@ public class EasyGUICaptcha extends JavaPlugin
     }
 
 
+    final Configuration Setting = new Configuration();
     final JavaPlugin Parent = this;
+
+    class Configuration
+    {//Determine true or false by null values.
+        //Interface:
+        final List<ItemStack> guiOtherItems = new ArrayList<>();
+        final List<ItemStack> guiKeyItems = new ArrayList<>();
+        String title = "";
+        //IP Lock:
+        boolean hasIpLock = false;
+        int cacheDuration = 360;
+        //Attempts:
+        boolean disallowAccess = false;
+        boolean notifyStaff = false;
+        boolean kickPlayer = false;
+        int disallowDuration = 30;
+        int maximumAttempts = 3;
+        //Restrictions:
+        boolean preventInventoryInteract = false;
+        boolean preventItemDrop = false;
+        boolean preventMovement = false;
+        boolean preventDamage = false;
+        boolean preventChat = false;
+        //Potion effects:
+        final List<PotionEffect> joinPotionEffects = new ArrayList<>();
+        //On complete:
+        List<String> completeCommands = new ArrayList<>();
+        String lightningPermission = "";
+        String fireworkPermission = "";
+        String soundPermission = "";
+        String completeMessage = "";
+        boolean hasLightning = false;
+        boolean hasFirework = false;
+        Sound completeSound = null;
+    }
+
+    FileConfiguration Config = null;
 
     private void ReloadConfiguration()
     {
+        try
+        {
 
+        }
+
+        catch (Exception E)
+        {
+            ErrorHandler(E);
+        }
     }
 
     private void StartAutoReload()
