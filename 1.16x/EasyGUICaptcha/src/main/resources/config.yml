@@ -23,16 +23,13 @@ captcha-settings:
   #As an extra measurement, lock the users-ip until verified:
   ip-lock:
     enabled: true
-    cache-duration: 360
   #How should verification attempts be handled:
   attempts:
     #How many attempts do users get:
     maximum-tries: 3
     #When the user exceeds the max:
-    disallow-access: true
     disallow-duration: 30
     notify-staff: true
-    kick-player: true
   #Restrictions applied to those yet to be verified:
   restrictions:
     inventory-interaction: true
