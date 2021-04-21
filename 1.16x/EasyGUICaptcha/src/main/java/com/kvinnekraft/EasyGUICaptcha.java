@@ -3,10 +3,8 @@ package com.kvinnekraft;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.Sound;
+import org.bukkit.*;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -309,9 +307,62 @@ public class EasyGUICaptcha extends JavaPlugin
             playerKeys.remove(p);
         }
 
+        private Boolean hasPerm(final Player player, final String permission)
+        {
+            return player.hasPermission(permission);
+        }
+
         private void SuccessHandler(final Player p)
         {
             ResetPlayer(p);
+
+            if (Setting.sendCompleteTitle)
+            {
+                p.sendTitle(Setting.completeMessage, "", 10, 100, 10);
+            }
+
+            else
+            {
+                p.sendMessage(Setting.completeMessage);
+            }
+
+            if (Setting.completeCommands.size() > 0)
+            {
+                final ConsoleCommandSender sender = getServer().getConsoleSender();
+
+                for (final String command : Setting.completeCommands)
+                {
+                    getServer().dispatchCommand(sender, command);
+                }
+            }
+
+            if (Setting.joinPotionEffects.size() > 0)
+            {
+                for (final PotionEffect effect : Setting.joinPotionEffects)
+                {
+                    p.removePotionEffect(effect.getType());
+                }
+            }
+
+            final Location location = p.getLocation();
+
+            if (hasPerm(p, Setting.lightningPermission))
+            {
+                location.getWorld().strikeLightning(location);
+            }
+
+            if (hasPerm(p, Setting.fireworkPermission))
+            {
+            }
+
+            if (hasPerm(p, Setting.soundPermission))
+            {
+                if (Setting.completeSound != null)
+                {
+                    p.playSound(location, Setting.completeSound, 30, 1);
+                }
+            }
+
             // send message; as title?
             // execute commands;
             // remove potion effects;
