@@ -6,25 +6,24 @@ import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.*;
 
@@ -179,7 +178,7 @@ public class EasyGUICaptcha extends JavaPlugin
 
             Setting.disallowDuration = (getInt(node, "disallow-duration")) * 20;
             Setting.maximumAttempts = (getInt(node, "maximum-tries"));
-            Setting.notifyStaff = (getBoolean(node, "notify-staff"));
+            Setting.notifyStaff = (getBoolean(node, "notify-ops"));
 
             node = ("captcha-settings.restrictions.");
 
@@ -277,7 +276,7 @@ public class EasyGUICaptcha extends JavaPlugin
     }
 
 
-    final class EventHandlers implements Listener
+    class EventHandlers implements Listener
     {
         final Random rand = new Random();
 
@@ -310,6 +309,42 @@ public class EasyGUICaptcha extends JavaPlugin
         private Boolean hasPerm(final Player player, final String permission)
         {
             return player.hasPermission(permission);
+        }
+
+        private final List<FireworkEffect.Type> fireworkTypes = new ArrayList<>();
+
+        private FireworkEffect.Type getFireworkType()
+        {
+            if (fireworkTypes.size() < 1)
+            {
+                fireworkTypes.addAll
+                (
+                    Arrays.asList
+                    (
+                        FireworkEffect.Type.BALL_LARGE,
+                        FireworkEffect.Type.BALL,
+                        FireworkEffect.Type.STAR,
+                        FireworkEffect.Type.BURST
+                    )
+                );
+            }
+
+            return (fireworkTypes.get(rand.nextInt(fireworkTypes.size())));
+        }
+
+        private FireworkEffect getFireworkEffect()
+        {
+            final int r = rand.nextInt(255);
+            final int g = rand.nextInt(255);
+            final int b = rand.nextInt(255);
+
+            final Color fireworkColor = Color.fromRGB(r, g, b);
+
+            return FireworkEffect.builder()
+                    .withColor(fireworkColor)
+                    .withFlicker().withTrail()
+                    .with(getFireworkType())
+                    .flicker(true).build();
         }
 
         private void SuccessHandler(final Player p)
@@ -353,6 +388,19 @@ public class EasyGUICaptcha extends JavaPlugin
 
             if (hasPerm(p, Setting.fireworkPermission))
             {
+                final Firework firework = (Firework) location.getWorld().spawnEntity(location, EntityType.FIREWORK);
+                final FireworkMeta fireworkMeta = firework.getFireworkMeta();
+
+                fireworkMeta.addEffect(getFireworkEffect());
+                fireworkMeta.setPower(0);
+
+                firework.setFireworkMeta(fireworkMeta);
+
+                p.setInvulnerable(true);
+
+                firework.detonate();
+
+                p.setInvulnerable(false);
             }
 
             if (hasPerm(p, Setting.soundPermission))
@@ -362,18 +410,16 @@ public class EasyGUICaptcha extends JavaPlugin
                     p.playSound(location, Setting.completeSound, 30, 1);
                 }
             }
-
-            // send message; as title?
-            // execute commands;
-            // remove potion effects;
-            // handle fireworks and lightning;
-            // sound? check for permissions yeh!
-            // Scroll around for more notes;
         }
 
         private void ReplenishCaptcha(final Player p)
         {
-            final Inventory GUI = getServer().createInventory(null, 27, Setting.title);
+            final ItemStack keyItem = getRandomKeyItem();
+
+            playerKeys.put(p, keyItem);
+
+            final String title = Setting.title.replace("{key}", keyItem.getType().toString());
+            final Inventory GUI = getServer().createInventory(null, 27, title);
 
             for (int s = 0; s < 27; s += 1)
             {
@@ -382,10 +428,6 @@ public class EasyGUICaptcha extends JavaPlugin
                     GUI.setItem(s, getRandomOtherItem());
                 }
             }
-
-            final ItemStack keyItem = getRandomKeyItem();
-
-            playerKeys.put(p, keyItem);
 
             for (int s = 10; s <= 17; s += 1)
             {
@@ -440,6 +482,8 @@ public class EasyGUICaptcha extends JavaPlugin
         }
 
 
+        final List<Player> blockQueue = new ArrayList<>();
+
         @EventHandler
         public void PlayerInventoryClick(final InventoryClickEvent E)
         {
@@ -474,8 +518,51 @@ public class EasyGUICaptcha extends JavaPlugin
             {
                 p.kick(Component.text(Colorize("&cYou have exceeded maximum attempts!")));
 
-                // Notify Staff
-                // Keep disconnected for disallow duration; add to list, on connect, disconnect if on list; after duration remove from list.
+                getServer().getScheduler().runTaskAsynchronously
+                (
+                    Parent,
+
+                    () ->
+                    {
+                        final String format = (Colorize("&7&o" + p.getName() + " >>> exceeded captcha tries!"));
+
+                        for (final Player sp : getServer().getOnlinePlayers())
+                        {
+                            if (p.isOp() || hasPerm(p, "*") || hasPerm(p, "*.*"))
+                            {
+                                sp.sendMessage(format);
+                            }
+                        }
+                    }
+                );
+
+                if (Setting.disallowDuration > 1)
+                {
+                    final int Duration = Setting.disallowDuration;
+
+                    blockQueue.add(p);
+
+                    getServer().getScheduler().runTaskLater
+                    (
+                        Parent,
+
+                        () -> blockQueue.remove(p),
+
+                        Duration
+                    );
+                }
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerAuthenticateEvent(final PlayerLoginEvent E)
+        {
+            final Player p = E.getPlayer();
+
+            if (blockQueue.contains(p))
+            {
+                E.disallow(PlayerLoginEvent.Result.KICK_OTHER, (Colorize("&cPlease wait before connecting again.")));
             }
         }
 
@@ -498,7 +585,10 @@ public class EasyGUICaptcha extends JavaPlugin
                 playerCache.put(p, getPlayerIP(p));
             }
 
-            // Apply potion effects
+            if (Setting.joinPotionEffects.size() > 0)
+            {
+                p.addPotionEffects(Setting.joinPotionEffects);
+            }
 
             activateCaptchaPopup(p);
         }
@@ -522,7 +612,7 @@ public class EasyGUICaptcha extends JavaPlugin
         @EventHandler
         public void PlayerOnCommand(final PlayerCommandPreprocessEvent E)
         {
-            final Player p = (Player) E.getPlayer();
+            final Player p = E.getPlayer();
 
             if (playerCache.containsKey(p))
             {
@@ -623,13 +713,6 @@ public class EasyGUICaptcha extends JavaPlugin
                     E.setCancelled(true);
                 }
             }
-        }
-
-
-        @EventHandler
-        public void PlayerQuitEvent(final PlayerQuitEvent E)
-        {
-
         }
     }
 

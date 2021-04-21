@@ -29,7 +29,7 @@ captcha-settings:
     maximum-tries: 3
     #When the user exceeds the max:
     disallow-duration: 30
-    notify-staff: true
+    notify-ops: true
   #Restrictions applied to those yet to be verified:
   restrictions:
     inventory-interaction: true
