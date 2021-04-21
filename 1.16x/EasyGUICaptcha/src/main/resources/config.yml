@@ -25,6 +25,8 @@ captcha-settings:
     enabled: true
   #How should verification attempts be handled:
   attempts:
+    #How long does a user have to solve the captcha:
+    attempt-time: 30
     #How many attempts do users get:
     maximum-tries: 3
     #When the user exceeds the max:

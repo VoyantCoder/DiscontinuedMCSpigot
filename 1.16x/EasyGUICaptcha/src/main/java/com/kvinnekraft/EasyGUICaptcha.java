@@ -1,8 +1,6 @@
 
 package com.kvinnekraft;
 
-import io.papermc.paper.event.player.AsyncChatEvent;
-import net.kyori.adventure.text.Component;
 import org.bukkit.*;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -12,9 +10,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryInteractEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -27,6 +25,7 @@ import org.bukkit.potion.PotionEffectType;
 import java.net.InetSocketAddress;
 import java.util.*;
 
+@SuppressWarnings("ALL")
 public class EasyGUICaptcha extends JavaPlugin
 {
     private void ErrorHandler(Exception E)
@@ -54,6 +53,7 @@ public class EasyGUICaptcha extends JavaPlugin
         public boolean notifyStaff = false;
         public int disallowDuration = 30;
         public int maximumAttempts = 3;
+        public int attemptTime = 30;
         //Restrictions:
         public boolean preventInventoryInteract = false;
         public boolean preventItemDrop = false;
@@ -179,6 +179,7 @@ public class EasyGUICaptcha extends JavaPlugin
             Setting.disallowDuration = (getInt(node, "disallow-duration")) * 20;
             Setting.maximumAttempts = (getInt(node, "maximum-tries"));
             Setting.notifyStaff = (getBoolean(node, "notify-ops"));
+            Setting.attemptTime = (getInt(node, "attempt-time")) * 20;
 
             node = ("captcha-settings.restrictions.");
 
@@ -218,7 +219,7 @@ public class EasyGUICaptcha extends JavaPlugin
             node = ("captcha-settings.on-complete.messages.");
 
             Setting.sendCompleteTitle = (getBoolean(node, "send-title"));
-            Setting.completeMessage = (getString(node, "message"));
+            Setting.completeMessage = (Colorize(getString(node, "message")));
 
             node = ("captcha-settings.on-complete.");
 
@@ -267,6 +268,8 @@ public class EasyGUICaptcha extends JavaPlugin
                 100,
                 100
             );
+
+            ReloadConfiguration();
         }
 
         catch (final Exception E)
@@ -293,15 +296,17 @@ public class EasyGUICaptcha extends JavaPlugin
         }
 
 
-        final HashMap<Player, Inventory> playerInventories = new HashMap<>();
+        final HashMap<UUID, Inventory> playerInventories = new HashMap<>();
         final HashMap<Player, ItemStack> playerKeys = new HashMap<>();
         final HashMap<Player, Integer> playerTries = new HashMap<>();
-        final HashMap<Player, String> playerCache = new HashMap<>();
+        final HashMap<UUID, String> playerCache = new HashMap<>();
 
         private void ResetPlayer(final Player p)
         {
-            playerInventories.remove(p);
-            playerCache.remove(p);
+            final String ip = getPlayerIP(p);
+
+            playerInventories.remove(p.getUniqueId());
+            playerCache.remove(p.getUniqueId());
             playerTries.remove(p);
             playerKeys.remove(p);
         }
@@ -349,8 +354,6 @@ public class EasyGUICaptcha extends JavaPlugin
 
         private void SuccessHandler(final Player p)
         {
-            ResetPlayer(p);
-
             if (Setting.sendCompleteTitle)
             {
                 p.sendTitle(Setting.completeMessage, "", 10, 100, 10);
@@ -410,6 +413,9 @@ public class EasyGUICaptcha extends JavaPlugin
                     p.playSound(location, Setting.completeSound, 30, 1);
                 }
             }
+
+            ResetPlayer(p);
+            p.closeInventory();
         }
 
         private void ReplenishCaptcha(final Player p)
@@ -429,20 +435,28 @@ public class EasyGUICaptcha extends JavaPlugin
                 }
             }
 
-            for (int s = 10; s <= 17; s += 1)
+            final int u = rand.nextInt(7) + 10;
+
+            for (int s = 10; s < 17; s += 1)
             {
                 final ItemStack item = getRandomKeyItem();
 
-                if (!item.getType().equals(keyItem.getType()))
+                if (s == u)
                 {
-                    GUI.setItem(s, getRandomKeyItem());
+                    GUI.setItem(s, keyItem);
+                    continue;
+                }
+
+                else if (!item.getType().equals(keyItem.getType()))
+                {
+                    GUI.setItem(s, item);
                     continue;
                 }
 
                 s -= 1;
             }
 
-            playerInventories.put(p, GUI);
+            playerInventories.put(p.getUniqueId(), GUI);
         }
 
         private String getPlayerIP(final Player p)
@@ -459,7 +473,7 @@ public class EasyGUICaptcha extends JavaPlugin
 
         private Inventory getInventory(final Player p)
         {
-            return playerInventories.get(p);
+            return playerInventories.get(p.getUniqueId());
         }
 
         private void activateCaptchaPopup(final Player p)
@@ -482,77 +496,7 @@ public class EasyGUICaptcha extends JavaPlugin
         }
 
 
-        final List<Player> blockQueue = new ArrayList<>();
-
-        @EventHandler
-        public void PlayerInventoryClick(final InventoryClickEvent E)
-        {
-            if ((E.getViewers().size() < 1) || !(E.getViewers().get(0) instanceof Player))
-            {
-                return;
-            }
-
-            final Player p = (Player) E.getViewers().get(0);
-
-            if (!playerCache.containsKey(p))
-            {
-                return;
-            }
-
-            final ItemStack Item = E.getCurrentItem();
-
-            if (Item != null)
-            {
-                if (playerKeys.get(p).getType() != Item.getType())
-                {
-                    playerTries.put(p, playerTries.get(p) + 1);
-                }
-
-                else
-                {
-                    SuccessHandler(p);
-                }
-            }
-
-            if (playerTries.get(p) >= Setting.maximumAttempts)
-            {
-                p.kick(Component.text(Colorize("&cYou have exceeded maximum attempts!")));
-
-                getServer().getScheduler().runTaskAsynchronously
-                (
-                    Parent,
-
-                    () ->
-                    {
-                        final String format = (Colorize("&7&o" + p.getName() + " >>> exceeded captcha tries!"));
-
-                        for (final Player sp : getServer().getOnlinePlayers())
-                        {
-                            if (p.isOp() || hasPerm(p, "*") || hasPerm(p, "*.*"))
-                            {
-                                sp.sendMessage(format);
-                            }
-                        }
-                    }
-                );
-
-                if (Setting.disallowDuration > 1)
-                {
-                    final int Duration = Setting.disallowDuration;
-
-                    blockQueue.add(p);
-
-                    getServer().getScheduler().runTaskLater
-                    (
-                        Parent,
-
-                        () -> blockQueue.remove(p),
-
-                        Duration
-                    );
-                }
-            }
-        }
+        final List<UUID> blockQueue = new ArrayList<>();
 
 
         @EventHandler
@@ -560,29 +504,31 @@ public class EasyGUICaptcha extends JavaPlugin
         {
             final Player p = E.getPlayer();
 
-            if (blockQueue.contains(p))
+            if (blockQueue.contains(p.getUniqueId()))
             {
                 E.disallow(PlayerLoginEvent.Result.KICK_OTHER, (Colorize("&cPlease wait before connecting again.")));
             }
         }
 
 
+        final List<UUID> joinQueue = new ArrayList<>();
+
         @EventHandler
         public void PlayerJoinEvent(final PlayerJoinEvent E)
         {
             final Player p = E.getPlayer();
 
-            if (!playerCache.containsKey(p))
+            if (!playerCache.containsKey(p.getUniqueId()))
             {
                 if (playerCache.containsValue(getPlayerIP(p)))
                 {
                     if (Setting.hasIpLock)
                     {
-                        p.kick(Component.text(Colorize("&cSomeone is already being authenticated using your network.  Please wait.")));
+                        p.kickPlayer(Colorize("&cSomeone is already being authenticated using your network.  Please wait."));
                     }
                 }
 
-                playerCache.put(p, getPlayerIP(p));
+                playerCache.put(p.getUniqueId(), getPlayerIP(p));
             }
 
             if (Setting.joinPotionEffects.size() > 0)
@@ -590,16 +536,49 @@ public class EasyGUICaptcha extends JavaPlugin
                 p.addPotionEffects(Setting.joinPotionEffects);
             }
 
+            if (!joinQueue.contains(p.getUniqueId()))
+            {
+                joinQueue.add(p.getUniqueId());
+
+                getServer().getScheduler().runTaskLater
+                (
+                    Parent,
+
+                    () ->
+                    {
+                        if (joinQueue.contains(p.getUniqueId()))
+                        {
+                            p.kickPlayer((Colorize("&cYou took too long.")));
+                            joinQueue.remove(p.getUniqueId());
+                        }
+                    },
+
+                    Setting.attemptTime
+                );
+            }
+
             activateCaptchaPopup(p);
         }
 
 
         @EventHandler
-        public void PlayerOnChat(final AsyncChatEvent E)
+        public void PlayerQuit(final PlayerQuitEvent E)
         {
             final Player p = E.getPlayer();
 
-            if (playerCache.containsKey(p))
+            if (joinQueue.contains(p.getUniqueId()))
+            {
+                joinQueue.remove(p.getUniqueId());
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerOnChat(final AsyncPlayerChatEvent E)
+        {
+            final Player p = E.getPlayer();
+
+            if (playerCache.containsKey(p.getUniqueId()))
             {
                 if (Setting.preventChat)
                 {
@@ -614,7 +593,7 @@ public class EasyGUICaptcha extends JavaPlugin
         {
             final Player p = E.getPlayer();
 
-            if (playerCache.containsKey(p))
+            if (playerCache.containsKey(p.getUniqueId()))
             {
                 if (Setting.preventChat)
                 {
@@ -629,7 +608,7 @@ public class EasyGUICaptcha extends JavaPlugin
         {
             final Player p = E.getPlayer();
 
-            if (playerCache.containsKey(p))
+            if (playerCache.containsKey(p.getUniqueId()))
             {
                 if (Setting.preventMovement)
                 {
@@ -644,7 +623,7 @@ public class EasyGUICaptcha extends JavaPlugin
         {
             final Player p = E.getPlayer();
 
-            if (playerCache.containsKey(p))
+            if (playerCache.containsKey(p.getUniqueId()))
             {
                 if (Setting.preventItemDrop)
                 {
@@ -655,7 +634,7 @@ public class EasyGUICaptcha extends JavaPlugin
 
 
         @EventHandler
-        public void PlayerInventoryInteract(final InventoryInteractEvent E)
+        public void PlayerInventoryClick(final InventoryClickEvent E)
         {
             if ((E.getViewers().size() < 1) || !(E.getViewers().get(0) instanceof Player))
             {
@@ -664,9 +643,75 @@ public class EasyGUICaptcha extends JavaPlugin
 
             final Player p = (Player) E.getViewers().get(0);
 
-            if (playerCache.containsKey(p))
+            if (!playerCache.containsKey(p.getUniqueId()))
             {
-                if (playerInventories.get(p) == E.getInventory())
+                return;
+            }
+
+            final ItemStack Item = E.getCurrentItem();
+
+            if (Item != null)
+            {
+                if (playerKeys.get(p).getType() != Item.getType())
+                {
+                    int c = 1;
+
+                    if (playerTries.containsKey(p))
+                    {
+                        c = playerTries.get(p) + 1;
+                    }
+
+                    playerTries.put(p, c);
+
+                    if (playerTries.get(p) >= Setting.maximumAttempts)
+                    {
+                        p.kickPlayer(Colorize("&cYou have exceeded maximum attempts!"));
+
+                        getServer().getScheduler().runTaskAsynchronously
+                        (
+                            Parent,
+
+                            () ->
+                            {
+                                final String format = (Colorize("&7&o" + p.getName() + " >>> exceeded captcha tries!"));
+
+                                for (final Player sp : getServer().getOnlinePlayers())
+                                {
+                                    if (p.isOp() || hasPerm(p, "*") || hasPerm(p, "*.*"))
+                                    {
+                                        sp.sendMessage(format);
+                                    }
+                                }
+                            }
+                        );
+
+                        if (Setting.disallowDuration > 1)
+                        {
+                            final int Duration = Setting.disallowDuration;
+
+                            blockQueue.add(p.getUniqueId());
+
+                            getServer().getScheduler().runTaskLater
+                            (
+                                Parent,
+
+                                () -> blockQueue.remove(p.getUniqueId()),
+
+                                Duration
+                            );
+                        }
+                    }
+                }
+
+                else
+                {
+                    SuccessHandler(p);
+                }
+            }
+
+            if (playerCache.containsKey(p.getUniqueId()))
+            {
+                if (playerInventories.get(p.getUniqueId()) == E.getInventory())
                 {
                     E.setCancelled(true);
                 }
@@ -689,7 +734,31 @@ public class EasyGUICaptcha extends JavaPlugin
 
             final Player p = (Player) E.getViewers().get(0);
 
-            if (playerCache.containsKey(p))
+            if (playerCache.containsKey(p.getUniqueId()))
+            {
+                activateCaptchaPopup(p);
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerDeath(final PlayerDeathEvent E)
+        {
+            final Player p = E.getEntity();
+
+            if (playerCache.containsKey(p.getUniqueId()))
+            {
+                activateCaptchaPopup(p);
+            }
+        }
+
+
+        @EventHandler
+        public void PlayerTeleport(final PlayerTeleportEvent E)
+        {
+            final Player p = E.getPlayer();
+
+            if (playerCache.containsKey(p.getUniqueId()))
             {
                 activateCaptchaPopup(p);
             }
@@ -699,14 +768,14 @@ public class EasyGUICaptcha extends JavaPlugin
         @EventHandler
         public void EntityDamageEvent(final EntityDamageByEntityEvent E)
         {
-            if (!(E.getDamager() instanceof Player))
+            if (!(E.getEntity() instanceof Player))
             {
                 return;
             }
 
-            final Player p = (Player) E.getDamager();
+            final Player p = (Player) E.getEntity();
 
-            if (playerCache.containsKey(p))
+            if (playerCache.containsKey(p.getUniqueId()))
             {
                 if (Setting.preventDamage)
                 {
