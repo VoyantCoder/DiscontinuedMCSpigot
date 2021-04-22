@@ -1,0 +1,33 @@
+# Author: Dashie
+# Version: 1.0
+
+dash-farming:
+  crop-settings:
+    bud-strains:
+      1:
+        name: '&bNorthern Lights'
+        type: '&5Hybrid | 70% Indica / 30% Sativa'
+        item-id: 'LONG_GRASS'
+        growth-duration: 360
+        required-soil: PODZOL
+        bud-id: 'LIME_DYE'
+        bud-effects:
+          - 'STRENGTH 5 100'
+          - 'REGENERATION 5 100'
+          - 'CONFUSION 5 100'
+          - 'SLOW 5 100'
+        permission: 'northern-lights'
+    shrooms:
+      1:
+        name: '&6Liberty Cap'
+        item-id: 'WARP_FUNGUS'
+        growth-duration: 240
+        required-soil: PODZOL
+        mush-id: 'WARP_FUNGUS'
+        mush-effects:
+          - 'CONFUSION 5 100'
+          - 'SLOW 5 100'
+          - 'REGENERATION 5 100'
+        mush-sounds:
+          - 'ENTITY_PLAYER_LEVELUP'
+        permission: 'liberty-cap'
