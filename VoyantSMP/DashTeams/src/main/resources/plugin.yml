@@ -1,0 +1,13 @@
+# Author: Dashie
+# Version: 1.0
+name: DashTeams
+version: ${project.version}
+main: com.kvinnekraft.DashTeams
+api-version: 1.16
+authors: [Dashie]
+website: https://pugpawz.com
+
+commands:
+  DashTeams:
+    aliases: []
+    description: Oh, what is this?
