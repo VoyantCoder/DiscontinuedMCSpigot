@@ -1,94 +1,86 @@
-// Author: Dashie
-// Version: 1.0
-
 package com.kvinnekraft;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class $
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
+public class DashTeams extends JavaPlugin
 {
-    NAME
-} extends JavaPlugin
+    final class EventsHandler implements Listener
+    {
+        @EventHandler
+        public void onPlayerDamage(final EntityDamageByEntityEvent E)
         {
-private void loadSettings()
-        {
-        saveDefaultConfig();
-        reloadConfig();
+            // Make sure team-mates can not hit each other.
+        }
+    }
 
+
+    // Player : Is In Faction
+    final HashMap<UUID, Boolean> FactionPlayers = new HashMap<>();
+    // Faction Name
+    final List<String> FactionNames = new ArrayList<>();
+
+    FileConfiguration config;
+
+    final void ReloadConfiguration()
+    {
+        try
+        {
+            saveDefaultConfig();
+
+            parent.reloadConfig();
+            config = parent.getConfig();
+
+            // Load configuration data, hopefully some factions.
+        }
+
+        catch (final Exception E)
+        {
+            throw (E);
+        }
+    }
+
+
+    final JavaPlugin parent = this;
+
+    @Override
+    public final void onEnable()
+    {
         try
         {
 
         }
 
-        catch(final Exception e)
+        catch (final Exception E)
         {
-        shutdownPlugin("Invalid configuration detected.");
+            Print("An error occurred.  Shutting down plugin ....");
+            getServer().getPluginManager().disablePlugin(parent);
         }
-        }
+    }
 
-final JavaPlugin plugin=this;
+    @Override
+    public final void onDisable()
+    {
 
-        boolean autoReload=true;
-        int reloadInterval=5;
+    }
 
-@Override public final void onEnable()
-        {
-        try
-        {
-final FileConfiguration config=getConfig();
 
-        autoReload=config.getBoolean("startup-properties.auto-reload");
+    final String Colorize(final String data)
+    {
+        return ChatColor.translateAlternateColorCodes('&', data);
+    }
 
-        if(autoReload)
-        {
-        reloadInterval=config.getInt("startup-properties.reload-interval")*20;
-
-        getServer().getScheduler().runTaskTimerAsynchronously
-        (
-        plugin,
-
-        this::loadSettings,
-
-        reloadInterval,
-        reloadInterval
-        );
-        }
-
-        loadSettings();
-        }
-
-        catch(final Exception e)
-        {
-        shutdownPlugin("The plugin failed to initialize.  Shutting down ....");
-        }
-
-        print("Author: Dashie");
-        print("Version: 1.0");
-        print("Github: https://github.com/KvinneKraft");
-        print("Email: KvinneKraft@protonmail.com");
-        }
-
-private void shutdownPlugin(final String reason)
-        {
-        print(reason);
-        getServer().getPluginManager().disablePlugin(plugin);
-        }
-
-@Override public final void onDisable()
-        {
-        getServer().getScheduler().cancelTasks(plugin);
-        print("I am dead!");
-        }
-
-private String color(final String data)
-        {
-        return ChatColor.translateAlternateColorCodes('&',data);
-        }
-
-private void print(final String data)
-        {
-        System.out.println("($NAME): "+data);
-        }
-        }
+    final void Print(final String data)
+    {
+        System.out.println("(Dash Teams): " + data);
+    }
+}
