@@ -1,0 +1,10 @@
+settings:
+  max-team-members: 8
+  max-team-name-length: 12
+
+player-data:
+  1:
+    team-name: '&dFluffz'
+    team-members:
+      - 'uuid 1'
+      - 'uuid 2'
