@@ -40,7 +40,7 @@ public class DashTeams extends JavaPlugin
             parent.reloadConfig();
             config = parent.getConfig();
 
-            // Load configuration data, hopefully some factions.
+            // Load configuration data, hopefully some factions
         }
 
         catch (final Exception E)
@@ -57,7 +57,7 @@ public class DashTeams extends JavaPlugin
     {
         try
         {
-
+//
         }
 
         catch (final Exception E)
