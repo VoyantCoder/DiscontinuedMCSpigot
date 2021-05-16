@@ -1,0 +1,53 @@
+# can specify multiple mob-types.
+# can specify '' if want disabled.
+# can add enchantments to items which are unsafe.
+mob-spawn-rules:
+  1:
+    # Format: [MOB TYPE 1,MOB TYPE 2....]
+    mob-types: 'ZOMBIE,SKELETON'
+    mob-gear:
+      # Type = Material Name
+      # Drop Chance = % (1-100)
+      # Enchantments = [ENCHANTMENT NAME] [ENCHANTMENT LEVEL]
+      helmet:
+        type: 'DIAMOND_HELMET'
+        drop-chance: 0
+        enchantments:
+          - 'PROTECTION_ENVIRONMENTAL 4'
+      chestplate:
+        type: 'IRON_CHESTPLATE'
+        drop-chance: 0
+        enchantments:
+          - 'PROTECTION_ENVIRONMENTAL 4'
+      leggings:
+        type: 'IRON_LEGGINGS'
+        drop-chance: 0
+        enchantments:
+          - 'PROTECTION_ENVIRONMENTAL 4'
+      boots:
+        type: 'DIAMOND_BOOTS'
+        drop-chance: 0
+        enchantments:
+          - 'PROTECTION_ENVIRONMENTAL 4'
+      hand:
+        type: 'DIAMOND_AXE'
+        drop-chance: 0
+        enchantments:
+          - 'SHARPNESS 5'
+          - 'FIRE_ASPECT 5'
+    # Custom drop configuration
+    mob-drops:
+      - 'STICK 1'
+      - 'BONE 1'
+    drops-exp: 40
+    your-health: 60
+    # Custom naming of mobs
+    custom-naming:
+      name: ''
+      above-head: true
+    # Format: [EFFECT TYPE] [EFFECT POWER] [EFFECT DURATION]
+    offensive-potion-effects:
+      - 'SLOW 10 1000'
+    # Format: [EFFECT TYPE] [EFFECT POWER]
+    defensive-potion-effects:
+      - 'RESISTANCE 1'
