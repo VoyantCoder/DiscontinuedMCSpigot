@@ -2,6 +2,7 @@ package com.kvinnekraft;
 
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class VoyantMobs extends JavaPlugin
@@ -31,13 +32,24 @@ public class VoyantMobs extends JavaPlugin
     {
         try
         {
+            saveDefaultConfig();
 
+            inst.reloadConfig();
+            config = inst.getConfig();
+
+            // Configuration Read-Functionality
         }
 
         catch (Exception E)
         {
             Error(E);
         }
+    }
+
+
+    class EventHandlers implements Listener
+    {
+
     }
 
 
@@ -48,7 +60,11 @@ public class VoyantMobs extends JavaPlugin
     {
         try
         {
+            getServer().getScheduler().runTaskTimerAsynchronously(inst, this::LoadConfiguration, 100, 100);
 
+            LoadConfiguration();
+
+            getServer().getPluginManager().registerEvents(new EventHandlers(), inst);
         }
 
         catch (Exception E)
