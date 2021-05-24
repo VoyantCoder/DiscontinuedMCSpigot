@@ -1,0 +1,32 @@
+# Author: Dashie
+# Version: 1.0
+mobs:
+  1:
+    spawn-chance: 5
+    mob-types: 'SKELETON,ZOMBIE,STRAY'
+    mob-layout:
+      handslot:
+        item: DIAMOND_SWORD
+        enchants:
+          - 'PROTECTION_ENVIRONMENTAL 5'
+          - 'UNBREAKING 5'
+      helmet:
+        item: DIAMOND_HELMET
+        enchants:
+        - 'PROTECTION_ENVIRONMENTAL 5'
+        - 'UNBREAKING 5'
+      chestplate:
+        item: DIAMOND_CHESTPLATE
+        enchants:
+          - 'PROTECTION_ENVIRONMENTAL 5'
+          - 'UNBREAKING 5'
+      leggings:
+        item: DIAMOND_LEGGINGS
+        enchants:
+          - 'PROTECTION_ENVIRONMENTAL 5'
+          - 'UNBREAKING 5'
+      boots:
+        item: DIAMOND_BOOTS
+        enchants:
+          - 'PROTECTION_ENVIRONMENTAL 5'
+          - 'UNBREAKING 5'
