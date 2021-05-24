@@ -11,16 +11,15 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class DashJoin extends JavaPlugin
+public class DashCommandOverride extends JavaPlugin
 {
     private String Colorize(final String data)
     {
         return ChatColor.translateAlternateColorCodes('&',data);
     }
-
     private void SendLog(final String msg)
     {
-        System.out.println("(DashJoin): "+msg);
+        System.out.println("(DashCommandOverride): "+msg);
     }
 
     private void Error(Exception E)
@@ -83,13 +82,13 @@ public class DashJoin extends JavaPlugin
             final String cmd = E.getMessage().toLowerCase().replace("/", "");
             final Player p = E.getPlayer();
 
-            if (cmd.equals("help"))
+            if (cmd.equals("help") || cmd.equals("ehelp"))
             {
                 p.sendMessage(helpMessage);
                 E.setCancelled(true);
             }
 
-            else if (cmd.equals("rules") || cmd.equals("rule"))
+            else if (cmd.equals("rules") || cmd.equals("rule") || cmd.equals("erules"))
             {
                 p.sendMessage(ruleMessage);
                 E.setCancelled(true);

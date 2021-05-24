@@ -1,6 +1,6 @@
 # Author: Dashie
 # Version: 1.0
-name: DashJoin
+name: DashCommandOverride
 version: ${project.version}
-main: com.kvinnekraft.DashJoin
+main: com.kvinnekraft.DashCommandOverride
 api-version: 1.16
