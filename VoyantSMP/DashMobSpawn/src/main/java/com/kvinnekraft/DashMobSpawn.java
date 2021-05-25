@@ -2,23 +2,23 @@
 // Version: 1.0
 package com.kvinnekraft;
 
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.event.entity.CreatureSpawnEvent;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.potion.PotionEffectType;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.event.EventHandler;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Creature;
+import org.bukkit.event.Listener;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.*;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.entity.CreatureSpawnEvent;
-import org.bukkit.event.entity.EntitySpawnEvent;
-import org.bukkit.inventory.EntityEquipment;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.potion.Potion;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class DashMobSpawn extends JavaPlugin
 {
@@ -131,9 +131,20 @@ public class DashMobSpawn extends JavaPlugin
                             continue;
                         }
 
-                        // Get Potion Effect
-                        // Check Potion Power
-                        // Add Potion to List
+                        final PotionEffectType effectType = PotionEffectType.getByName(rawData[0]);
+                        final int power = GetInteger(rawData[1]);
+
+                        if (effectType == null || power <= 0)
+                        {
+                            SendLog("One or more potion effects at node " + node + " appears to be invalid.");
+                            SendLog("Skipping ....");
+
+                            continue;
+                        }
+
+                        final PotionEffect potionEffect = new PotionEffect(effectType, 9999 * 20, power);
+
+                        potEffects.add(potionEffect);
                     }
                 }
 
@@ -311,9 +322,20 @@ public class DashMobSpawn extends JavaPlugin
                                 {
                                     critter.getEquipment().setArmorContents(armor);
                                 }
+                                
+                                final int _k = k;
 
-                                critter.addPotionEffects(potionEffects.get(k));
-                                critter.setHealth(entityHealths.get(k));
+                                getServer().getScheduler().runTask
+                                (
+                                    inst,
+
+                                    () ->
+                                    {
+                                        critter.addPotionEffects(potionEffects.get(_k));
+                                        critter.setMaxHealth(entityHealths.get(_k));
+                                        critter.setHealth(entityHealths.get(_k));
+                                    }
+                                );
 
                                 r = 1;
                                 break;
