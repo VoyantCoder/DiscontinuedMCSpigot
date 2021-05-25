@@ -3,30 +3,35 @@
 mobs:
   1:
     spawn-chance: 5
-    mob-types: 'SKELETON,ZOMBIE,STRAY'
+    mob-health: 40
+    mob-types: 'ZOMBIE_VILLAGER,ZOMBIE,WITHER_SKELETON'
     mob-layout:
       handslot:
         item: DIAMOND_SWORD
         enchants:
           - 'PROTECTION_ENVIRONMENTAL 5'
-          - 'UNBREAKING 5'
+          - 'DURABILITY 5'
       helmet:
         item: DIAMOND_HELMET
         enchants:
         - 'PROTECTION_ENVIRONMENTAL 5'
-        - 'UNBREAKING 5'
+        - 'DURABILITY 5'
       chestplate:
         item: DIAMOND_CHESTPLATE
         enchants:
           - 'PROTECTION_ENVIRONMENTAL 5'
-          - 'UNBREAKING 5'
+          - 'DURABILITY 5'
       leggings:
         item: DIAMOND_LEGGINGS
         enchants:
           - 'PROTECTION_ENVIRONMENTAL 5'
-          - 'UNBREAKING 5'
+          - 'DURABILITY 5'
       boots:
         item: DIAMOND_BOOTS
         enchants:
           - 'PROTECTION_ENVIRONMENTAL 5'
-          - 'UNBREAKING 5'
+          - 'DURABILITY 5'
+    potion-effects:
+      - 'FIRE_RESISTANCE 2'
+      - 'DAMAGE_RESISTANCE 2'
+      - 'REGENERATION 2'
