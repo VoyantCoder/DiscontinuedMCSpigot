@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class DashMobSpawn extends JavaPlugin
+public class DashBossMobSpawn extends JavaPlugin
 {
     private String Colorize(final String data)
     {
@@ -80,7 +80,7 @@ public class DashMobSpawn extends JavaPlugin
 
             String[] equipmentNodes = new String[]
             {
-                "handslot", "leggings", "chestplate", "helmet", "boots"
+                "handslot", "boots", "leggings", "chestplate", "helmet",
             };
 
             for (int k = 1; ;k += 1)
@@ -261,13 +261,13 @@ public class DashMobSpawn extends JavaPlugin
 
     class EventHandlers implements Listener
     {
-        final ItemStack[] ToArray(List<ItemStack> itemStack, int startIndex)
+        final ItemStack[] ToArray(List<ItemStack> itemStack)
         {
-            final ItemStack[] data = new ItemStack[itemStack.size()];
+            final ItemStack[] data = new ItemStack[4];
 
-            for (int k = startIndex; k < data.length; k += 1)
+            for (int k = 1; k < 5; k += 1)
             {
-                data[k] = itemStack.get(k);
+                data[k - 1] = itemStack.get(k);
             }
 
             return data;
@@ -297,14 +297,15 @@ public class DashMobSpawn extends JavaPlugin
                         {
                             final EntityType entityType = entityTypes.get(k).get(s);
 
-                            if (entityTypes.get(k).get(s) != entityType)
+                            if (critter.getType() != entityType)
                             {
                                 continue;
                             }
 
                             if (rand.nextInt(100) > spawnChances.get(k))
                             {
-                                continue;
+                                r = 1;
+                                break;
                             }
 
                             if (itemData.get(k).size() > 0)
@@ -316,13 +317,13 @@ public class DashMobSpawn extends JavaPlugin
                                     critter.getEquipment().setItemInMainHand(itemData.get(k).get(0));
                                 }
 
-                                final ItemStack[] armor = ToArray(itemData.get(k), 1);
+                                final ItemStack[] armor = ToArray(itemData.get(k));
 
                                 if (armor != null && armor.length > 0)
                                 {
                                     critter.getEquipment().setArmorContents(armor);
                                 }
-                                
+
                                 final int _k = k;
 
                                 getServer().getScheduler().runTask
