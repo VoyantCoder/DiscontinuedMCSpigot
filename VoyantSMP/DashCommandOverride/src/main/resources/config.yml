@@ -15,3 +15,17 @@ rule-message:
   -
   -
   -
+blocked-commands:
+  - 'pl'
+  - 'plugins'
+  - 'info'
+  - 'spigot'
+  - 'bukkit'
+  - 'ver'
+  - 'version'
+  - 'icanhasbukkit'
+  - 'about'
+command-cooldown: 5
+message-cooldown: 5
+block-message: '&cYou may not use this command.'
+cooldown-message: '&cCalm down with that.'
