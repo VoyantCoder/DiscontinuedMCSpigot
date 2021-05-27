@@ -44,6 +44,33 @@ public class DashMiner extends JavaPlugin
     }
 
 
+    private Material getMaterial(final String item)
+    {
+        try
+        {
+            return Material.valueOf(item);
+        }
+
+        catch (final Exception E)
+        {
+            return null;
+        }
+    }
+
+    private Integer getInteger(final String item)
+    {
+        try
+        {
+            return Integer.valueOf(item);
+        }
+
+        catch (final Exception E)
+        {
+            return -1;
+        }
+    }
+
+
     private List<List<ItemStack>> blockRewards = new ArrayList<>();
     private List<List<Integer>> rewardChances = new ArrayList<>();
     private List<Material> rewardBlockTypes = new ArrayList<>();
@@ -62,12 +89,86 @@ public class DashMiner extends JavaPlugin
             inst.reloadConfig();
             config = inst.getConfig();
 
-            rewardBlockTypes = new ArrayList<>();
             notifyBlockTypes = new ArrayList<>();
+
+            for (final String item : config.getStringList("notify-blocks"))
+            {
+                final Material material = getMaterial(item);
+
+                if (material == null)
+                {
+                    SendLog("Found invalid block-type while reading notify-blocks.");
+                    SendLog("Skipping ....");
+
+                    continue;
+                }
+
+                notifyBlockTypes.add(material);
+            }
+
+            rewardBlockTypes = new ArrayList<>();
             rewardChances = new ArrayList<>();
-            notifyPlayers = new ArrayList<>();
             blockRewards = new ArrayList<>();
 
+            String node = ("notify-blocks.");
+
+            for (int n = 0; ;n += 1)
+            {
+                if (!config.contains(node + n))
+                {
+                    break;
+                }
+
+                node = ("blocks-rewards." + n + ".block-type");
+
+                Material bulb0 = getMaterial(config.getString(node));
+
+                if (bulb0 == null)
+                {
+                    SendLog("Found invalid block-type while reading " + node + ".");
+                    SendLog("Skipping ....");
+
+                    continue;
+                }
+
+                node = ("block-rewards." + n + ".rewards");
+
+                final List<Integer> chances = new ArrayList<>();
+                final List<ItemStack> items = new ArrayList<>();
+
+                for (final String item : config.getStringList(node))
+                {
+                    final String[] arr = item.split(" ");
+
+                    if (arr.length != 3)
+                    {
+                        SendLog("An error occurred while reading one of the rewards at " + node + ".");
+                        SendLog("Skipping ....");
+
+                        continue;
+                    }
+
+                    Material bulb1 = getMaterial(arr[0]);
+
+                    int bulb2 = getInteger(arr[1]);
+                    int bulb3 = getInteger(arr[2]);
+
+                    if (bulb1 == null || bulb2 < 1 || bulb3 < 1)
+                    {
+                        SendLog("An error occurred while reading one of the rewards at " + node + ".");
+                        SendLog("Skipping ....");
+
+                        continue;
+                    }
+
+                    items.add(new ItemStack(bulb1, bulb2));
+                    chances.add(bulb3);
+                }
+
+                rewardBlockTypes.add(bulb0);
+                rewardChances.add(chances);
+                blockRewards.add(items);
+            }
         }
 
         catch (Exception E)
@@ -103,7 +204,6 @@ public class DashMiner extends JavaPlugin
                );
             }
         }
-
 
         final Random rand = new Random();
 
