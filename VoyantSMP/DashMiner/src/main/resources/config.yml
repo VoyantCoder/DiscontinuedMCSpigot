@@ -5,7 +5,6 @@ notify-blocks:
   - 'SPAWNER'
   - 'CHEST'
   - 'TRAPPED_CHEST'
-  - 'NETHERITE_ORE'
   - 'LAPIS_ORE'
   - 'REDSTONE_ORE'
 block-rewards:
