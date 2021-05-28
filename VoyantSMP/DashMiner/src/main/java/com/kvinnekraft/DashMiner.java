@@ -2,9 +2,10 @@
 // Version: 1.0
 package com.kvinnekraft;
 
-import org.bukkit.ChatColor;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
+import org.bukkit.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,6 +13,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,7 @@ public class DashMiner extends JavaPlugin
 
     private void SendLog(final String msg)
     {
-        System.out.println("(Java Template): " + msg);
+        System.out.println("(Dash Miner): " + msg);
     }
 
     private UUID getUUID(final Player p)
@@ -40,7 +42,7 @@ public class DashMiner extends JavaPlugin
         SendLog("An error has occurred, making the plugin unusable.  I will have to disable myself to save your server unnecessary resources.  Bye! ;c");
         SendLog("If you want to help me solve this issue, perhaps send this:\r\n" + E.getMessage() + "\r\nto my email at KvinneKraft@protonmail.com.");
 
-        inst.getPluginLoader().disablePlugin(inst);
+        inst.getPluginLoader().disablePlugin(inst, true);
     }
 
 
@@ -53,6 +55,7 @@ public class DashMiner extends JavaPlugin
 
         catch (final Exception E)
         {
+            SendLog(item);
             return null;
         }
     }
@@ -97,7 +100,7 @@ public class DashMiner extends JavaPlugin
 
                 if (material == null)
                 {
-                    SendLog("Found invalid block-type while reading notify-blocks.");
+                    SendLog("Found invalid block-type [" + item + "] while reading notify-blocks.");
                     SendLog("Skipping ....");
 
                     continue;
@@ -110,16 +113,16 @@ public class DashMiner extends JavaPlugin
             rewardChances = new ArrayList<>();
             blockRewards = new ArrayList<>();
 
-            String node = ("notify-blocks.");
-
-            for (int n = 0; ;n += 1)
+            for (int n = 1; ;n += 1)
             {
+                String node = ("block-rewards.");
+
                 if (!config.contains(node + n))
                 {
                     break;
                 }
 
-                node = ("blocks-rewards." + n + ".block-type");
+                node = ("block-rewards." + n + ".block-type");
 
                 Material bulb0 = getMaterial(config.getString(node));
 
@@ -171,7 +174,7 @@ public class DashMiner extends JavaPlugin
             }
         }
 
-        catch (Exception E)
+        catch (final Exception E)
         {
             Error(E);
         }
@@ -234,6 +237,22 @@ public class DashMiner extends JavaPlugin
                         if (r.size() > 0)
                         {
                             E.getBlock().getDrops().addAll(r);
+
+                            final Location loca = E.getBlock().getLocation();
+                            final World world = loca.getWorld();
+
+                            getServer().getScheduler().runTask
+                            (
+                                inst,
+
+                                () ->
+                                {
+                                    for (final ItemStack item : r)
+                                    {
+                                        world.dropItemNaturally(loca, item);
+                                    }
+                                }
+                            );
                         }
                     }
                 );
@@ -253,6 +272,59 @@ public class DashMiner extends JavaPlugin
     }
 
 
+    class CommandsHandler implements CommandExecutor
+    {
+        @Override
+        public boolean onCommand(@NotNull CommandSender s, @NotNull Command c, @NotNull String l, @NotNull String[] a)
+        {
+            if (!(s instanceof Player))
+            {
+                SendLog("You cannot do this.  Players can though.");
+                return false;
+            }
+
+            final Player p = (Player) s;
+
+            if (!p.isOp())
+            {
+                p.sendMessage(Colorize("&cYou may not do this, unfortunately."));
+                return false;
+            }
+
+            if (a.length < 1)
+            {
+                p.sendMessage(Colorize("&aYou must give me something to work with. Give help for help."));
+                return false;
+            }
+
+            final String argument = a[0].toLowerCase();
+
+            if (argument.equals("help"))
+            {
+                p.sendMessage(Colorize("&e/dashminer xray -=- toggle x-xray detection mode.  get notified about ore mining."));
+                p.sendMessage(Colorize("&e/dashminer blockrewards [add | remove] [block type <reward item:amount:chance(1-100)>] -=- add or remove bonus drop rules."));
+                return true;
+            }
+
+            else if (argument.equals("add") || argument.equals("remove"))
+            {
+                if (a.length < 2)
+                {
+                    p.sendMessage(Colorize("&aUsage: &e/dashminer blockrewards [add | remove] [block type <reward item:amount:chance(1-100)>]"));
+                    return false;
+                }
+
+                else if (a.length < 2)
+                {
+
+                }
+            }
+
+            return true;
+        }
+    }
+
+
     final JavaPlugin inst = this;
 
     @Override
@@ -267,6 +339,7 @@ public class DashMiner extends JavaPlugin
             // Add toggle command | check if player UUID already in list, if not, turn on else off
 
             getServer().getPluginManager().registerEvents(new EventHandlers(), inst);
+            getCommand("DashMiner").setExecutor(new CommandsHandler(), inst);
         }
 
         catch (Exception E)
