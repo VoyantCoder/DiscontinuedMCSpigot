@@ -308,19 +308,25 @@ public class DashMiner extends JavaPlugin
 
             else if (argument.equals("add") || argument.equals("remove"))
             {
-                if (a.length < 2)
+                if (a.length <= 2)
                 {
                     p.sendMessage(Colorize("&aUsage: &e/dashminer blockrewards [add | remove] [block type <reward item:amount:chance(1-100)>]"));
                     return false;
                 }
 
-                else if (a.length < 2)
+                if (argument.equals("add"))
                 {
-
+                    // a[1] = block type
+                    // a[2] = reward item:amount:chance | What item to add, amount of item, chance of getting item.
                 }
-            }
 
-            return true;
+                else
+                {
+                    // [1] block-type = id
+                }
+
+                return false;
+            }
         }
     }
 
@@ -339,7 +345,7 @@ public class DashMiner extends JavaPlugin
             // Add toggle command | check if player UUID already in list, if not, turn on else off
 
             getServer().getPluginManager().registerEvents(new EventHandlers(), inst);
-            getCommand("DashMiner").setExecutor(new CommandsHandler(), inst);
+            getCommand("DashMiner").setExecutor(new CommandsHandler());
         }
 
         catch (Exception E)
