@@ -302,8 +302,28 @@ public class DashMiner extends JavaPlugin
             if (argument.equals("help"))
             {
                 p.sendMessage(Colorize("&e/dashminer xray -=- toggle x-xray detection mode.  get notified about ore mining."));
-                p.sendMessage(Colorize("&e/dashminer blockrewards [add | remove] [block type <reward item:amount:chance(1-100)>] -=- add or remove bonus drop rules."));
+                p.sendMessage(Colorize("&e/dashminer blockrewards [list | add | remove] [block type <reward item:amount:chance(1-100)>] -=- add or remove bonus drop rules."));
                 return true;
+            }
+
+            else if (argument.equals("list"))
+            {
+                getServer().getScheduler().runTaskAsynchronously
+                (
+                    inst,
+
+                    () ->
+                    {
+                        String output = "";
+
+                        for (int k = 0; k < rewardBlockTypes.size(); k += 1)
+                        {
+                            output += "&3" + rewardBlockTypes.get(k).toString() + "&b:&3" + (k + 1) + "&r ";
+                        }
+
+                        p.sendMessage("&7Blocks and IDs: " + Colorize(output));
+                    }
+                );
             }
 
             else if (argument.equals("add") || argument.equals("remove"))
@@ -314,10 +334,10 @@ public class DashMiner extends JavaPlugin
                     return false;
                 }
 
-                if (argument.equals("add"))
+                else if (argument.equals("add"))
                 {
                     // a[1] = block type
-                    // a[2] = reward item:amount:chance | What item to add, amount of item, chance of getting item.
+                    // a[2] = reward item:amount:chance | What item to add, amount of item, chance of getting item
                 }
 
                 else
@@ -327,6 +347,8 @@ public class DashMiner extends JavaPlugin
 
                 return false;
             }
+
+            return false;
         }
     }
 
