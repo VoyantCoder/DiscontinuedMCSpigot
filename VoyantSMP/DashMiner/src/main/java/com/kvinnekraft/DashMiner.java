@@ -89,7 +89,7 @@ public class DashMiner extends JavaPlugin
         {
             saveDefaultConfig();
 
-            inst.reloadConfig();
+            //inst.reloadConfig();
             config = inst.getConfig();
 
             notifyBlockTypes = new ArrayList<>();
@@ -274,6 +274,43 @@ public class DashMiner extends JavaPlugin
 
     class CommandsHandler implements CommandExecutor
     {
+        final void SaveToConfig()
+        {
+            for (int i = 1; ; i += 1)
+            {
+                if (!config.contains("block-rewards." + i))
+                {
+                    break;
+                }
+
+                config.set("block-rewards." + i + ".block-type", null);
+                config.set("block-rewards." + i + ".rewards", null);
+                config.set("block-rewards." + i, null);
+            }
+
+            for (int i = 0; i < blockRewards.size(); i += 1)
+            {
+                final String node = "block-rewards." + (i + 1);
+
+                config.set(node + ".block-type", rewardBlockTypes.get(i).toString());
+
+                final List<String> arr = new ArrayList<>();
+
+                for (int k = 0; k < blockRewards.get(i).size(); k += 1)
+                {
+                    String line = rewardBlockTypes.get(k).toString() + " "
+                            + blockRewards.get(i).get(k).getAmount() + " "
+                            + rewardChances.get(i).get(k);
+
+                    arr.add(line);
+                }
+
+                config.set(node + ".rewards", arr);
+            }
+
+            inst.saveConfig();
+        }
+
         @Override
         public boolean onCommand(@NotNull CommandSender s, @NotNull Command c, @NotNull String l, @NotNull String[] a)
         {
@@ -342,7 +379,23 @@ public class DashMiner extends JavaPlugin
 
                 else
                 {
-                    // [1] block-type = id
+                    final int id = getInteger(a[1]);
+
+                    if (id < 1 || id > rewardBlockTypes.size() - 1)
+                    {
+                        p.sendMessage(Colorize("&cThis ID does not correspond to any set reward."));
+                        return false;
+                    }
+
+                    p.sendMessage(Colorize("&aRemoving " + id + " from config ...."));
+
+                    rewardBlockTypes.remove(id);
+                    rewardChances.remove(id);
+                    blockRewards.remove(id);
+
+                    SaveToConfig();
+
+                    p.sendMessage(Colorize("&aDone!"));
                 }
 
                 return false;
