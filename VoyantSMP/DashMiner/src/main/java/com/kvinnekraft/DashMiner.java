@@ -87,10 +87,13 @@ public class DashMiner extends JavaPlugin
     {
         try
         {
-            saveDefaultConfig();
+            if (config == null)
+            {
+                saveDefaultConfig();
 
-            //inst.reloadConfig();
-            config = inst.getConfig();
+                inst.reloadConfig();
+                config = inst.getConfig();
+            }
 
             notifyBlockTypes = new ArrayList<>();
 
@@ -109,9 +112,9 @@ public class DashMiner extends JavaPlugin
                 notifyBlockTypes.add(material);
             }
 
-            rewardBlockTypes = new ArrayList<>();
-            rewardChances = new ArrayList<>();
-            blockRewards = new ArrayList<>();
+            rewardBlockTypes.clear();
+            rewardChances.clear();
+            blockRewards.clear();
 
             for (int n = 1; ;n += 1)
             {
@@ -272,140 +275,6 @@ public class DashMiner extends JavaPlugin
     }
 
 
-    class CommandsHandler implements CommandExecutor
-    {
-        final void SaveToConfig()
-        {
-            for (int i = 1; ; i += 1)
-            {
-                if (!config.contains("block-rewards." + i))
-                {
-                    break;
-                }
-
-                config.set("block-rewards." + i + ".block-type", null);
-                config.set("block-rewards." + i + ".rewards", null);
-                config.set("block-rewards." + i, null);
-            }
-
-            for (int i = 0; i < blockRewards.size(); i += 1)
-            {
-                final String node = "block-rewards." + (i + 1);
-
-                config.set(node + ".block-type", rewardBlockTypes.get(i).toString());
-
-                final List<String> arr = new ArrayList<>();
-
-                for (int k = 0; k < blockRewards.get(i).size(); k += 1)
-                {
-                    String line = rewardBlockTypes.get(k).toString() + " "
-                            + blockRewards.get(i).get(k).getAmount() + " "
-                            + rewardChances.get(i).get(k);
-
-                    arr.add(line);
-                }
-
-                config.set(node + ".rewards", arr);
-            }
-
-            inst.saveConfig();
-        }
-
-        @Override
-        public boolean onCommand(@NotNull CommandSender s, @NotNull Command c, @NotNull String l, @NotNull String[] a)
-        {
-            if (!(s instanceof Player))
-            {
-                SendLog("You cannot do this.  Players can though.");
-                return false;
-            }
-
-            final Player p = (Player) s;
-
-            if (!p.isOp())
-            {
-                p.sendMessage(Colorize("&cYou may not do this, unfortunately."));
-                return false;
-            }
-
-            if (a.length < 1)
-            {
-                p.sendMessage(Colorize("&aYou must give me something to work with. Give help for help."));
-                return false;
-            }
-
-            final String argument = a[0].toLowerCase();
-
-            if (argument.equals("help"))
-            {
-                p.sendMessage(Colorize("&e/dashminer xray -=- toggle x-xray detection mode.  get notified about ore mining."));
-                p.sendMessage(Colorize("&e/dashminer blockrewards [list | add | remove] [block type <reward item:amount:chance(1-100)>] -=- add or remove bonus drop rules."));
-                return true;
-            }
-
-            else if (argument.equals("list"))
-            {
-                getServer().getScheduler().runTaskAsynchronously
-                (
-                    inst,
-
-                    () ->
-                    {
-                        String output = "";
-
-                        for (int k = 0; k < rewardBlockTypes.size(); k += 1)
-                        {
-                            output += "&3" + rewardBlockTypes.get(k).toString() + "&b:&3" + (k + 1) + "&r ";
-                        }
-
-                        p.sendMessage("&7Blocks and IDs: " + Colorize(output));
-                    }
-                );
-            }
-
-            else if (argument.equals("add") || argument.equals("remove"))
-            {
-                if (a.length <= 2)
-                {
-                    p.sendMessage(Colorize("&aUsage: &e/dashminer blockrewards [add | remove] [block type <reward item:amount:chance(1-100)>]"));
-                    return false;
-                }
-
-                else if (argument.equals("add"))
-                {
-                    // a[1] = block type
-                    // a[2] = reward item:amount:chance | What item to add, amount of item, chance of getting item
-                }
-
-                else
-                {
-                    final int id = getInteger(a[1]);
-
-                    if (id < 1 || id > rewardBlockTypes.size() - 1)
-                    {
-                        p.sendMessage(Colorize("&cThis ID does not correspond to any set reward."));
-                        return false;
-                    }
-
-                    p.sendMessage(Colorize("&aRemoving " + id + " from config ...."));
-
-                    rewardBlockTypes.remove(id);
-                    rewardChances.remove(id);
-                    blockRewards.remove(id);
-
-                    SaveToConfig();
-
-                    p.sendMessage(Colorize("&aDone!"));
-                }
-
-                return false;
-            }
-
-            return false;
-        }
-    }
-
-
     final JavaPlugin inst = this;
 
     @Override
@@ -417,10 +286,7 @@ public class DashMiner extends JavaPlugin
 
             LoadConfiguration();
 
-            // Add toggle command | check if player UUID already in list, if not, turn on else off
-
             getServer().getPluginManager().registerEvents(new EventHandlers(), inst);
-            getCommand("DashMiner").setExecutor(new CommandsHandler());
         }
 
         catch (Exception E)
