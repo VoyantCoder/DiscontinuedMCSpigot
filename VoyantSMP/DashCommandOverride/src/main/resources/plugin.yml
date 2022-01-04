@@ -1,6 +1,0 @@
-# Author: Dashie
-# Version: 1.0
-name: DashCommandOverride
-version: ${project.version}
-main: com.kvinnekraft.DashCommandOverride
-api-version: 1.16
