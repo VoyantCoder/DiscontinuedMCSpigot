@@ -1,7 +1,11 @@
 name: DashSitCustomBuild
 version: '${project.version}'
-main: www.pugpawz.com.index
+main: www.pugpawz.com.Index
 api-version: 1.18
 authors: [Dashie, KvinneKraft, me, basically]
 description: Allows players to sit.
 website: https://www.pugpawz.com
+commands:
+  sit:
+    aliases: [letmesit, sitter, sitplugin, dashsit]
+    description: Sit like a Dashie.

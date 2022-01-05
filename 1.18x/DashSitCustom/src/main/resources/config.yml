@@ -1,0 +1,28 @@
+######
+### set to 'none' for no permission expectation.
+must-have-sit-permission: 'this.permission'
+######
+### you may use color codes. could add in the ability
+### to display player names using the '{player}' format.
+### let me know if you want that.
+permission-denied-message: '&cYou may not do that.'
+sit-down-message: '&eYou are now sitting!'
+get-up-message: '&eYou got up!'
+######
+### the item names in the list bellow should be typed
+### correctly. the interpreter is not case sensitive
+### which means you can type Cobblestone like 'CoBbLeStONE'
+### or simply 'COBBLESTONE'. any spaces within the
+### names specified below will be replaced with a '_'.
+allow-sit-interaction-for:
+  - 'COBBLESTONE'
+  - 'IRON_SWORD'
+  - 'DIAMOND_SWORD'
+######
+### the same rules apply here as the above when it
+### comes down to the format the interpreter is able
+### to make use of. these items will be the items you
+### can sit on directly by typing /sit.
+allow-sitting-on:
+  - 'COBBLESTONE_STAIRS'
+  - 'BIRCH_STAIRS'

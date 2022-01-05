@@ -6,11 +6,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Index extends JavaPlugin {
     @Override public void onEnable() {
-        this.saveDefaultConfig();
+        Base.instance = this;
 
-        getCommand("sit").setExecutor(new CommandHandler());
         getServer().getPluginManager().registerEvents(new EventListener(), this);
-        getServer().getScheduler().runTaskTimerAsynchronously(this, () -> Base.GetConfigData(this), 0,200);
+        getCommand("sit").setExecutor(new CommandHandler());
+        getServer().getScheduler().runTaskTimerAsynchronously(this, () -> { Base.GetConfigData(); }, 0,200);
 
         Base.Print("I am up and running!");
     }
