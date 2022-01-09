@@ -10,11 +10,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.metadata.FixedMetadataValue;
 
 public final class Sit {
+    public static void PlayerUnsit(final Player p, final ArmorStand armorStand, final boolean eventBasedProcedure) {
+        if (p.isInsideVehicle()) {
+            p.leaveVehicle();
+        }
+        if (eventBasedProcedure) {
+            final Location location = p.getLocation();
+            location.setY(location.getY() + 3);
+            p.sendMessage(Base.sitMessages.get("getup"));
+            p.teleport(location);
+        }
+    }
     public static void PlayerUnsit(final Player p, final ArmorStand armorStand) {
-        final Location location = p.getLocation();
-        location.setY(location.getY() + 3);
-        p.sendMessage(Base.sitMessages.get("getup"));
-        p.teleport(location);
+        PlayerUnsit(p, armorStand, true);
     }
     public static float BlockFaceToYaw(BlockFace blockFace) {
         if (blockFace == BlockFace.NORTH) {
@@ -56,10 +64,13 @@ public final class Sit {
             return;
         }
         else if (p.isInsideVehicle()) {
-            p.leaveVehicle();
+            if (p.getVehicle() instanceof ArmorStand) {
+                final ArmorStand armorStand = (ArmorStand) p.getVehicle();
+                PlayerUnsit(p, armorStand, false);
+                return;
+            }
         }
-
-        if (clickedBlock != null && clickedBlock.getBlockData() instanceof Stairs) {
+        else if (clickedBlock != null && clickedBlock.getBlockData() instanceof Stairs) {
             location.setX(clickedBlock.getX() + 0.5);
             location.setY(clickedBlock.getY() - 1.2);
             location.setZ(clickedBlock.getZ() + 0.5);

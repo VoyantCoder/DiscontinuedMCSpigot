@@ -38,9 +38,14 @@ public final class Base {
     public final static ArrayList<Material> sitTriggerWhitelist = new ArrayList();
     public final static ArrayList<Material> sitObjectWhitelist = new ArrayList();
     public final static HashMap<String, String> sitMessages = new HashMap();
+
     public static String sitAuthorizationPermission = "";
+    public static boolean sitByRightHand = false;
+    public static boolean sitByLeftHand = false;
+
     public static FileConfiguration config = null;
     public static JavaPlugin instance = null;
+
     private static boolean IsActualMaterial(final String itemName) {
         Material material = Material.getMaterial(itemName);
         if (material == null) {
@@ -51,6 +56,18 @@ public final class Base {
             }
         }
         return true;
+    }
+    private static boolean GetBooleanFromConfig(String path) {
+        final String value = config.getString(path);
+        if (value != null) {
+            switch (value.toLowerCase()) {
+                case "enabled":
+                case "enable":
+                case "true":
+                    return true;
+            }
+        }
+        return false;
     }
     public static void GetConfigData() {
         instance.saveDefaultConfig();
@@ -80,5 +97,7 @@ public final class Base {
         }
 
         sitAuthorizationPermission = config.getString("must-have-sit-permission");
+        sitByLeftHand = GetBooleanFromConfig("left-hand-sit-interaction");
+        sitByRightHand = GetBooleanFromConfig("right-hand-sit-interaction");
     }
 }

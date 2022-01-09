@@ -26,3 +26,12 @@ allow-sit-interaction-for:
 allow-sitting-on:
   - 'COBBLESTONE_STAIRS'
   - 'BIRCH_STAIRS'
+######
+### if you set any of the following to true, it will
+### be enabled, if you set it to false, it will be
+### disabled instead. because this is a special build
+### for you, I will also add in support for using
+### 'enabled', 'enable', 'disable' or 'disabled'
+### rather than just true and false. your welcome.
+right-hand-sit-interaction: true
+left-hand-sit-interaction: false
