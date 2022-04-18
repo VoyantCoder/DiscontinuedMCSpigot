@@ -1,0 +1,93 @@
+
+#
+# Dashies Config File v1.0
+#
+# The format given should be follow when modifying the config, when you do
+# not do this, it will cause the plugin to error!
+# 
+# This plugin does require vault if you wish to use it fully!
+#
+
+enabled: true
+
+properties:
+    # Admin commands such as /dashnarok will require a
+    # permission, you can either use the preset or set
+    # a custom one by yourself.
+    
+    admin-permission: "dashnarok.admin"
+
+    # This addon will allow you to give some standard 
+    # things to newbies when they join, just repeat
+    # the bellow format if you are too afraid of fucking 
+    # this up.
+    
+    newbies:
+        starter-items-enabled: false
+        starter-items:
+            - 'DIAMOND_SWORD 1'
+            - 'IRON_PICKAXE 1'
+            - 'COOKED_BEEF 32'
+            - 'GOLDEN_HELMET 1'
+            - 'LEATHER_CHESTPLATE 1'
+            - 'LEATHER_LEGGINGS 1'
+            - 'GOLDEN_BOOTS 1'
+        
+        starter-money-enabled: false
+        starter-money: 3500
+    
+    # This addon allows people with the bellow specified
+    # permission to join and quit silently, the only people 
+    # knowing about them either joining or quitting are 
+    # the ones with the permission.
+    
+    silent-join:
+        enabled: false
+        permission: 'dashnarok.silentjoin'
+        
+    # Fun little neat things for players when they join.
+    #
+    # You can change the rgb-color-range to %all% if you 
+    # so happen to just be in need of all the colours
+    # there are. And I am using RGB because that is both
+    # easier and waaay more varying ;D
+    #
+    # You should follow the given potion format if you are
+    # planning on adding new ones in there by yourself. 
+    # - '%potion_full_name% %amplifier% %duration%'
+    
+    dash-effects:
+        fireworks:
+            enabled: true
+            
+            rgb-color-range: 
+                - '0,0,0'
+                - '%all%'
+            
+            summon-multiplier: 1
+            
+        potions:
+            enabled: true
+            
+            particles: false
+            ambient: false            
+            icon: false
+            
+            effects:
+                - 'CONFUSION 2 2'
+                - 'SLOW 2 2'
+                - 'REGENERATION 2 2'
+                - 'BLINDNESS 2 2'
+    
+    # The messages are ordered as follows:
+    #
+    # - <First Time Join Message>
+    # - <Regular Join Message>
+    # - <Regular Quit Message>
+    # - <Silent Join Message>
+    
+    messages:
+        - '&eThe player &b%player% &ehas joined for the first time !!'
+        - '&6Welcome back &e%player% &6to Dashnarok :D' 
+        - '&cBye Bye, we hope to see you back &4%player% &c;c'
+        - '&3The user &a%player% &3has joined silently.'

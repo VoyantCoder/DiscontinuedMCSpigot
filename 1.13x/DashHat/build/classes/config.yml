@@ -1,0 +1,9 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    admin-permission: "dashhats.admin"
+    
+    hat-others-permission: "dashhats.hat.others"
+    hat-permission: "dashhats.hat"

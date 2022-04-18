@@ -1,0 +1,13 @@
+
+main: com.dashjoin.Moony
+
+api-version: 1.13
+version: 1.0
+
+name: DashJoin
+author: [Dashie]
+
+commands:
+    dashjoin:
+        description: The main command for dashies join.
+        aliases: [dashiesjoin, dashjun]

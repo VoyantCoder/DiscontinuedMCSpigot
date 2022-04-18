@@ -1,0 +1,28 @@
+# Author: Dashie
+# Version: 1.0
+startup-properties:
+  auto-reload: true
+  reload-interval: 5
+plugin-properties:
+  mob-rules:
+    1:
+      mob-type: SKELETON
+      gears:
+        1:
+          item-type: DIAMOND_HELMET
+          # HELMET, CHEST, LEGGING, BOOT and HAND
+          slot-type: HELMET          
+          enchantments:
+            - 'PROTECTION 5'
+            - 'UNBREAKING 5'
+          drop-chance: 50
+        2:
+          item-type: DIAMOND_SWORD
+          slot-type: HAND
+          enchantments:
+            - 'SHARPNESS 5'
+            - 'FIRE_ASPECT 5'
+# TOGGLE:ON | TOGGLE:OFF
+
+
+      

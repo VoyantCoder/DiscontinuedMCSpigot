@@ -1,0 +1,9 @@
+# Author: Dashie
+# Version: 1.0
+##########
+#
+found-message: '&aYou are in a slime chunk!'
+not-found-message: '&aYou are not in a slime chunk!'
+finder-permission: 'owo.slime'
+finder-cooldown: 5
+finder-cooldown-message: '&aYou must wait for 3 seconds at least!'

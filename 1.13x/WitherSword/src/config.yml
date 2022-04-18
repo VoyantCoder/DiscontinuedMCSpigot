@@ -1,0 +1,12 @@
+
+# Author: Dashie
+# Version: 1.0
+
+# The permission required in order to use /withersword give or so.
+command-permission: "com.swords.admin"
+
+# The duration of the effects: (WITHERING, NAUSEA, POISONING, HUNGER and SLOWNESS) 
+potion-duration: 6
+    
+# The power of the effects: (WITHERING, NAUSEA, POISONING, HUNGER and SLOWNESS) 
+potion-amplifier: 2

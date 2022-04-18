@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.dashcollection.Session
+
+name: DashSession
+author: [Dashie]
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    dashsession:
+        aliases: [session, sessionrewards, dashsessionrewards]
+        description: Dash Session commandssss

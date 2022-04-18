@@ -1,0 +1,7 @@
+name: CoffeeChat
+version: ${project.version}
+main: com.kvinnekraft.StaffChat
+api-version: 1.16
+authors: [Dashie, KvinneKraft]
+description: A plugin by Dashie.
+website: pugpawz.com

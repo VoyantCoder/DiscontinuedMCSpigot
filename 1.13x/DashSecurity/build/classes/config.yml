@@ -1,0 +1,144 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+###################################################
+#
+# Features:
+# Dash Captcha (Prevent none human users)
+# Dash Login and Register (Login and register your account)
+# UUID Support (Support both premium and cracked accounts)
+# Chat Text Verification (Like the captcha but then a hash rather than an item)
+# IP Lock (Only able to login using the specified ips)
+#
+###################################################
+#
+# Are you afraid of people hijacking your account?
+# This option will make them unable to login even when they
+# have your login credentials, this will compare the ip address
+# associated with your account with the configured ones in the
+# list down bellow (ip-map):
+dash-ip-lock:
+    enabled: false
+    # You can setup the username(s) and ip address('s) here
+    # and the format is like this: <username>:<ip address 1>,<ip address 2>
+    ip-map:
+        - "Majesty_Freya:8.8.8.8,1.1.1.1"
+        - "Luis:100.100.100.100"
+#
+####################################################
+#
+# All the configurable options for the Dash Login and Registration:
+dash-login:
+    enabled: true
+    # The fundamental options:
+    fundamentals:
+        # All of the registration options:
+        registration:
+            # The maximum length of a password:
+            max-pw-length: 16
+            # Should spaces be allowed:
+            allow-spaces: false
+            # Should UPPERCASE characters be allowed:
+            allow-upper-case: true
+            # Should lowercase characters be allowed:
+            allow-lower-case: true
+            # Should n4mer1c be allowed:
+            allow-numeric: true
+            # Should speci@l characters be allowed:
+            allow-special: true
+            # Require uppercase characters in a password:
+            require-upper-case: false
+            # Require lowercase characters in a password:
+            require-lower-case: false
+            # Require numeric in a password:
+            require-numeric: false
+            # Require special characters in a password:
+            require-special: false
+        # After how long should a player be kicked when not
+        # signed-in:
+        kick-interval: 30
+        # The maximum authentication attempts:
+        max-attempts: 3
+        # The cooldown before a player can reconnect after failing
+        # authentication:
+        cooldown: 30
+        # Which types of accounts should be authenticated:
+        types: 
+            # Only none purchased accounts:
+            cracked: true
+            # Only purchased accounts:
+            uuid: true
+    # Prevent certain people from connecting to your server:
+    dash-blacklist:
+        # Blacklisted ip addresses:
+        ip-addresses:
+            - "1.1.1.1"
+            - "1.0.0.1"        
+        # Blacklisted usernames:
+        usernames:
+            - YouSuck
+            - HitlerIsOk
+        # Blacklisted UUIDs:
+        uuids: []
+    # Addons for this piece of cake:
+    addons:
+        # Disable movement COMPLETELY until they have logged in:
+        no-movement: true
+        # Disable both text and command chat until they have logged in:
+        no-chat: true
+#
+####################################################
+#
+# All the configurable options for Dash Captcha:
+dash-captcha:
+    enabled: true
+    # The fundamental switches of this slice of pizza:
+    fundamentals:
+        # After how many seconds should a player be kicked
+        # when they fail to solve the captcha:
+        kick-interval: 30
+        # The maximum amounts of tries before a user gets disconnected
+        # for failing the captcha:
+        max-attempts: 3
+        # The cooldown in seconds after the user gets disconnected:
+        cooldown: 30    
+    # Remember the player session so they do not have to re-verify
+    # every single time they logon (until the server restarts):
+    remember-session:
+        enabled: false
+        # Only allow this to happen when the user logs in using
+        # the same ip address they had first verified with:
+        ip-lock: true
+    # Bypass the verification using the specified
+    # permission (not recommeneded):
+    bypass-verification:
+        enabled: false
+        permission: bypass
+    # Special addons for the Dash Captcha:
+    addons:
+        # Prevent movement COMPLETELY until they have solved the captcha:
+        no-movement: true
+        # Prevent chat text and commands until they have solved the captcha:
+        no-chat: true
+        # Prevent kicked-for-flying by teleporting users to the
+        # ground when they join:
+        tp-to-ground: true
+        # Detonate a firework (without damage) upon captcha completion:
+        firework-complete: true
+        # Strike lightning (without damage) upon captcha completion:
+        lightning-complete: true
+        # Perhaps a sound when a user solves the captcha:
+        completion-sound:
+            enabled: true
+            # The sound that should be played, note that per version
+            # the sound may be called differently, you can find a complete
+            # list with valid sounds on the appropriate spigot page for
+            # your server version:
+            sound: ENTITY_CAT_MEOW
+#
+####################################################
+#
+# Blessed be you fluffy nuggets, this one has been made with a lot of 
+# love, I am honoured to share this with you ) o (
+#

@@ -1,0 +1,9 @@
+# Author: Dashie
+# Version: 1.0
+schedule-settings:
+  1:
+    interval: 5
+    commands: 
+      - 'give Majesty_Freya apple 30'
+      - 'kick player'
+      - 'broadcast &acommand executed.'

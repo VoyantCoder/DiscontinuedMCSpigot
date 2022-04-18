@@ -1,0 +1,13 @@
+
+main: com.dashcraft.DashSit
+
+author: [Dashie]
+name: DashSit
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    sit:
+        description: The main command for the DashSit plugin.
+        aliases: [lazy]

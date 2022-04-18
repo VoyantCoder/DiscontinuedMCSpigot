@@ -1,0 +1,75 @@
+
+# Author: Dashie
+# Version: 1.0
+
+optional-properties:
+    
+    # Should users without the admin permission be shown 
+    # a message that tells them who has coded this plugin?
+    dev-support: true
+    
+    # The message the user that is being given a bandaid
+    # will receive for such:
+    receive-message: "&aYou have been given &d%a% &abandaids ;D"
+     
+    # The message that the giver will receive when giving
+    # a bandaid:
+    give-message: "&aYou have given &d%p% %a% &abandaids!"
+    
+    # The message that the user executing the command 
+    # will receive when giving themselves a bandaid:
+    get-message: "&aYou have given yourself &d%a% &abandaids!"
+    
+    # The permission that is required in order to give or
+    # do overall admin related things using the integrated
+    # command set of this plugin:
+    admin-permission: 'dashcare.admin'
+
+
+bandaid-properties:
+    
+    # The permission that is required in order to make use
+    # of a bandaid:
+    use-permission: 'dashcare.bandaids.use'
+    
+    # The message that will be sent to the player when they
+    # are trying to use a bandaid without permission:
+    permission-deny-message: "&cYou may not use this."
+    
+    # The message that will be sent to the player when they
+    # successfully apply a bandaid:
+    apply-message: "&aYou have applied &d1 &abandaid!"
+      
+    # Do you also want to send a text on the users screen rather
+    # than just the chat associated text?
+    send-title: true
+      
+    # The effects applied when an user redeems a bandaid.
+    # Keep in mind, this part is tricky, preferably use the
+    # in-game command controls rather than this:
+    bandaid-effects:
+        - 'DAMAGE_RESISTANCE 2 20'
+        - 'REGENERATION 2 20'
+      
+    # Set any of the following to true or false in order to
+    # toggle between modes. These are some special effects:
+    summon-lightning: false
+    summon-fireworks: false
+    
+    # The message sent to the player when they have to wait
+    # before using another bandaid:
+    cooldown-message: "&aYou must at least wait 30 seconds before using another one!"
+    
+    # The amount of seconds before the user is able to use
+    # another bandaid:
+    cooldown: 30
+    
+    # The material that the bandaid will be: 
+    bandaid-material: 'PAPER'
+        
+    # The custom item name of the bandaid:
+    bandaid-name: '&d&l&nD&dash &d&l&nB&dandaid'
+         
+    # The custom lore of the bandaid:
+    bandaid-lore:
+        - '&d&la fluffy bandaid!'

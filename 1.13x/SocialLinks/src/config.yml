@@ -1,0 +1,15 @@
+
+# Configuration File
+
+reloading-message: "&aThe configuration for this plugin is now being reloaded ...."
+reloaded-message: "&aThe configuration for this plugin has been reloaded!"
+
+admin-permission: "sociallinks.admin"
+invalid-arguments-message: "&cThis argument is not recognized."
+permission-denied-message: "&cYou are not supposed to do this!"
+
+commands:
+    website:
+        command: '/website'
+        message: '&eVisit my website by clicking this link: &bhttps://pugpawz.com/'
+        permission: 'sociallinks.website'

@@ -1,0 +1,21 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# The permission that is required in order to
+# not die by the bellow listed blocks:
+bypass-permission: bypass
+# The permission that is required in order to
+# reload the plugin with /angryblocks reload:
+reload-permission: admin
+# These are all of the blocks that will become
+# lethal when a user steps on top of it:
+angry-block-selection:
+  - 'OBSIDIAN'
+  - 'TNT'
+  - 'GLASS'
+# These are all of the worlds where the above
+# does not apply:
+prohibited-worlds:
+  - 'world_nether'
+  - 'world_the_end'

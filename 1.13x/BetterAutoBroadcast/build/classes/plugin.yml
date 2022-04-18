@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.BetterAutoBroadcast
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie]
+name: BetterAutoBroadcast
+
+commands:
+    dashcaster:
+        aliases: [broadcaster, bc]

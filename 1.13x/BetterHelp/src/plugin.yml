@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.BetterHelp
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie]
+name: BetterHelp
+
+commands:
+    help:
+        aliases: [info]

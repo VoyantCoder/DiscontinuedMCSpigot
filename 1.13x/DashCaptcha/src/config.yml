@@ -1,0 +1,197 @@
+
+# Author: Dashie
+# Version: 1.0
+
+
+
+dash-captcha:
+    
+    # Should the Dash Captcha be enabled:
+
+    enabled: true
+    
+    
+    
+    # The properties associated with the command side
+    # of this plugin:
+    
+    commands:
+        
+        # Allow a lil dashie like me to claim its 
+        # work:
+            
+        developer-support: true
+        
+        # What is the permission an user must have
+        # in order to use the reload command:
+            
+        admin-permission: "dashcaptcha.admin"
+
+
+
+    # Here you can configure the messages that the
+    # player may receive when this plugin is active:
+    
+    messages:
+        
+        # The kick reason for when a player has not solved
+        # the given captcha with in the time given:
+        
+        timeout-kick-message: "&cIt took you too long to solve the Captcha, please relog."
+        
+        # The kick reason for when a player fails to solve
+        # the captcha too many times:
+        
+        too-many-tries-kick-message: "&cYou have given the wrong answer too many times, please relog."
+        
+        # The title displayed when the captcha is thrown into
+        # someone their face: 
+        
+        captcha-title: "&8Click the &b%item% &8!"
+        
+        # The message thrown at the player when the player has
+        # completed the given captcha:
+        
+        captcha-complete-message: "&aYou may now play!"
+        
+        
+        
+    # Here you can configure some things related to
+    # the captcha itself:
+        
+    properties:
+        
+        # The amount of slots the Captcha Dialog should
+        # actually have:
+        
+        inventory-slots: 9
+        
+        # The amount of seconds before the user gets kicked
+        # when the captcha has not yet been solved:
+        
+        verification-timeout: 10
+        
+        # The maximum of attempts a user may make before getting
+        # kicked due too many attempts:
+        
+        maximum-attempts: 2
+
+        # Do you want the captcha completion message to be sent
+        # as a fancy on screen title:
+        
+        send-as-title: true
+        
+        # When the player has passed its captcha, would you like
+        # to summon a small little firework:
+        
+        summon-fireworks: true
+        
+        # Just like above, when the player has passed the given 
+        # captcha, would you like to summon a bit of lightning:
+        
+        summon-lightning: true     
+        
+        # Spawn in some sound effect when the player passed the
+        # given captcha:
+        
+        wither-sound: true
+        
+        # Apply blindness to the player while they are fixing the
+        # captcha:
+        
+        apply-blind-effect: true
+        
+        # Disallow movement while the player is attempting to fix
+        # the given captcha:
+        
+        block-movement: true
+        
+        # Disallow chat activity for this user while the captcha
+        # is present:
+        
+        block-chat: true
+         
+        # Disallow command activity for this user while the captcha
+        # is present:
+            
+        block-command: true
+        
+        # Only verify an user once per server up-time:
+        
+        verify-once: false
+     
+        
+    # What items should be used for the Captcha pattern:
+    
+    # Note: Make sure that they are not in the Key items
+    #       list, this may cause odd behaviour!
+    
+    captcha-items:
+        - 'DIAMOND_BLOCK'
+        - 'EMERALD_BLOCK'
+        - 'GOLD_BLOCK'
+        - 'REDSTONE_BLOCK'
+        - 'IRON_BLOCK' 
+        - 'COAL_BLOCK'
+        - 'OAK_PLANKS'
+        - 'COBBLESTONE'
+        - 'STONE'
+        - 'IRON_ORE'
+        - 'DIAMOND_ORE'
+        - 'GOLD_ORE'
+        - 'COAL_ORE'
+        
+        
+        
+    # What items should have a chance at being chosen
+    # to be a key item:
+     
+    # Note: Make sure they are not in the Captcha items
+    #       list, this may cause odd behaviour!
+        
+    key-items:
+        - 'DIAMOND'
+        - 'IRON_INGOT'
+        - 'GOLD_INGOT'
+        - 'COAL'
+        - 'REDSTONE'
+ 
+            
+
+# Dash Join Package, this section will allow you
+# to setup custom Join and Leave messages along with
+# a simple way to give newbies a kit:
+
+dash-join:
+    
+    # Should the Dash Join extension be enabled:
+    
+    enabled: true
+    
+    
+    
+    # The message section, you can setup messages
+    # here:
+    
+    messages:
+        
+        # The join message, when an user joins your
+        # minecraft server:
+        
+        join: "&8[&7+&8] &a%player%" 
+        
+        # The first join message, the message newbies
+        # will put out:
+        
+        first-join: "&8[&7++&8] &b&l%player%"
+        
+        # The quit message, the message that will be
+        # sent when an user logs out:
+        
+        quit: "&8[&7-&8] &c%player%"
+        
+            
+            
+# this configuration file just assumes that you follow the corresponding
+# format, the expected format, which is basically that what is above this
+# very text, thank you for using Dash Captcha, blessed be ) o (

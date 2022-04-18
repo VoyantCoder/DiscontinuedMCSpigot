@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.VoteGUI
+
+author: [Dashie, KvinneKraft]
+name: VoteGUI
+
+api-version: 1.13
+version: 1.0
+
+commands:
+    votegui:
+        aliases: [vote]
+        description: By Kvinne Kraft

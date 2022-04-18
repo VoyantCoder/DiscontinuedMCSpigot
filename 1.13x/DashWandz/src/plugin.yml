@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.recoded.DashWandz
+
+name: DashWandz
+author: [Dashie]
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    wandz:
+        aliases: [dashwandz, wand, wands, dashwands, dashw, dw]

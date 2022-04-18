@@ -1,0 +1,41 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here you can setup your own custom mob drops without
+# any harshness, I had also implemented some extras such
+# as potion effects and what not, check it out:
+mob-drops:
+  # This is the ID of the config section that will be
+  # used by the plugin, make sure to count up from 1
+  # to 2 and so on:
+  1:
+    # This is the mob type, you may have to look the mob types
+    # up because they have changed over the span of all of these
+    # spigot updates, so yea:
+    mob-type: SKELETON
+    # You may put as many sounds as you want to play when a player
+    # kills the specified entity:
+    sound-effects:
+      - 'ENTITY_CAT_PURR'
+    # These are all of the potion effects, there is a little
+    # trickyness going on in here, such as the format that
+    # you must repeat in order to make use of this:
+    potion-effects:
+      - 'CONFUSION 2 20'
+      - 'POISON 2 20'
+    # These are all of the items that will be dropped when the
+    # specified mob gets killed:
+    item-drops:
+      1:
+        name: '&eHey'
+        lore: '&aA lovely Paper'
+        type: 'STICK'
+        amount: 1
+        chance: 50
+      2:
+        name: '&dFlunf'
+        lore: '&dA fluff.'
+        type: 'STICK'
+        amount: 1
+        chance: 50

@@ -1,0 +1,24 @@
+
+# Dashies Fishy cunfig!
+
+# The message displayed when receiving one of
+# the bellow configured rewards:
+reward-message: "&aYou have caught yourself a(n) &e%reward% &b!"
+
+# The following format should be followed as:
+# <REWARD> <AMOUNT> <CHANCE(0-100)>  
+fishy-rewards:
+    - 'IRON_INGOT 1 5'
+    - 'GOLD_INGOT 1 5'
+    - 'DIAMOND 1 5'
+
+# Some of the permissions that you may change:
+fishy-permission: "fishyrewardz.fish"
+admin-permission: "fishyrewardz.admin"
+
+# To-Do:
+# Randomize Rewards
+# Permissions
+# Fancy Config
+# Command Support
+# Setup Events

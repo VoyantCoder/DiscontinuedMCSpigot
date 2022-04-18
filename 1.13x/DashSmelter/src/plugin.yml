@@ -1,0 +1,13 @@
+
+main: com.dashsmelty.DashSmelter
+
+author: [Dashie]
+name: DashSmelter
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    dashsmelt:
+        aliases: [dashsmelter, smelt, dashnece, dashfurnace]
+        description: main command for dash smelter.

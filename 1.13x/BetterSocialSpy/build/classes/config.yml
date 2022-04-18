@@ -1,0 +1,13 @@
+
+# Author: Dashie
+# Version: 1.0
+
+# You may change these settings:
+social-spy:
+    # The permission that bypasses the spy filter:
+    bypass-permission: 'bypass'
+    # The permission required for /dashspy [toggle | reload]:
+    reload-permission: 'command'
+    # The notification format:
+    notification-format: '&8[&eB.S.S&8]: &7&o%p% &e-> &7&o%m%'
+        

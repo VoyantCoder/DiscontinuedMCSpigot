@@ -1,0 +1,36 @@
+############################
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Recoded Edition!
+#
+############################
+#
+# What follows is the table of substances that you
+# may modify in any way you would like.
+#
+# A manual will probably be available on the spigot
+# post.
+#
+# The custom items should have the same syntax and
+# same order, such as shown bellow, you can not put 
+# effect after cooldown, you have to do it as shown.
+#
+substance-table:
+    - 'SUGAR, give_name:&bspeed, name:&r&f&lS&fpeed, lore:&aSnort_it_all!, effect:SPEED-strength:2-duration:30 & effect:REGENERATION-strength:2-duration:8 & effect:CONFUSION-strength:2-duration:8, cooldown:30, permission:default'
+#
+############################
+#
+# You may set a custom or use the preset permission
+# for commands such as /bs reload or /bs give.
+#
+administrative-permission: 'admin'
+#
+############################
+#
+# I hope everything is clear, you may want to head over
+# to the Spigot page where you got this from and read it
+# over another time. 
+#
+############################

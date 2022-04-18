@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.kvinnekraft.SkyDrops
+
+api-version: 1.16
+version: 1.0
+
+author: [Dashie, KvinneKraft, Dash, FLUNF, FLUFF, MEHHHHjkank, fasjknlfjkaslg]
+name: SkyDrops
+
+commands:
+  skydrops:
+    aliases: [skydrop, sd]
+    description: By KvinneKraft.

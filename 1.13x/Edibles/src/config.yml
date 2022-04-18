@@ -1,0 +1,10 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    permissions: 
+        give: 'dashbles.give'
+        reload: 'dashbles.reload'
+    op-bypass: true    
+    cooldown: 30

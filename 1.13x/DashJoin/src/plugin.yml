@@ -1,0 +1,11 @@
+
+author: [Dashie]
+name: DashJoin
+
+version: 1.0
+main: com.dashnarok.DashJoin
+
+commands:
+    dashnarok:
+        aliases: [dashcraft, dashjoin]
+        description: main command for dashnarok.

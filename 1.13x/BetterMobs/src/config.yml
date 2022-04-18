@@ -1,0 +1,38 @@
+
+# Author: Dashie
+# Version: 1.0
+
+optional-properties:
+    
+    # Help me out by allowing players with or without
+    # permission to see who has made this plugin.
+    developer-support: true
+    
+    # The permission required in order to use the admin
+    # side of this plugin through commands.
+    admin-permission: 'dashmobs.admin'
+    
+price-properties:
+    
+    # The permission that is required in order for a
+    # player to obtain the bellow configured rewards.
+    price-permission: 'dashmobs.reward'
+    
+    # The format given bellow represents the range of
+    # money that a player may get for killing one of
+    # these entities. The range goes anywhere from 0
+    # to anything that you yourself consider realistic.
+    #
+    # The format is: %ENTITY% %MIN%-%MAX%
+    priced-entity-list:
+        - 'PLAYER 350-500'
+        - 'ZOMBIE 10-50'
+        - 'HORSE 0-0'
+        - 'SKELETON 15-60'
+    
+    # What should be the message given to the player killing
+    # one of the above configured mobs be like?
+    #
+    # Note, you can use %m% to represent the price and %e% to 
+    # represent the entity that got killed.
+    price-message: '&aYou have been given &e%m%$ &afor killing &e%e% &a!'

@@ -1,0 +1,13 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Dash Released Configuration File:
+#
+# All of the exceptional commands:
+command-list:
+  - '/bw'
+  - 'bw'
+# All of the blacklisted worlds:
+world-list:
+  - 'Bedwars1v1'

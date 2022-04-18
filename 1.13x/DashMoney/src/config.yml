@@ -1,0 +1,32 @@
+
+#
+# Dash Money Config File 1.0
+#
+
+properties:  
+    friendly-mobs:
+        enabled: true
+        
+        max-drop: 8
+        min-drop: 1   
+    
+        receive-message: "&aYou have received &b%money%$ &afor killing a &b%entity% &a!"
+    
+    hostile-mobs:
+        enabled: true
+        
+        max-drop: 20
+        min-drop: 1
+        
+        receive-message: "&aYou have received &b%money%$ &afor killing a &b%entity% &a!"
+        
+    players:
+        enabled: true
+        
+        max-drop: 1000
+        min-drop: 100
+
+        drop-head: true       
+        
+        receive-message: "&aYou have received &b%money%$ &afor killing a &b%player% &a!"
+        death-message: "&aThe player &e%killer% &ahas killed the player &e%victim% &ausing ze &b%item% &a!"

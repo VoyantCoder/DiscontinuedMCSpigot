@@ -1,0 +1,17 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here are the rules, now the syntax may be a bit
+# confusing to some of you but just for the record
+# the syntax is like the following:
+# <BLOCK TO BREAK> <DROP WHAT>:<DROP AMOUNT>
+drop-rules:
+  - 'IRON_ORE IRON_INGOT:1 DIAMOND:1 EMERALD:1'
+  - 'COAL_ORE COAL:2'
+#
+# The permission that is required for reloading
+# this plugin is 'admin'.
+#
+# The permission that is required for making use
+# of the bonus drops is 'default'.

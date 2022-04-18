@@ -1,0 +1,10 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# The permission that is required for the troll
+# implementations their usage:
+troll-permission: 'troll'
+# The permission that is required for commands 
+# such as /troll reload:
+admin-permission: 'admin'

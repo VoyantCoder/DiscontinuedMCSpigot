@@ -1,0 +1,22 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    broadcast-interval: 30
+    choose-randomly: true
+    
+    messages:
+        - '&aMessage 1'
+        - '&aMessage 2'
+        - '&aMessage 3'
+        - '&aMessage 4'
+        - '&aMessage 5'
+        - '&aMessage 6'
+        
+    play-sound-effect: false
+    sound-effect-id: ENTITY_CAT_AMBIENT
+    
+    admin-command-permission: 'dashcaster.admin'
+        
+    

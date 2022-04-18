@@ -1,0 +1,18 @@
+# The amazing fluffy configuration file, yes!
+#
+# All of the properties that have to do with the Player:
+player:
+    # The permission that is required for /spawn
+    spawn-permission: default
+    # The amount of time in actual seconds before 
+    # the user gets teleported:
+    spawn-tp-interval: 8
+    # The permission that is required for bypassing
+    # the interval:
+    interval-bypass-permission: bypassinterval
+    # The amount of time in actual seconds before
+    # the user is allowed to use /spawn again:
+    spawn-tp-cooldown: 30
+    # The permission 
+    cooldown-bypass-permission: bypasscooldown
+    

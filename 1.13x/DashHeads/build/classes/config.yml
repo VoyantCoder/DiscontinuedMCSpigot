@@ -1,0 +1,36 @@
+
+# Author: Dashie
+# Version: 1.0
+
+
+# Dashie Cunfug:
+
+
+# The configurable Player Head name and Player Head lore: 
+player-head-name: '&b(&eHead of &e&l%p%&b)' 
+
+
+player-head-lore: 
+    - '&e------------------'
+    - '&bWorth: &e%m%$'
+    - '&e------------------'
+
+
+# Configurable permissions for this plugin:
+head-drop-permission: 'dashheads.drops'
+admin-cmd-permission: 'dashheads.admin'
+
+
+# The messages that will be displayed when the plugin is being triggered by a player:
+victim-message: '&4%k% &chas killed you, this has caused you to lose &4%m%$ &c!'
+killer-message: '&aYou have killed &e%v% &aand received their head as a reward!'
+redeem-message: '&aYou have redeemed a head and have been given &e%m%$ &a!'
+
+
+# The default is 0.05, which will take away 5% of the total that the killed player has in in-game money. 
+# Set it to 0.00 to disable, the maximum is 1.00:
+reward-percentage: 0.05
+
+
+# What is the minimum balance the victim may have:
+minimum-balance: 0.00

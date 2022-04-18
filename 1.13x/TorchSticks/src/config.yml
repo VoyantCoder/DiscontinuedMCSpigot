@@ -1,0 +1,27 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# All modifiable properties for the 
+# torch drops and what not:
+torch-properties:
+    # The permission that is required in order
+    # to obtain the drops:
+    obtain-permission: "default"
+    # The blocks that will be count as chance 
+    # droppables (torches n stuff):
+    torch-blocks:
+        - 'REDSTONE_TORCH'        
+        - 'TORCH'
+    # The chance that the above specified blocks
+    # may drop one of the bellow specified items:
+    drop-chance: 50
+    # The items that may drop when the above
+    # conditions are met:
+    drop-items:
+        - 'STICK'
+        - 'COAL'
+        - 'REDSTONE'
+    # How many drops should a player be allowed to
+    # obtain per drop:
+    max-drops: 2 

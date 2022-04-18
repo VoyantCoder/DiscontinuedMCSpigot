@@ -1,0 +1,56 @@
+# The amazing fluffy configuration file, yes!
+#
+# All of the properties that have to do with the Player:
+player:
+    # The permission that is required for /spawn
+    spawn-permission: default
+    # The amount of time in actual seconds before 
+    # the user gets teleported.
+    spawn-tp-interval: 8
+    # The message displayed when entering the command  
+    # assuming that there is an interval > 0:
+    spawn-interval-msg: "&aYou will be teleported in &e{interval} &aseconds!"
+    # The message displayed when the user gets teleported
+    # to the spawn.
+    spawn-tp-msg: "&aYou have landed at spawn!"
+    # The permission that is required for bypassing
+    # the teleportation interval.
+    interval-bypass-perm: bypassinterval
+    # The amount of time in actual seconds before
+    # the user is allowed to use /spawn again.
+    spawn-tp-cooldown: 30
+    # The message displayed when a user is on a cooldown
+    # when trying to type /spawn
+    spawn-cooldown-msg: "&cYou are on a cooldown of &4{cooldown} &cseconds!"
+    # The permission that is required for bypassing
+    # the teleportation cooldown.
+    cooldown-bypass-perm: bypasscooldown
+#
+# All of the properties that have to do with the spawn command:
+teleportation:
+    # All of the properties that have to do with
+    # sound related things.
+    sounds:
+        enabled: true
+        type: ENTITY_CAT_MEOW
+    # Summon lightning upon teleportation? 
+    lighting: true
+    # All of the properties that have to do with 
+    # the summoning of fireworks.
+    fireworks:
+        enabled: true
+        # The colours that the firework will possess.
+        colors:
+            # Do you wish to summon a random chosen type of
+            # firework with random colours and what not?
+            random: true
+            # The above has to be false in order for the 
+            # following to work.
+            #
+            # The type of firework (BURST, SMALL, BIG, STAR
+            # or CREEPER).
+            type: STAR
+            # The colours that the firework should possess.
+            rgb: 255 255 255
+#
+# Vault implementation is coming in the near future.

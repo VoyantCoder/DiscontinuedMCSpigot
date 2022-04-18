@@ -1,0 +1,8 @@
+
+# Dash Config:
+
+bypass-permission: 'dashjoin.bypass'
+
+messages:
+    join: '&7[&2+&7] &2%p%'
+    quit: '&7[&4-&7] &2%p%'

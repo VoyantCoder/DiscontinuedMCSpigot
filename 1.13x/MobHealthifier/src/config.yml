@@ -1,0 +1,19 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+
+# This is the permission that is required when you want to
+# reload the plugin using '/healthifier reload':
+admin-permission: admin
+# These are all of the mobs along with their probable health
+# as shown bellow, you can simply repeat the format:
+modifiers:
+    - 'ZOMBIE 40'
+    - 'WITHER_SKELETON 40'
+    - 'PIG 40'
+    - 'HORSE 40'
+# This is the chance on a scale from one all the way up
+# to one thousand that will determine whether the spawned
+# mob should have a modified health:
+modify-chance: 500

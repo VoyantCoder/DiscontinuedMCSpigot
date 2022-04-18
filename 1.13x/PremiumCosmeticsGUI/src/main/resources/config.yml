@@ -1,0 +1,15 @@
+# Author: Dashie
+# Version: 1.0
+properties:
+  title: '&0Premium Cosmetics'
+  empty: GLASS_PANES
+  slots: 27  
+  items:
+    1:
+      display-name: '&bIron Ingot'
+      display-lore:
+        - '&5A line'
+        - '&5Another line'
+        - '&5Little effort'
+      material: IRON_INGOT
+      slot: 10

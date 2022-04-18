@@ -1,0 +1,63 @@
+
+#
+# Dashies Cunfig | Details
+#
+
+properties:
+    # When a player with the bellow permission joins the server, should they be
+    # notified about found blocks by default?
+    default-toggle-enabled: false
+    
+    # What message should privileged players receive when the above option has been
+    # set to true?
+    default-toggle-message: "&aDash Rays has been toggled on."
+    
+    # What message should you receive when toggling Dash Rays on manually?
+    toggle-on-message: "&aYou have toggled Dash Rays on."
+    
+    # What message should you receive when toggling Dash Rays off?
+    toggle-off-message: "&cYou have toggled Dash Rays off."
+    
+    # What message should you receive when adding a block to the list?
+    add-block-message: "&aYou have added %b% to the list."
+    
+    # What message should you receive when removing a block from the list?
+    del-block-message: "&aYou have removed %b% from the list."
+    
+    # What message should you receive when the item is not found in the list?
+    block-not-in-list-message: "&cI am sorry but %b% is not in the list."
+    
+    # What message should you receive when the block can not be found?
+    block-not-found-message: "&cI am sorry but that is not a valid block."
+    
+    # What message should you receive when the block is already in the list?
+    block-found-message: "&cI am sorry but this block is already in the list."
+    
+    # What message should you receive when invalid syntax has been received?
+    invalid-syntax-message: "&aCorrect Usage: &7/dashrays (reload | toggle | add | del) (block name)"
+    
+    # What permission should a player have in order to be notified (/dashrays toggle)?
+    notify-permission: "dashrays.notify"
+    
+    # What message should privileged players receive when a listed block has been 
+    # broken?
+    notify-message: "&aThe player &b%p% &ahas found: &b%b% &a!"
+    
+    # What blocks are notify-worthy? 
+    # Make sure that the blocks are actually existent and that
+    # you are aware of the fact that the blocks are upper case
+    # sensitive.
+    blocks:
+        - 'ENDER_CHEST'
+        - 'DIAMOND_ORE' 
+        - 'EMERALD_ORE'
+    
+    # What permission is required for the admin use of this plugin?
+    admin-permission: 'dashrays.admin'
+    
+    # What should be the message shown when permission is denied?
+    permission-denied-message: '&cYou may not use this command!'
+    
+    # What message should be shown when reloading the plugin?
+    reloading-message: '&aReloading Dashrays 1.0 ....'
+    reload-finish-message: '&aDashrays 1.0 has been reloaded!'

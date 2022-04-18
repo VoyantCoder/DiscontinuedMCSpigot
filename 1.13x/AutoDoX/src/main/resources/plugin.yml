@@ -1,0 +1,12 @@
+name: AutoDoX
+version: 1.0
+main: com.kvinnekraft.autodox.AutoDoX
+api-version: 1.16
+authors: [Dashie, KvinneKraft]
+description: Automatically execute code.
+website: https://github.com/KvinneKraft
+
+commands:
+  autodox:
+    aliases: [autodo, autocommands, adx]
+    description: You should know.

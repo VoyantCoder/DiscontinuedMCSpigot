@@ -1,0 +1,4 @@
+name: MobMoney
+version: ${project.version}
+main: com.kvinnekraft.MobMoney
+api-version: 1.16

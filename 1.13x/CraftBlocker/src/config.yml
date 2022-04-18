@@ -1,0 +1,15 @@
+
+# Dash Cunfug:
+
+admin-permission: 'dashcraftblocker.admin'
+
+command-messages:
+    access-denied: "&cYou are not supposed to use this, are ya?"
+    correct-usage: "&7Correct usage: &e/craftblocker [add | del | reload]"
+    
+item-blacklist:
+    - 'HOPPER'
+    - 'SHIELD'
+    - 'ELYTRA'
+    
+message: '&c&lYou may not craft this'

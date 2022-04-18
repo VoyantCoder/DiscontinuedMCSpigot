@@ -1,0 +1,12 @@
+name: NoPickupX
+version: 1.0
+main: com.kvinnekraft.NoPickupX
+api-version: 1.16
+authors: [Dashie, KvinneKraft, ME]
+description: Disable specific items from being picked up.
+website: https://github.com/KvinneKraft
+
+commands:
+  nopickupx:
+    aliases: [npx, nopickups, nopickup, nopick]
+    description: Surface the unknown!

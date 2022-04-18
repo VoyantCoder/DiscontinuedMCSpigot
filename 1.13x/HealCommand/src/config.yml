@@ -1,0 +1,24 @@
+
+# Author: Dashie
+# Version: 1.0
+
+# What permission should be needed in order to use /heal?
+use-command-permission: "dashcare.command"
+
+# What message should be sent to the user healing themselves?
+heal-message: "&aYou have been healed!"
+
+# Or what should the message be for people on cooldown?
+cooldown-message: "&cYou must wait 32 seconds at least before doing this again!"
+
+# And, last, yet not least, what should be the cooldown (in seconds)?
+cooldown: 32
+
+
+# To Do
+# - Potion Effects
+# - User-Friendly Implications
+# - Sound Effects
+# - Fireworks
+# - Explosions
+# - Money Costs

@@ -1,0 +1,30 @@
+#
+# A glorious configuration file by ze Kvinne Krafter ey!
+#
+settings:
+  # When this is true fire will also be summoned
+  # around the explosion crater:
+  explosion-flames: true
+  # How big of an explosion should this nuke
+  # generate, keep in mind, the more radius
+  # the more likely you will lag out, the
+  # radius of TNT is 3:
+  explosion-radius: 25
+  # When this is true blocks will also be broken
+  # when a nuke is summoned, keep in mind, this
+  # will cost your server a lot more work to process:
+  explosion-damage: true
+  # This is the permission that is required for
+  # the detonation of the nuke:
+  use-permission: 'default'
+  # This is the permission that is required for
+  # the reload command (/nukearrows reload):
+  admin-permission: 'admin'
+  # This is the custom name you may set for the
+  # nuclear bow itself:
+  bow-name: '&aIntoxicate You!'
+  # Here you can change the lore that comes with
+  # the nuclear bow itself:
+  bow-lore: '&aI am nuclear!'
+  # When this is true the nuclear bow will be unbreakable:
+  bow-unbreakable: true

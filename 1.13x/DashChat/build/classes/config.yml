@@ -1,0 +1,34 @@
+
+# Dashies Configuration File #
+
+# Bypass all filters and just overall have access to the admin based commands.
+admin-permission: 'dashstrict.admin'
+
+command-properties:
+    enabled: true
+    
+    deny-message: "&cYou may not use this command!"
+    
+    blacklist:
+        - '/ver'
+        - '/about'
+        - '/?'
+        - '/pl'
+        - '/plugins'
+        - '/version'
+        - '/minecraft'
+    
+message-properties:
+    enabled: true
+    
+    # Instead of splitting words, check if the entire message contains anything
+    # similar to that what is in your blacklist. This may interfere with certain
+    # words and sentences. fuckd would be seen as fuck. rather than not.
+    deep-search: false
+    
+    deny-message: "&cYou are not allowed to say that!"
+    
+    blacklist:
+        - 'fuck'
+        - 'hah'
+        - 'gay'

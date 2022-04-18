@@ -1,0 +1,38 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here are all of the permissions that can be modified:
+withdrawexp-permissions:
+  # This is the permission that is required for the withdrawal
+  # of experience (/withdrawexp):
+  withdraw-permission: default
+  # This is the permission that is required for the redemption
+  # of experience when right clicking the ticket:
+  redeem-permission: default
+  # This is the permission that is required for the reload
+  # command (/withdrawexp reload):
+  admin-permission: admin
+  # And this is the permission that is required for bypassing
+  # the cool down restrictions when redeeming tickets:
+  bypass-cooldown-permission: bypass
+# Here are all of the settings related to the plugin its
+# main functionality, the redemption of experience and such:
+withdrawexp-functionality:
+  # This is the material that will act as a ticket:
+  ticket-item-material: PAPER
+  # This is the cool down between ticket redemptions.
+  # Note that the bypass permission ignores this:
+  ticket-redeem-cooldown: 10
+  # This is the custom display name that will be applied to
+  # the custom ticket item:
+  ticket-name-format: '&fWithdraw Ticket - &e%experience% EXP'
+  # This is the custom lore that will be applied to the custom
+  # ticket item as well:
+  ticket-lore-format: '&e&oRight click me!'
+  # This is the minimum levels of experience that a user must
+  # at least have in order to make use of the /withdrawexp command:
+  minimum-redeem-levels: 1
+  # This is the maximum levels of experience that a user may
+  # not ever exceed:
+  maximum-redeem-levels: 120

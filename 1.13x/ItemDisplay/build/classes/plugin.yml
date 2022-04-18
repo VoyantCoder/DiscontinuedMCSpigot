@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.dashchat.ItemDisplay
+
+name: ItemDisplay
+author: [Dashie]
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    itemdisplay:
+        description: Main command for Dashies Item Display plugin!
+        aliases: [dashdisplay, displayitem, di, id, dd]

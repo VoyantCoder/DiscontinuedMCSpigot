@@ -1,0 +1,11 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    help-denied-message: '&cYou are not supposed to use this, are ya?'    
+    
+    help-permission: 'com.dashcraft.help'
+    
+    help-message:
+        - '&cChange this to your custom help menu.'

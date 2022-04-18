@@ -1,0 +1,65 @@
+
+
+# Author: Dashie 
+# Version: 1.0
+
+
+# Dash Config:
+dash-throwables:
+    
+    # Reload command permission:
+    admin-permission: "dashthrowables.admin"
+    
+    # Worlds that welcome these throwables:
+    allowed-worlds:
+        - 'world'
+    
+    # Fire Charge properties:
+    firecharges:
+        enabled: true
+        
+        # The permission required:
+        permission: "dashthrowables.fireballs"
+        
+        # The delay between fireball throws:
+        cooldown: 10
+        
+        # The speed of the projectile:
+        velocity: 1.5        
+        
+        # Explosion Adjustables:
+        explosion:
+            
+            # Break blocks upon impact:
+            terrain: false            
+            
+            # Radius of the explosion:
+            radius: 2
+            
+            # Has explosion fire:
+            fire: true
+            
+    # Wither Skull properties:
+    witherskulls:
+        enabled: true
+        
+        # The permission required:
+        permission: "dashthrowables.witherskulls"
+            
+        # The delay between wither skull throws:
+        cooldown: 10
+            
+        # The speed of the projectile:
+        velocity: 1.5
+            
+        # Explosion Adjustables:
+        explosion:
+            
+            # Break blocks upon impact:
+            terrain: false
+            
+            # Radius of the explosion:
+            radius: 2
+            
+            # Has explosion fire:
+            fire: true

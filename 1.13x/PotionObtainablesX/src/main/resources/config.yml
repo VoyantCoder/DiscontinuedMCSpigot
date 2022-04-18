@@ -1,0 +1,75 @@
+# Author: Dashie
+# Version: 1.0
+startup-tweaks:
+  auto-reload: true
+  reload-interval: 20
+#
+# (Potion Obtainables X Format Documentation)
+#
+# The number (1) as seen in the default config.yml
+# is there so I can loop through all numbers and see
+# which exist and go based off of that.  You may 
+# add in more numbers, just make sure they are in 
+# order (1, 2, 3...);
+#
+# The item: section basically contains custom attributes
+# that you can set to your liking.  If you want to disable
+# any of these options then you can simply leave them
+# empty.
+#
+# The consumption: section basically contains all of the 
+# configurable functionality on consumption.  Whenever a
+# player tries to eat the specified item the corresponding
+# configuration will be used.  For the commands, if you
+# want the command to be executed as a player then you
+# should put a '/' in front of the command, if you want
+# the console to execute it you should put a '~' in front
+# of the command.
+#
+# Enchantment names should be the same as in-game but instead
+# of spaces underscores.  
+#
+# And if you need some help finding potion effect names then
+# you can find them here. (Use the names all caps)
+# POTION EFFECT NAMES 1.16x: https://mcreator.net/wiki/potion-effect-ids
+#
+# NOTE: Specify 'none' if you do not want to use certain functionality.
+core-tweaks:
+  potion-items:
+    1:
+      item:
+        type: STICK
+        name: '&aIntoxication'
+        lore:
+          - '&5I am lore.'
+        enchantments:
+          - 'ShArPnEsS 5'
+          - 'fire_aspect 1'
+      consumption:
+        permission: 'none'
+        message: 'none'          
+        effects:
+          - 'SPEED 1 20'
+        commands:
+          - '/kit pvp'
+          - '~msg %p% &aYou ate a stick!'
+    2:
+      item:
+        type: APPLE
+        name: '&cEpplet'
+        lore:
+          - '&5I am lore.'
+        enchantments:
+          - 'protection 5'
+          - 'luck_of_the_sea 1'
+      consumption:
+      #remove on use? Let me know.
+        permission: 'none'
+        message: 'none'          
+        effects:
+          - 'SPEED 1 20'
+        commands:
+          - '/kit pvp'
+          - '~msg %p% &aYou ate a stick!'       
+# If you have any suggestions then please reach out to me
+# at KvinneKraft@protonmail.com.  Thank you.

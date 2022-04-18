@@ -1,0 +1,12 @@
+name: NoStoreX
+version: 1.0
+main: com.kvinnekraft.NoStoreX
+api-version: 1.16
+authors: [Dashie, KvinneKraft]
+description: Prevent storing specific items.
+website: https://github.com/KvinneKraft
+
+commands:
+  nostorex:
+    aliases: [nostoringx, nostore, nstore]
+    description: Prevent storing items.

@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: crystal.Crystal;
+
+api-version: 1.13
+version: 1.0
+
+name: Crystal
+author: [Dashie]
+
+commands:
+    crystal:
+        aliases: [cs]

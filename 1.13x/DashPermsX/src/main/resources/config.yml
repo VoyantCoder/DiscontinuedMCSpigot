@@ -1,0 +1,32 @@
+# Author: Dashie
+# Version: 1.0
+#
+# Auto-reload is handy man.
+properties:
+  auto-reload: true
+  reload-interval: 5
+# Hey, find my permissions here.
+block-interact:
+  enabled: true
+  permissions:
+    - 'CHEST:my.permission'
+block-place:
+  enabled: true
+  permissions:
+    - 'FURNACE:my.permission'
+block-break:
+  enabled: true
+  permissions:
+    - 'STONE:my.permission'
+item-use:  
+  enabled: true
+  permissions:
+    - 'STONE_SWORD:my.permission'
+commands:
+  enabled: true
+  permissions:
+    - '/pl:my.permission'
+words: 
+  enabled: true
+  permissions:
+    - 'fuck:my.permission'

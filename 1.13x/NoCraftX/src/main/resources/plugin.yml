@@ -1,0 +1,12 @@
+name: NoCraftX
+version: 2.0
+main: com.kvinnekraft.NoCraftX
+api-version: 1.16
+authors: [Dashie, KvinneKraft, ME]
+description: Block certain crafting recipes.
+website: https://github.com/KvinneKraft
+
+commands:
+  nocraftx:
+    aliases: [nocraft, dashcraft, norecipe, nc, noc]
+    description: Block crafting recipes.

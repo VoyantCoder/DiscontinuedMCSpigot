@@ -1,0 +1,16 @@
+# Author: Dashie
+# Version: 1.0
+startup-tweaks:
+  auto-reload: true
+  reload-interval: 5
+core-tweaks:
+  # in order to disable potion effects for a certain
+  # section simply remove all effects present in it.
+  #
+  # the format my code will recognize is something like
+  # <potion effect> <strength> <duration(seconds)>
+  potion-effect:
+    arrow-effects:
+        - 'WITHER 5 30'
+        - 'POISON 5 30'
+        - 'SPEED 5 30'

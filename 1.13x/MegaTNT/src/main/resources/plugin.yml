@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.kvinnekraft.MegaTNT
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie, KvinneKraft, Freya]
+name: MegaTNT
+
+commands:
+  megatnt:
+    aliases: [megtnt, mtnt, mexplosive, megaexplosive]
+    description: MegaTNT by KvinneKraft.

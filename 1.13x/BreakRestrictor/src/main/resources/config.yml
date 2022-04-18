@@ -1,0 +1,28 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here are all of the modifiable properties that are related to
+# permissions, these come with this fluffy plugin:
+permissions:
+  # This permission will allow you to bypass the restriction rules:
+  break-restrictor-bypass: bypass
+  # This permission will allow you to reload the plugin using the
+  # command /breakrestrictor reload:
+  break-restrictor-reload: admin
+# Here are all of the modifiable properties that are related to
+# the plugin its main functionality, restriction:
+break-restrictor:
+  # These are the blocks that players will not be able to break if
+  # they lack the bypass permission:
+  restricted-blocks:
+    - 'TNT'
+    - 'BEDROCK'
+    - 'ObSIDiAN'
+    - 'DiAmOnD bLOCK'
+  # This is the message that will be sent to the players when they
+  # try to break a restricted block:
+  restriction-message: '&cYou may not break this block!'
+  # When this is true the above message will be sent to the player
+  # directly onscreen, covering their sight:
+  restriction-message-onscreen: true

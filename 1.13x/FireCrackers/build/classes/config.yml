@@ -1,0 +1,30 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# There is only one type of Fire Cracker as of now, you
+# could perhaps reach out to me with suggestions for things
+# that I should implement. KvinneKraft@protonmail.com <---
+#
+# Standard modifiable properties:
+standard-firecracker:
+    # The radius of the explosion:
+    explosion-radius: 1
+    # Should there even be effects:
+    explosion-fireworks: true
+    # The amount of seconds after throwing 
+    # that the detonation will occur:
+    explosion-timer: 3
+    # The amount of seconds that a player
+    # must wait before throwing another one:
+    firecracker-cooldown: 10
+# Some more important and admin based
+# properties which you may modify to 
+# your liking:
+permissions:
+    # The permission required for /firecracker reload:
+    plugin-admin: 'admin' 
+    # The permission required for using firecrackers:
+    plugin-use: 'default'
+    
+    

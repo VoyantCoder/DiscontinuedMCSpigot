@@ -1,0 +1,41 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    operator-bypass: false
+    
+    interact-properties:
+        block-breaking:
+            prohibit: false
+            
+            blacklist:
+                - 'OBSIDIAN'
+                - 'STONE_BRICKS' 
+                - 'BEDROCK'
+        
+        block-placement:
+            prohibit: false
+         
+            blacklist:
+                - 'COMMAND_BLOCK'
+                - 'TNT'
+                - 'LAVA_BUCKET'
+        
+    damage-properties:
+        no-fall: false
+    
+    chat-properties:
+        no-urls: true
+        
+        chat-delay: 
+            enabled: true
+            delay: 2
+            
+        command-block:
+            enabled: true
+            
+            blacklist:
+                - '/minecraft:'
+                - '/bukkit:' 
+                - '/pl'

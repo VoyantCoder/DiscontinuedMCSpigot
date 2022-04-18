@@ -1,0 +1,12 @@
+
+main: com.dash.FishRewards
+
+version: 1.0
+
+name: FishyRewardz
+author: [Dashie]
+
+commands:
+    fishyrewards:
+        aliases: [fishrewards, dashrewards, dashierewurdz]
+        description: The base command for the Fishy Rewards plugin.

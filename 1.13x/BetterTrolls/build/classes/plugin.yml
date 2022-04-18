@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.BetterTrolls
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie, KvinneKraft]
+name: BetterTrolls
+
+commands:
+    bettertrolls:
+        aliases: [bt, trolls, troll, bettertroll, trololo]
+        description: Hah, what do you think?

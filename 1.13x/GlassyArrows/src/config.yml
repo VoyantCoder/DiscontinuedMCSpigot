@@ -1,0 +1,38 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here are all of the modifiable permissions that come
+# with this plugin:
+permissions:
+    # This permission decides whether a player can break
+    # any glass in the first place:
+    glass-break-permission: default
+    # This permission decides whether a player can use the 
+    # reload command (/flamingarrows reload):
+    plugin-admin-permission: admin
+# Here are some modifable settings related to the arrows
+# themselves:
+glassy-arrows:
+    # Here are the projectiles which will be seen as arrows when
+    # they hit glass, you can even add snowballs and what not:
+    considerable-arrows:
+        - 'TIPPED_ARROW'
+        - 'ARROW'
+    # Here you may add in materials that can be broken when any of
+    # the projectiles hits it:
+    considerable-glass:
+        - 'GLASS_PANE'
+        - 'WHITE_STAINED_GLASS'
+        - 'WHITE_STAINED_GLASS_PANE'
+        - 'PINK_STAINED_GLASS'
+        - 'PINK_STAINED_GLASS_PANE'
+        - 'GLASS'
+    # here you may specify the range of blocks which may be broken when
+    # one of the above projectiles hits it:
+    arrow-break-radius: 1
+    # This will determine the chance on a scale from 1 to a thousand
+    # whether the block may be broken:
+    arrow-break-chance: 50
+        
+        

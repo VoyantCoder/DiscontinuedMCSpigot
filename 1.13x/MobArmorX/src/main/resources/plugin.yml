@@ -1,0 +1,14 @@
+# Author: Dashie
+# Version: 1.0
+name: MobArmorX
+version: 1.0
+main: com.kvinnekraft.MobArmorX
+api-version: 1.16
+authors: [Dashie, KvinneKraft, ME]
+description: Armoured Mobs Man
+website: https://github.com/KvinneKraft
+
+commands:
+  mobarmorx:
+    aliases: [mobarmor, mobarmourx, mobarmour, marx, ma]
+    description: You should know O_o

@@ -1,0 +1,17 @@
+
+#
+# Dashies Sit Configuration File 1.0
+#
+
+# The main permission that is required for the use of this plugin.
+permission: "dashsit.sit"
+
+# Some of the messages you may want to reconfigure.
+vehicle-message: "&cYou must be standing in order to use this command."
+denied-message: "&cYou may not use this command."
+
+sit-message: "&aYou are now sitting, press SHIFT to get right back up!"
+stand-message: "&aYou are now no longer sitting."
+
+# Allow players to sit on stairs like a chair.
+right-click-stair-sit: true

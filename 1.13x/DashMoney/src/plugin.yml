@@ -1,0 +1,10 @@
+
+main: com.dashmoney.DashMoney
+
+author: [Dashie]
+name: DashMoney
+
+version: 1.0
+api-version: 1.13
+
+

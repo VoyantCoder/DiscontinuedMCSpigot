@@ -1,0 +1,16 @@
+# Dashies Configuration File
+messages:
+  ipban: '&cThe player &4%player% &chas been IP-Banned for %reason%&c!'
+  ban: '&cThe player &4%player% &chas been Banned for %reason%&c!'
+  tempban: '&cThe player &4%player% &chas been Temporarily Banned for %reason% &cfor [&4%duration%&c]!'
+  kick: '&cThe player &4%player% &chas been Kicked for %reason%&c!'
+  mute: '&cThe player &4%player% &chas been Muted for %reason% &cfor [&4%duration%&c]!'
+  op: '&7[Server: Opped %player%]'
+  deop: '&7[Server: De-opped %player%]'
+  vote: '&aThe player &e%player% &ahas voted for My Server!'
+  donation: '&bThe player &e&l%player% &bhas purchased &aVIP++&b!'
+permissions:
+  # The permission required for using /f vote and so on.
+  normal: normal
+  # The permission required for using /f reload and so on.
+  admin: admin

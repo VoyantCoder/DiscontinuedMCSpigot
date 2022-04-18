@@ -1,0 +1,147 @@
+
+# Author: Dashie
+# Version: 2.2
+
+# All of the secondary modules for the Dash Captcha
+# plugin that you may reconfigure:
+modules:
+  # When this is set to 'true' lightning will be summoned
+  # when a player completes their captcha.
+  lightning-switch: true
+  # This block will be handling the fireworks that may be
+  # summoned when a player completes their captcha:
+  fireworks:
+    # When this is set to 'true' all of the bellow settings
+    # will be applied to the firework:
+    enabled: true
+    # Would you like for me to choose an effect type or would
+    # you prefer some self-preset ones:
+    effect-randomizer: true
+    # If the above is false you may here imply your own effects.
+    #
+    # Note: Be sure that these effects are available and that
+    #       they actually do exist!
+    effects: 'STAR, CREEPER, BURST'
+    # Would you like for me to choose a colour for you or would
+    # you prefer some self-preset ones:
+    rgb-randomizer: true
+    # If the above is false you may here imply your own colour
+    # codes, just make sure that they are R.G.B.:
+    rgb-colours:
+      - '255,255,255'
+      - '16,16,16'
+      - '255,100,255'
+    # What permission should an user have in order to obtain the
+    # above when they complete their captcha:
+    permission: 'default'
+  # This block will be handling the sound that may be played
+  # to the player when they complete their captcha:
+  sounds:
+    # When this is set to 'true' all of the bellow settings
+    # will be of effect:
+    enabled: true
+    # When the player completes their captcha the following
+    # sound will be played:
+    completion-sound: 'ENTITY_PLAYER_LEVELUP'
+    # Now, what permission should a player have in order to
+    # have this speciality present:
+    permission: 'default'
+# Some of the configurable options that are related to
+# the communicable side of this plugin:
+messages:
+  # The message that will be sent to the player once the player
+  # has actually passed its captcha!
+  completion-message: '&aYou may now roam freely!'
+  # When this is true the message will be sent to the user their
+  # screen rather than their chat:
+  send-as-title: true
+
+# Some properties related to the mechanism of the plugin
+# itself to enhancen and personalize the captcha to your
+# liking as much as possible:
+mechanism:
+  # Some security properties that may be useful if
+  # you want to tighten up some policies:
+  security:
+    # After how many attempts should the user be kicked
+    # for failing the captcha:
+    maximum-attempts: 3
+    # After how many seconds should the user be kicked
+    # for being too late at solving their captcha:
+    attempt-timeout: 30
+    # When this is set to true the user can not logon
+    # from any other ip address or can another account
+    # bypass the players ip-lock, this blocks out any
+    # bots from entering your server to mess around:
+    lock-ip-address: true
+    # These are some restrictions to tighten up the logon
+    # security measurements:
+    restrictions:
+      # Prevent any commands or messages until the user has
+      # successfully authenticated:
+      disable-chat: true
+      # Prevent any movement including fly and various other
+      # things related to movement until the user has succ-
+      # essfully authenticated:
+      disable-movement: true
+      # Prevent any action taken in the inventory, including
+      # crafting, switching items and so on until the user
+      # has successfully authenticated:
+      disable-inventory-interaction: true
+      # Disable damage for the user until the user has authe-
+      # nticated:
+      disable-damage: true
+      # Monitor the user activity until the captcha is solved
+      # in order to kick any potential kill-aura users (beta):
+      prevent-kill-aura: true
+    # These are the potion effects that may be applied
+    # to a user when they have yet to verify their captcha:
+    potion-appliance:
+      # When this is set to true the users will actually get a
+      # potion effect upon themselves when they join:
+      enabled: true
+      # The actual effects that will be applied when the user
+      # joins, the above has to be set to true:
+      effects:
+        - 'CONFUSION'
+        - 'BLINDNESS'
+        - 'SLOW'
+  # Here are some options that will allow you to design the
+  # captcha G.U.I. as much as possible:
+  interface:
+    # The Title of the captcha G.U.I.:
+    title: '&aClick the &b{key} &a!'
+    # All the options related to the items that will be used
+    # to confuse the player:
+    none-key-items:
+      # The display name of the none-key items:
+      display-name: ' '
+      # The lore of the none-key items:
+      lore: ' '
+      # Items that may be chosen to be used as none key items.
+      # These items will not be used as a verifier:
+      items:
+        - 'COAL'
+        - 'IRON_INGOT'
+        - 'GOLD_INGOT'
+        - 'LAPIS_LAZULI'
+    # All of the options related to the items that will be used
+    # to verify the player.
+    #
+    # Only one random item from the list will be chosen everytime
+    # the users have to verify themselves:
+    key-items:
+      # The display name of the key item:
+      display-name: ' '
+      # The lore of the key item:
+      lore: ' '
+      # Items that may be chosen to be used as an actual key item.
+      # These items will be used as a verifier:
+      items:
+        - 'GOLD_BLOCK'
+        - 'DIAMOND_BLOCK'
+        - 'IRON_BLOCK'
+        - 'REDSTONE_BLOCK'
+
+
+# End of Configuration File

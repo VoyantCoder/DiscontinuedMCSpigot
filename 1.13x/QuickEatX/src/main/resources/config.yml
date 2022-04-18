@@ -1,0 +1,35 @@
+# Author: Dashie
+# Version: 1.0
+startup-properties:
+  auto-reload: true
+  reload-interval: 10
+plugin-properties:
+  # (type)  specifies the material type that
+  # can be instantly consumed.
+  #
+  # (cooldown)  specifies the cooldown per consumption
+  # of the item specified.  Set to 0 to disable.
+  #
+  # (food-bars)  specifies the amount of food 
+  # bars one will gain upon consumption. Set 
+  # to 0 to disable.
+  #
+  # (permission)  specifies the permission required
+  # for consumption of the item specified. Set
+  # to 0 to disable.
+  #
+  # (effects)  specifies the effects that will be
+  # applied upon consumption.  May be useful for
+  # mush stews and enchanted golden apples.  Works
+  # for any item specified by name.
+  # FORMAT: <EFFECT TYPE> <AMPLIFIER> <DURATION (in seconds)> 
+  quick-consumables:
+    1:
+      item:
+        type: STICK
+        cooldown: 5
+        food-bars: 3        
+        permission: none
+      effects:
+        - 'INCREASE_DAMAGE 1 10'      
+        - 'SPEED 1 10'

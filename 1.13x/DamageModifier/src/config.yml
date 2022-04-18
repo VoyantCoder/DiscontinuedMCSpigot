@@ -1,0 +1,29 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here are all of the permissions that come with this
+# plugin, you can change anything:
+permissions:
+    # This is the permission that will be required in order
+    # to even get the chance to deal the specified damage:
+    attack-multiplier-permission: default
+    # This is the permission that will be required in order
+    # to reload the plugin configuration using the command
+    # /damagemodifier reload:
+    plugin-admin-permission: admin
+# Here are all of the modifiable settings related to the
+# main purpose of this plugin, modifying damage:
+damage-modifier:
+    # The following is a bit more complicated but it will allow
+    # you to specify the damage dealt per item:
+    damage-modifier-applier:
+        # Follow the format as follows:
+        - 'DIAMOND_SWORD 10'
+        - 'DIAMOND_AXE 9'
+        - 'IRON_SWORD 10.0'
+        - 'IRON_AXE 7.5'
+        - 'AIR 2'
+    # This is the actual chance that one of the above rules may
+    # be applied on a scale of one to a thousand:
+    damage-modifier-chance: 50

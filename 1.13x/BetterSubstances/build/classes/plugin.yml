@@ -1,0 +1,17 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+
+main: dash.recoded.BetterSubstances
+
+author: [Dashie, KvinneKraft]
+name: BetterSubstances
+
+api-version: 1.13
+version: 1.0
+
+commands:
+    bettersubstances:
+        aliases: [bettersubstance, bs, substances, substance, bettersub, bettersubstancer, substances]
+        description: The main command for Better Substances.

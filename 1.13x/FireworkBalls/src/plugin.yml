@@ -1,0 +1,11 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: fireworkballs.FireworkBalls
+
+author: [Dashie] 
+name: FireworkBalls
+
+api-version: 1.13
+version: 1.0

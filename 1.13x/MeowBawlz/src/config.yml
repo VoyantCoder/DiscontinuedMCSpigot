@@ -1,0 +1,29 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    admin-permission: "meowbawlz.admin"        
+    admin-bypass-cooldown: false
+    
+    shoot-permission: "meowbawlz.shoot"
+    shoot-cooldown: 30
+    
+    messages:
+        prohibited-message: "You may not use the meow wand!"
+        shoot-message: "&aYou has shot a meow meow ball!"
+        await-message: "&cYe must at least wait 30 seconds before shooting another one!"
+        again-message: "&aYou may now shoot another meow meow ball!"
+        
+    wand-meta:
+        wand-name: "&d&lM&deow &d&lM&deow &e&lW&eand"
+        wand-item: BLAZE_ROD
+        
+        wand-lore:
+            - '&eShoot meow bawlz at your enemies!'
+            
+    # /meow meow command <<<
+    meowiez:
+        meow-permission: "meow.meow"        
+        meower-message: "&aYou have meowed!"
+        meow-cooldown: 30

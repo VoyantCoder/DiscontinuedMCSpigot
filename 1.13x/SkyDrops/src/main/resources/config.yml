@@ -1,0 +1,29 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# How many items per interval should be dropped
+# out of the air onto the player?
+drops-per-interval: 8
+# How long should the interval be?
+drop-interval: 8
+# What should be the region (x, z) that items may
+# be dropped within?
+drop-radius: 24
+# How high above the players head should items be
+# dropped from?
+drop-height: 50
+# Here are the items that may be dropped out of the sky.
+drop-materials:
+  1:
+    quantity: 1
+    type: 'DIAMOND'
+    name: '&a&lI fell from the sky!'
+    lore:
+      - '&bA diamond!'
+  2:
+    quantity: 1
+    type: 'IRON_INGOT'
+    name: '&a&lI fell from the sky!'
+    lore:
+      - '&cAn iron ingot!'

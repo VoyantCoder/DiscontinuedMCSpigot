@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.crossbow.CrossBow
+
+api-version: 1.13
+version: 1.0
+
+name: DashCrossBowz
+author: [Dashie]
+
+commands:
+    crossbow:
+        aliases: [crossbowz, crossbows, crossb, cb, bows]

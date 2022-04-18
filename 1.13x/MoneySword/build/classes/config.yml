@@ -1,0 +1,17 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    # The name of the sword:
+    money-sword-name: '&a&lMoney Sword'
+    # The lore of the sword:
+    money-sword-lore: '&a&oA magickal sword!'
+    # The money randomizer:
+    money-sword-money-range: '5-500'
+    # The permission required for usage:
+    money-sword-use-permission: 'moneysword.use'
+    # The permission required for admin commands (/moneysword)
+    money-sword-admin-permission: 'moneysword.admin'
+    # The reward message:
+    money-sword-reward-message: "&aYou have been given &b%money%$ &afor using your sword!"

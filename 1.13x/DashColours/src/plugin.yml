@@ -1,0 +1,17 @@
+
+main: com.dashcure.DashColours
+
+# The way I type out "DashColors" varies because of the fact that
+# most people prefer the american way rather than the original british
+# way, anyhow, deal with it. -Dashie
+
+name: DashColors
+author: [Dashie]
+
+api-version: 1.13
+version: 1.0
+
+commands:
+    dashcolor:
+        aliases: [dashcolors, dashcolours, dashcolour, color, colour, colors, colours]
+        description: The main command for Dash Colors 1.0!

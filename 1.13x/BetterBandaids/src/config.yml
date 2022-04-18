@@ -1,0 +1,41 @@
+# Dashies amazing fluffy configuration file:
+bandaids:
+    permissions:
+        # This is the permission that is required for admin related
+        # commands such as /bb reload:
+        admin: admin
+        # This is the permission that is required for the actual use
+        # of the bandaid:
+        use: default
+    item:
+        # This is the lore displayed under the item name upon
+        # hover in your inventory:
+        lore:
+            - '&dA fluffy bandaid to treat your health!'
+        # This is the name of the bandaid itself:
+        name: '&d&lF&dluffy &a&lB&aandaid'
+    medicine:
+        # These are the effects applied to a user when using the
+        # bandaid, the format is like <TYPE> <AMPLIFIER> <DURATION>:
+        effects:
+            - 'REGENERATION 2 8'
+            - 'DAMAGE_RESISTANCE 2 8' 
+            - 'ABSORPTION 2 8'
+        # This will be the sound played to the user when they use
+        # one of these bandaids:
+        sound-effect: 'ENTITY_CHICKEN_STEP'
+        # The cooldown before a play can use another bandaid:
+        cooldown: 5
+    messages:
+        # The message sent to the player after they have
+        # used a bandaid:
+        applied: '&aYou have applied a bandaid!'
+        # The message sent to the player if they are not
+        # allowed to use a bandaid:
+        denied: '&cYou are not allowed to use this item!'
+        # The message sent to the player if they are on
+        # a cooldown:
+        cooldown: '&cYou may not use this right now, please wait!'
+        # The message sent to the player if their cooldown
+        # has expired:
+        expired: '&aYou may use another bandaid now!'

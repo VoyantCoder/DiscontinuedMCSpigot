@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.kvinnekraft.BreakRestrict
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie, KvinneKraft, Freya]
+name: BreakRestrict
+
+commands:
+  breakrestrictor:
+    aliases: [breakrestrict, restrictor, break, breaker]
+    description: Breaker by KvinneKraft.

@@ -1,0 +1,7 @@
+name: PremiumCosmeticsGUI
+version: 1.0
+main: com.kvinnekraft.PremiumCosmeticsGUI
+api-version: 1.16
+authors: [Dashie, KvinneKraft]
+description: Cosmetic items man.
+website: https://github.com/KvinneKraft

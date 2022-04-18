@@ -1,0 +1,14 @@
+
+# Author: Dashie
+# Version: 1.0
+
+# All of the following options are definite, there is not such
+# a thing as a chance for this one, just a full on thing:
+properties:
+    charged-creepers: false
+    new-health: 40
+    explosion-radius: 5
+    explosion-flames: true
+    summon-lightning: true
+    summon-fireworks: true
+    

@@ -1,0 +1,38 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    permissions:
+        use-permission: 'dashbowz.crossbow.use'
+        admin-permission: 'dashbowz.admin'
+    
+    effects:
+        lightning-chance: 50
+        lightning: true
+        
+        explosion-chance: 50
+        explosion-break-blocks: false
+        explosion: true
+        
+        fireworks-chance: 50
+        fireworks: true
+        
+        poison-chance: 50
+        poison: true
+        
+        wither-chance: 50
+        wither: true
+        
+        hunger-chance: 50
+        hunger: true
+        
+        rat-chance: 50
+        rat: true
+        
+    bow-meta:
+        display-lore: 
+            - '&aA bow of mighty power!'
+            
+        display-name: '&e&lC&eross-&e&lB&eow'
+        shoot-cooldown: 30

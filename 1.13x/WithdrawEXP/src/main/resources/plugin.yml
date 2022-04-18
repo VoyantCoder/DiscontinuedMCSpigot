@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.kvinnekraft.WithdrawEXP
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie, KvinneKraft, Dash]
+name: WithdrawEXP
+
+commands:
+  withdrawexp:
+    aliases: [withdrawxp, wxp, wexp, withdrawxp, redeemxp]
+    description: By the KvinneKraft.

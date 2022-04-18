@@ -1,0 +1,28 @@
+# Author: Dashie
+# Version: 1.0
+
+# The properties you may change to your liking:
+dash-wands:
+    # The permission required for /dashwandz [give | list | reload]:
+    command-permission: 'command'
+    # The permission that bypasses wand cooldowns:
+    bypass-permission: 'bypass'
+    # Properties for the firework wand:
+    firework-wand:
+        use-permission: 'default'
+        cooldown: 16
+    # Properties for the lightning wand:
+    lightning-wand:
+        use-permission: 'default'
+        cooldown: 32
+    # Properties for the wither wand:
+    wither-wand:
+        use-permission: 'default'
+        cooldown: 60
+    # Properties for the fireball wand:
+    fireball-wand:
+        use-permission: 'default'
+        cooldown: 120
+# That is already the end of the configuration file O_o
+# Blessed be dear you ) o (
+    

@@ -1,0 +1,17 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+#######################
+#
+# The following are the spawn points specified by
+# world in the manner of a list easily repeated
+# by an user like yourself.
+#
+# Make sure that the world is named correctly because
+# it is case sensitive.
+#
+# The format is: {world} {x} {y} {z} 
+# The Coordinates may be decimal values.
+spawn-points:
+    - 'world 1 65 1'

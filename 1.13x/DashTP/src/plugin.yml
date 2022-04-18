@@ -1,0 +1,13 @@
+
+main: com.dashness.DashTP
+
+author: [Dashie]
+name: DashTP
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    dashtp:
+        aliases: [rtp, wild]
+        description: teleport to ze wilderness.

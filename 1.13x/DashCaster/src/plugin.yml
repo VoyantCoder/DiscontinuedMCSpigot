@@ -1,0 +1,13 @@
+
+main: com.dashcaster.AutoBroadcaster
+
+name: DashCaster
+author: [Dashie]
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    dashcaster:
+        aliases: [dashcast, broadcast, broadcaster]
+        description: reload the Dash Caster config.

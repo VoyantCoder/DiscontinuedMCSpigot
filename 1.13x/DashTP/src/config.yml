@@ -1,0 +1,79 @@
+
+#
+# Dashies Configuration File
+#
+
+
+# The cost per random teleportation: (set to -1 to disable)
+
+teleport-cost: -1
+
+
+# Teleportation cooldown in seconds: (set to -1 to disable)
+
+cooldown: 30
+
+
+# Teleportation randomization range, can be decimals:
+
+coords:
+    max-x: 5000
+    min-x: -5000
+    
+    max-y: 150
+    min-y: 40
+    
+    max-z: 5000
+    min-z: -5000
+
+
+# What block should be placed in the water or lava if any is found: (set to none to disable)( 
+
+liquid-block: 'PODZOL'
+
+
+# Worlds where teleportation is allowed:
+    
+allowed-worlds:
+    - 'world'
+
+
+# Configurable permissions:
+
+no-cooldown-permission: 'dashtp.tp.nocooldown'
+teleport-permission: 'dashtp.tp'    
+no-cost-permission: 'dashtp.tp.nocost'
+admin-permission: 'dashtp.admin'
+
+
+# Error Messages:
+    
+error-messages:
+    - '&cCorrect syntax: &7/dashtp go' # also /rtp and /wild
+    - '&cCorrect syntax: &7/dashtp [go | setrange | addworld | delworld | reload] [<max-x> <min-x> <max-y> <min-y> <max-z> <min-z> | <world1,world2,world3>]'
+    - '&cYou lack sufficient permissions.' 
+    - '&cExpected an integral value, yet received a none integral value?'
+    - '&cThe world &4%w% &cis already in the configuration file.'    
+    - '&cThe world &4%w% &cis not in the configuration file.'
+    - '&cYou need at least %m%$ in order to teleport.'
+    - '&cYou must at least %c% seconds before teleporting again.'
+    - '&cYou may not use this command in this world.'
+    - '&cWe were unable to find a location, please try again.'
+    
+    
+# Success Messages:
+    
+success-messages:
+    - '&aReloading the config ....'
+    - '&aThe config has been reloaded.'
+    - '&aThe world &b%w% &ahas been added to the config.'
+    - '&aThe world &b%w% &ahas been removed from the config.'
+    - '&a%m%$ has been substracted from your account for teleporting.'
+    - '&aYou may now use /rtp again.'
+    - '&aYou have been teleported to &eX:%x% Y:%y% Z:%z% &a!'
+    - '&aThe new coordination range has been set!'
+    
+    
+# Send the teleport message to the screen of the user:
+
+send-title: true

@@ -1,0 +1,52 @@
+
+# Author: Dashie
+# Version: 1.0
+
+# The coordinate properties.
+coordinates:
+    max-x: 2500
+    min-x: -2500
+    max-z: 2500
+    min-z: -2500
+# The modifiable permissions of this plugin.
+permissions:
+    # The permission for /rtp
+    tp-permission: 'default'
+    # The permission for /rtp reload and such.
+    admin-permission: 'admin'
+# The modifiable optional options of this plugin.
+optionals:
+    # Potion effects.
+    potion-effects:
+        # Should there be an effect applied after teleporting?
+        enabled: true
+        # The effect(s) applied if so.
+        effects: 
+            - 'CONFUSION 2 8'
+    # Firework spectacle.
+    firework-effects:
+        # Should there be a pop after teleporting?
+        enabled: true
+    # Sound effects.
+    sound-effects:
+        # Should there be a sound after teleporting?
+        enabled: true
+        # The actual sound effect, make sure it is existing in
+        # your version of Spigot. 
+        sound-effect: ENTITY_SLIME_SQUISH
+    # A whitelist (do not include the Nether and The End).
+    world-whitelist:
+        - 'world'
+    # A blacklist of biomes.
+    biome-blacklist:
+        - 'DEEP OCEAN'
+        - 'COLD OCEAN'        
+        - 'BEACH'
+    # The cooldown a player has before being able to
+    # teleport again.
+    tp-cooldown: 60
+    # Should the success teleportation message be sent 
+    # as a popup?
+    send_title: true
+# Be blessed ) o ( I love all of you!
+    

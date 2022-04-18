@@ -1,0 +1,13 @@
+
+main: com.dashie.DashHeads
+
+version: 1.0
+api-version: 1.13
+
+name: DashHeads
+author: [Dashie]
+
+commands:
+    dashheads:
+        aliases: [playerheads, dashheads, heads, head]
+        description: the base command for the Dash Heads plugin

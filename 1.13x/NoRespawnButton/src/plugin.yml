@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.dash.NoRespawn
+
+author: [Dashie, KvinneKraft]
+name: NoRespawnButton
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    norespawn:
+        aliases: [norespawnbutton, nr, nrb]
+        description: By KvinneKraft

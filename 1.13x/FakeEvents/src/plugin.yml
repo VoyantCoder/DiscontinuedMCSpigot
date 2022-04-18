@@ -1,0 +1,14 @@
+# Author: Dashie
+# Version: 2.0
+
+main: dash.recoded.Maineroid
+
+author: [Dashie]
+name: FakeEvents
+
+api-version: 1.13
+version: 1.0
+
+commands:
+  f:
+    aliases: [fakery, fakeevents, fakee, fe]

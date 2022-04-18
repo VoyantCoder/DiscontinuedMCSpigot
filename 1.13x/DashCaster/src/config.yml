@@ -1,0 +1,19 @@
+
+#
+# Dashies Configuration File
+#
+
+# Reload permission:
+permission: "dashcaster.reload"
+
+# Interval in seconds:
+interval: 60     
+
+# Messages in raw string
+# format supporting colour 
+# codes:
+messages:
+    - 'Message 1'
+    - 'Message 2'
+    - 'Message 3'
+    - 'Message 4'

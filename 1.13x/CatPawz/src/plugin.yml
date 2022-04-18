@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.CatPawz
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie, KvinneKraft]
+name: CatPawz
+
+commands:
+    catpawz:
+        description: A help command for Fluffy Pawz.
+        aliases: [kittens, cats, fluffs, kittypawz]

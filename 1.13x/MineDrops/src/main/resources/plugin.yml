@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.kvinnekraft.MineDrops
+
+api-version: 1.13
+version: 1.0
+
+commands:
+  minedrops:
+    aliases: [minedrop, mindrops, mindrop, md, drops, mdrop, mdrops]
+    description: By KvinneKraft.
+
+name: MineDrops
+author: [Dashie, KvinneKraft, ME, ME, MEEEE]

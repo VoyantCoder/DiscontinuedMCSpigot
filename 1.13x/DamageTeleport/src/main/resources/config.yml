@@ -1,0 +1,17 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here are the range specifications for when a user
+# gets hit, the higher the radius the more work the
+# server has to do:
+maximum-z: 100
+maximum-x: 100
+minimum-z: 10
+minimum-x: 10
+# This is the permission that is required in order
+# to trigger the teleportation mechanisms:
+teleportation-permission: default
+# This is the permission that is required when
+# using the command /damageteleport reload.
+reload-permission: admin

@@ -1,0 +1,78 @@
+
+# Dash Config File
+
+
+display-item-properties:
+    
+    # Some of the optional and less necessary properties of
+    # this plugin:
+    
+    optionals:
+        
+        # Help a Dashie out by allowing people to type /displayitem and
+        # receive an advertisement message rather than the permission
+        # denied message:
+        
+        developer-support: true
+        
+        # What permission should be required in order to reload the plugin
+        # and use the other functionality that the commands that come with
+        # this plugin have to offer:
+        
+        admin-permission: 'dashdisplay.admin'
+        
+        # What permission should be required in order to use the admin side
+        # of this plugin:
+            
+        permission-denied: '&cYou may not use this command.'
+        
+        
+    
+    # All the configurable messages that this plugin will
+    # send to the user are as follows:
+    
+    messages:
+    
+        # The message when the user types an command he or she
+        # is not permitted to use [i], [item] etc:
+        
+        permission-denied: '&cYou are not allowed to display your item in chat!'
+        
+        # The format that will be shown when printing out the user
+        # their item name:
+        
+        display-format: '&7[&b%i% x%c%&7]'
+        
+    
+    # Oh yes, we have custom commands blyad, what command
+    # would you like to require for users in order to use
+    # the functionality and main goal of this plugin:
+    
+    commands:
+        - '[i]'
+        - '[item]'
+        - '[h]'
+        - '[hand]'
+        
+    
+    # The amount of seconds a player has to wait before using
+    # this piece of functionality again. (Raw text will be printed
+    # rather than the item name)
+    
+    command-cooldown: 30
+    
+    
+    # All the configurable permissions for this plugin are
+    # detailed bellow this text:
+        
+    permissions:
+        
+        # What permission should be required in order to display
+        # colour codes like &a, &e etc:
+            
+        color-permission: 'displayitem.colors'
+            
+        # What permission should be required in order to use any
+        # of the specified commands in display-items-properties.commands:
+            
+        use-permission: 'displayitem.use'

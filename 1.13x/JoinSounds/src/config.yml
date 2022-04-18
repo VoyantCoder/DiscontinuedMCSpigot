@@ -1,0 +1,31 @@
+
+# Author: Dashie 
+# Version: 1.0
+
+
+# A very simple config format is given and will be able to change both 
+# the required message and the sound that will be played when the right
+# user joins your server. Enjoy <3
+
+
+# The sound effects valid can be found at: https://www.digminecraft.com/lists/sound_list_pc.php
+sound_effect: ENTITY_PLAYER_LEVELUP
+
+# The permission an user must have in order to notify other players with
+# the above specified sound:
+trigger-permission-node: "dashjoin.sound"
+
+# The permission an user must have in order to get notifiered by the sound 
+# of others joining with the right permission:
+notify-permission-node: "dashjoin.notify"
+
+
+# Since this was a one minute plugin did I not add in the error checking 
+# and reload command I usually implement. 
+
+# Which means that when adding an invalid sound to the config the entire
+# plugin may just crash.
+
+
+
+

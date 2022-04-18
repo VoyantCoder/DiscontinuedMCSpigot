@@ -1,0 +1,53 @@
+
+# Author: Dashie
+# Version: 1.0
+
+
+# What follows is considered the configurable part
+# of this plugin:
+dash-wand:
+    
+    # Optional related properties down here:
+    optionals: 
+        
+        # Poke players with insufficient permissions with a
+        # message from our Developer Dashie:
+        developer-support: true
+        
+        # The maximum reach distance of the wand: 
+        max-distance: 80
+            
+        # The permission required in order to use the wand:
+        use-permission: "dashkraft.use"
+         
+        # The permission required in order to get a wand:
+        admin-permission: "dashkraft.admin"
+         
+        # The cooldown on the wand: (Only applies to none ops)
+        cooldown: 30    
+        
+    
+    # Magick related properties down here:
+    magick:
+        
+        # Configure anything that has to do with explosions
+        # and this plugin down bellow:
+        explosion:
+            
+            # Should explosions be enabled:
+            enabled: true
+            
+            # The explosion radius:
+            radius: 3
+            
+            # Should explosions break blocks:
+            terrain: true
+            
+            # Should explosions leave a bit of fire:
+            fire: true
+        
+        # Should a firework be detonated:
+        fireworks: true
+        
+        # Should lightning be struck:
+        lightning: true

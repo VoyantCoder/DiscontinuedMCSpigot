@@ -1,0 +1,4 @@
+name: DashBlocks
+version: ${project.version}
+main: com.kvinnekraft.DashBlocks
+api-version: 1.16

@@ -1,0 +1,45 @@
+
+# Author: Dashie
+# Version: 1.0
+
+optional-properties:
+    # The permission that is required in order to use the
+    # admin commands that come with this plugin. (/dashsession)
+    command-permission: 'dashsession.admin'
+    
+    # Allow people to type /dashsession in order to see who
+    # has coded the plugin, this helps me out as a Programmer.
+    # (This will not require a permission in order to work<)
+    developer-support: true
+
+reward-properties:
+    # The permission that is required in order to receive 
+    # rewards.
+    reward-permission: 'dashsession.reward'  
+    
+    # The interval in seconds in which people should receive
+    # a reward. 
+    reward-interval: 600
+    
+    # The message displayed when a player receives a normal reward.
+    # Both through chat and on screen title. 
+    reward-message: "&aYou have been rewarded for being online!"
+    
+    # The message displayed when a player receives a special
+    # reward:
+    special-reward-message: "&aYou got a bonus reward for being online!"
+    
+    # The range as to what to compare the chances to.
+    # The standard is 500 due increased rarity.
+    max-chance: 100    
+    min-chance: 1    
+    
+    # Commands to execute along with their probability of being
+    # actually executed (Format: <command> (chance):<chance 1-100>)):
+    rewards:
+        - 'give %player% golden_apple 1 name:&d&lApple (chance):1'
+        - 'eco give %player% 500 (chance):40'
+        - 'eco give %player% 10 (chance):60' 
+        - 'eco give %player% 1000 (chance):5'
+        
+    standard-reward: 'eco give %player% 15'

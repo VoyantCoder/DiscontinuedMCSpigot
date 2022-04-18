@@ -1,0 +1,8 @@
+
+main: com.essentials.EssentialsSpawn
+
+name: EssentialsSpawn
+author: [DashSociety]
+
+version: 1.0
+api-version: 1.13

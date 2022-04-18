@@ -1,0 +1,23 @@
+# Author: Dashie
+# Version: 1.0
+global-tweaks:
+  auto-reload: true
+  reload-interval: 5
+core-tweaks:
+  bypass-permission: 'nopickupx.pickup'
+  # some short documentation about the bellow code
+  # eh, you can specify the material name, amount and
+  # lore and name, that way you can be a bit more 
+  # specific about that what should be allowed and 
+  # that what should be disallowed.
+  #
+  # Now, the syntax seems pretty self explanatory, but
+  # if you fail to understand what is going on, listen
+  # up, the item:IRON_INGOT part basically specifies
+  # the material name that should be blocked.
+  blacklisted-items:
+    - 'item:IRON_INGOT'
+  notifications:
+    send-to-player: true
+    notify-interval: 3
+

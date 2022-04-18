@@ -1,0 +1,12 @@
+name: RadioactiveStick
+version: 1.0
+main: com.kvinnekraft.RadioactiveStick
+api-version: 1.16
+authors: [Dashie, KvinneKraft, Xemuu]
+description: A pretty turd.
+website: https://github.com/KvinneKraft
+
+commands:
+  radioactivestick:
+    aliases: [radiostick, nuclearstick, radstik, radstick, rstick]
+    description: Acquire the magic!

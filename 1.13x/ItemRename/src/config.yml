@@ -1,0 +1,60 @@
+
+# (Dash Config)
+#
+# Author: Dashie
+# Version: 1.0
+
+
+# The optional properties for this plugin:
+optional-properties:
+    
+    # Allow a lil fluffy Dashie like me to get some
+    # type of fame off of this:
+    developer-support: true
+    
+    # What is the permission that should be required in order
+    # to use the reload command:
+    permission: dashrename.reload
+    
+    # What is the message that should be displayed when
+    # a user is being blocked from using the reload command:
+    permission-denied: "&cYou are not allowed to use this!"
+    
+
+# The fundamental properties of this plugin:
+rename-properties:
+    
+    # What permission should be required in order to use
+    # the /rename command:
+    permission: dashrename.rename
+    
+    # What should be success message after renaming the 
+    # item:
+    rename-message: "&eRenamed your item to &f%n% &e!"
+    
+    # What should be the maximum length the given may consist 
+    # out of:
+    maximum-length: 18
+    
+    # What should be the wait time before renaming an item 
+    # again:
+    cooldown: 30
+    
+    # What should be the message sent to the player when on 
+    # cooldown:
+    cooldown-message: "&cYou are on a cooldown of 30 seconds, please wait."
+    
+    # Should we summon fireworks if the player renames 
+    # an item successfully:
+    summon-firework: true
+    
+    # Should the text be thrown on the screen:
+    send-title: true
+    
+    # What should be the message sent to the player when the 
+    # cooldown is actually over:
+    cooldown-over-message: "&aYou may now use /rename again!"
+    
+    # The message sent when a player has given the command
+    # too many characters:
+    maximum-length-message: "&cYou may not use more than &418 &ccharacters!"

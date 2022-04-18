@@ -1,0 +1,65 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+#####
+#
+# NOTE: The admin permission for /cl reload is 'admin' !
+#
+####
+# 
+# The modifiable messages:
+messages:
+    # The message sent to the player when they get tagged:
+    tag-message: '&cYou are now in combat!'
+    # The message sent to the player when they try to execute
+    # any prohibited command while they are in combat:
+    combat-deny-message: '&cYou are in combat, you may not do this!'
+    # The message sent to the player when the tag has expired:
+    expire-message: '&aYou may now do as you wish, you are no longer in combat!'
+    # The message sent to everyone in the server when an user
+    # logs out in combat (This requires broadcast-global to be true):
+    broadcast-message: '&cThe player &4%player% &chad logged out while being in combat and has died!'
+#
+# Command related modifiable options:
+commands:
+    # What permission should be required in order
+    # to bypass the command block:
+    bypass-permission: bypass
+    # When this is true it will block any command a 
+    # player tries to type while being in combat
+    # except for those in the whitelist:
+    block-commands: true
+    # The whitelisted commands for a player that is
+    # in combat:
+    command-whitelist:
+        - '/tpaccept'
+        - '/tpyes'    
+#
+# Punishment related modifiable options:
+punishment:
+    # What permission should be required in order
+    # to bypass the restrictions:
+    bypass-permission: bypass
+    # Options related to killing an user for logging
+    # out in combat:
+    death-logout:
+        # When this is true a player will die when logging out
+        # while being in combat:        
+        enabled: true
+        # Spawn a skeleton when the player logs out for the attacker
+        # to kill and obtain the items the user had:
+        skeleton-prop: true
+        # The skeleton name format:
+        skeleton-name-format: "&3(&b{player}&3)"
+        # Add the player armour (if any) to skeleton:
+        skeleton-armour: true 
+    # The same story with the above, except, this will disable
+    # their fly mode:
+    disable-fly: true
+    # When this is true any player logging out in combat
+    # will be broadcasted in public chat:
+    broadcast-global: true        
+#
+# The amount of time before the combat tag expires:
+timer: 30

@@ -1,0 +1,16 @@
+
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.dash.security.DashSecurity
+
+version: 1.0
+api-version: 1.13
+
+name: DashSecurity
+author: [Dashie, Walshy, Rory]
+
+commands:
+    dashsecurity:
+        aliases: [security, sc, ds, dsc]

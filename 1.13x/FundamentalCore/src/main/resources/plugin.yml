@@ -1,0 +1,4 @@
+name: FundamentalCore
+version: ${project.version}
+main: com.kvinnekraft.FundamentalCore
+api-version: 1.16

@@ -1,0 +1,25 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# The vote link format is a bit complex but here it
+# is {GUI Slot} {GUI Item} {GUI Item Name} {GUI Item Lore} {Link}
+#
+# Now make sure to use underscores _ rather than spaces
+# when implying your own name and lore. 
+#
+# Spaces in the website URL should be replaced with '%20'.
+#
+# Ah, and if that were not enough, the GUI is 9x3 meaning that
+# you will have to think three-dimensional, as in, 14 being
+# the center of the entire GUI. (9 = 1 row)
+vote-links:
+    - '13 BLUE_WOOL &cVote_1 &eVote_now! https://myvote-site1.com'
+    - '14 BLUE_WOOL &cVote_2 &eVote_now! https://myvote-site2.com'
+    - '15 BLUE_WOOL &cVote_3 &eVote_now! https://myvote-site3.com'
+#
+# This is the block used for empty space in the GUI:
+empty-space-block: RED_STAINED_GLASS
+#
+# This is the title shown in the vote GUI:
+gui-title: '&cVote for us now!'

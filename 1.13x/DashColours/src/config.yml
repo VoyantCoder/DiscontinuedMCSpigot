@@ -1,0 +1,55 @@
+
+#
+# Dashies Cunfug <3
+#
+
+# The permission required to do admin related stuff using the commands that
+# come with this plugin:
+admin-command-permission: 'dashcolors.use.admin'
+    
+# The permission required to use the basic parts of this plugin, set normal
+# colours and such. (&a, &d, &e, &f etc ...)
+command-permission: 'dashcolors.use'
+    
+# The permission required to use magical colours such as &k, &l, &o and &n:
+command-magic-permission: 'dashcolors.use.magic'
+
+# The messages displayed whilst toggling the colors on or off:
+toggle-off-message: "&aYou are now no longer using colors."
+toggle-on-message: "&aYou are now using colors."
+
+# The invalid command message:
+invalid-syntax-message: "&cCorrect Usage: &e/dashcolors [toggle | set | add | del] <color code | player> <color code>"
+
+# The missing key message:
+missing-key-message: "&cYou must first set a color for yourself."
+
+# The player add message:
+player-add-message: "&aThe player has been added to the color table."
+
+# The player delete message:
+player-del-message: "&aThe player has been removed from the color table."
+
+# The player offline message:
+player-offline-message: "&cThe player specified is offline."
+
+# The color set message:
+color-set-message: "&aYou have changed your chat color."
+
+# The insufficient permissions message:
+insufficient-permission-message: "&cYou are not supposed to do this, are ya?"
+    
+# The invalid format message:
+invalid-format-message: "&cYou are using an invalid color code format."
+
+# The user is already added message:
+exists-message: "&cThe user is already in the list."
+
+# The user is not in the list:
+not-exist-message: "&cThe user could not be found."
+
+# WARNING: DO NOT CHANGE ANY OF THE FOLLOWING UNLESS YOU KNOW
+# WHAT YOU ARE DOING, THE FOLLOWING IS SOMETHING THAT CAN BE
+# MODIFIED THROUGH THE IN-GAME COMMANDS:
+toggle-table: []
+color-table: []

@@ -1,0 +1,40 @@
+
+# Author: Dashie
+# Version: 1.0
+
+# These are all of the modifiable properties of this
+# cat paw wand thing, change them to your liking:
+cat-wand:
+    # The material of the wand can be specified here:
+    wand-material: BLAZE_ROD
+    # The name of the wand item can be specified here:
+    wand-display-name: "&6Purr Purr"
+    # The lore of the wand item can be specified here:
+    wand-lore: "&6&oMeow Meow, Purr Purrrr &c;')"
+    # The particle density can be specified here:
+    meow-particle-density: 16
+    # All of the particles that will show when your
+    # meow projectile hits something:
+    meow-particles:
+        - CLOUD
+        - HEART
+        - CRIT_MAGIC        
+        - CRIT
+    # The sound effect of when the meow projectile hits
+    # something:
+    meow-sound: ENTITY_CAT_PURR
+    # The sound that will be sent to the player shooting
+    # the cat projectile:
+    meow-shoot-sound: ENTITY_CAT_HISS
+    # The permission that is required when a player wants 
+    # to use the cat wand:
+    wand-permission: "default"
+    # The cooldown per shot when using the wand:
+    # NOTE: admin-permission bypassess this!
+    wand-shoot-cooldown: 10
+#
+# These are all of the modifiable properties for the
+# plugin in general, such as the admin permission:
+globalized:
+    # The permission for commands such as /catpawz reload:
+    admin-permission: "admin"

@@ -1,0 +1,13 @@
+
+main: com.dashrays.DashRays
+
+author: [Dashie]
+name: DashRays
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    dashrays:
+        aliases: [dashray, xray]
+        description: Main command for Dash Rays

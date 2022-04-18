@@ -1,0 +1,43 @@
+
+# Author: Dashie
+# Version: 1.0
+
+
+properties:
+    
+    # Prevent placing of the by you specified blocks:
+    block-placement:
+        
+        # What blocks should be prohibited from placing?
+        blacklist-a:
+        - dIamOnD_bLocK
+        - TNT
+        - LAVA_BUCKET        
+        
+        # Whatp ermission should grant people a bypass?
+        bypass-permission-a: "dashguard.bypass-place-restriction"
+    
+    # Prevent breaking of the by you specified blocks:
+    block-breaking:
+        
+        # What blocks should be prohibited from breaking?
+        blacklist-b:
+        - cHeSt
+        - FuRnaCe
+        - CrAfTinG_TaBlE
+        
+        # What permission should grant people a bypass?
+        bypass-permission-b: "dashguard.bypass-break-restriction"
+        
+    # Some options for the use of the plugin:
+    admin:
+        
+        # What permission should be expected when using /dashguard?
+        command-permission: "dashguard.admin-command"
+        
+        # Should staff get a message when a blacklisted block is broken or placed?
+        notify-staff: false
+        
+        # The permission for the above:
+        notify-permission: "dashguard.admin-notify"
+        

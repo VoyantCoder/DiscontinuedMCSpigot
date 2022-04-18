@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.SocialSpy
+
+version: 1.0
+api-version: 1.13
+
+name: BetterSocialSpy
+author: [Dashie]
+
+commands:
+    socialspy:
+        aliases: [ss, dashspy]

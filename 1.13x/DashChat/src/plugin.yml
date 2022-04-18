@@ -1,0 +1,13 @@
+
+main: com.dashchat.Strict
+
+version: 1.0
+api-version: 1.13
+
+name: DashStrictChat
+author: [Dashie]
+
+commands:
+    dashchat:
+        aliases: [strictchat, strictdash, dashiestrict, dashiechat]
+        description: The main command for Dash Chat.

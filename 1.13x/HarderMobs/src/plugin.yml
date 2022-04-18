@@ -1,0 +1,18 @@
+
+
+# Author: Dashie
+# Version: 1.0
+
+
+main: com.dashmobs.HarderMobs
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie]
+name: HarderDashMobs
+
+commands:
+    hardermobs:
+        description: The main command for Dashies Harder Mobs.
+        aliases: [dashmobs, harderdashmobs, dashhardermobs, hardmobs, hardcoremobs]

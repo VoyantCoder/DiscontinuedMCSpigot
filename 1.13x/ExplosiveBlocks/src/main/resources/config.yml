@@ -1,0 +1,17 @@
+# Author: Dashie
+# Version: 1.0
+#
+# If you, yourself, want to know more about the syntax
+# bellow or simply about the plugin then please consult
+# my spigot page, like, where you downloaded this from.
+#
+# Assuming that you were ignorant and selfish enough to
+# just skip it.   *I AM KIDDING, CALM DOWN, oh my gosh*
+#
+charged-blocks:
+  1:
+    type: ENDER_CHEST
+    explosion-radius: 4
+    explosion-flames: true
+    explosion-delay: 4
+    explode-terrain: true

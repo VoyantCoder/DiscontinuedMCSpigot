@@ -1,0 +1,42 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+#
+ore-signal:
+    # When staff logs on, should they automatically
+    # have the ore signal turned on:
+    default-toggle-on: true
+    # The permission to bypass the detection
+    # mechanism:
+    bypass-permission: "bypass"
+    # The permission to reload the plugin
+    # and such (/oresignal reload):
+    admin-permission: "admin"
+    # The blocks which staff will be notified 
+    # about when placed: 
+    signal-placement-blocks:
+        - 'SPAWNER' 
+        - 'DIAMOND_ORE'
+        - 'DIAMOND_BLOCK'
+        - 'TNT'
+    # The message format for the signal when
+    # a block gets placed:
+    signal-place-message: "&7&o(%player% BROKE): &8%block%"
+    # The blocks which staff will be notified
+    # about when broken:
+    signal-break-blocks:
+        - 'IRON_ORE'
+        - 'DIAMOND_ORE' 
+        - 'GOLD_ORE'
+        - 'SPAWNER'
+    # The message format for the signal when
+    # a block gets broken:
+    signal-break-message: "&7&o(%player% PLACED): &8%block%"
+    # Some settings to play a sound when a 
+    # player mined or broke a specific block:
+    sound-manager:
+        enabled: true
+        sound: ENTITY_CHICKEN_STEP
+    
+    

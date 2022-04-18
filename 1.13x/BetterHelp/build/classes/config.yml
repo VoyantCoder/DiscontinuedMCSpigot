@@ -1,0 +1,21 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    # The permission for /help reload
+    admin-permission: 'admin'
+    
+    # The permission for /help and /info
+    help-permission: 'default'
+    
+    # The actual help message replacement.
+    help-message:
+        - '&7/kit &eor &7/kits'
+        - '&7/tpa, /tpyes &eor &7/tpahere'
+        - '&7/warp &eor &7/warps'
+        - '&7/home &eor &7/sethome'
+        - '&7/spawn &eor &7/spon'
+        - '&7/discord &eor &7/dev'
+        
+# Blessed be my dear ) o (

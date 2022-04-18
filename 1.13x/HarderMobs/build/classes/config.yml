@@ -1,0 +1,197 @@
+
+# Author: Dashie
+# Version: 1.0
+
+
+# This huge thing contains all of the things you can
+# change about this plugin, have fun modifying stuff:
+
+harder-mobs:
+    
+    # Here are some optional properties:
+    
+    optional-properties:
+        
+        # Do you want to help me, Dashie, out by
+        # allowing players to receive a Developer
+        # message rather than a permission denied
+        # message when using the commands of this
+        # plugin without permission:
+        
+        developer-support: true
+        
+        
+        # What is the permission required in order
+        # to make use of the commands that come with
+        # this plugin:
+        
+        admin-permission: "hardermobs.admin"
+    
+        
+    # All of the properties that you can adjust
+    # related to the mob spawns:
+    
+    mob-properties:
+        
+        # Some of the spawn related options
+        # of this plugin:
+        
+        spawning:
+            
+            # What are the mobs that may be morphed
+            # into a harder mob upon spawn:
+            
+            morphed-mobs:
+                - ZOMBIE
+                - SKELETON
+                - SILVERFISH
+            
+            
+            # What is the custom name such a mob will 
+            # have upon spawning:
+            
+            custom-tag: '&c&lMorphed &a&lMob'
+            
+            
+            # What is the chance an overpowered
+            # mob can spawn (on a scale from 1 - 500):
+            
+            morphed-chance: 4
+            
+            
+            # You can specify the range of health a mob 
+            # may have:
+            
+            health:
+                max: 200
+                min: 30
+            
+            
+            # In what worlds should hardcore mob
+            # spawning be allowed:
+            
+            allowed-worlds:
+                - 'world'
+        
+        
+        # Here you can specify all of the enchantments
+        # mobs their gear may spawn with:
+        
+        enchantments:
+            
+            # Here you can specify the maximum amount of
+            # enchantments the gear may get:
+            max-enchantments:
+                helmets: 2
+                chestplates: 2
+                leggings: 2
+                boots: 2
+                weapons: 4
+            
+            # Here you can specify all of the enchantments
+            # mobs their armour may spawn with:
+            
+            
+            gear:
+                
+                # Here you can specify what enchantments
+                # mobs their weapons may spawn with:
+            
+                weapons:
+                    - 'SHARPNESS 6'
+                    - 'FIREASPECT 6'                
+                
+                # Here you can specify what enchantments
+                # mobs their helmets may spawn with: 
+                
+                helmets:
+                    - 'WATER_WORKER 1'
+             
+                
+                # Here you can specify what enchantments
+                # mobs their chestplates may spawn with:
+                
+                chestplates:
+                    - 'PROTECTION_ENVIRONMENTAL 4'
+                    
+                
+                # Here you can specify what enchantments
+                # mobs their leggings may spawn with:
+                
+                leggings:
+                    - 'PROTECTION_PROJECTILE 4'
+                    
+                
+                # Here you can specify what enchantments
+                # mobs their boots may spawn with:
+                
+                boots:
+                    - 'PROTECTION_FALL 4'
+        
+        
+        # Here you can specify what potion effects
+        # the mobs may spawn with: (The outcome is random)
+        
+        potion-effects:
+            - 'SPEED 3'
+            - 'JUMP_BOOST 1'
+        
+        
+        # Here you can specify what gear the
+        # mobs may spawn with: (The outcome is random)
+        
+        gear:
+            
+            # Here you can specify what types of 
+            # weapons mobs may spawn with:
+            
+            weapons:
+                - DIAMOND_SWORD
+                - IRON_SWORD
+                - GOLDEN_SWORD
+                - STONE_SWORD
+                
+                - DIAMOND_AXE
+                - IRON_AXE
+                - GOLDEN_AXE
+                - STONE_AXE
+            
+            
+            # Here you can specify what types of 
+            # helmets mobs may spawn with:
+            
+            helmets:
+                - DIAMOND_HELMET
+                - GOLDEN_HELMET
+                - IRON_HELMET
+                - LEATHER_HELMET
+            
+            
+            # Here you can specify what types of
+            # chestplates mobs may spawn with:
+            
+            chestplates:
+                - DIAMOND_CHESTPLATE
+                - GOLDEN_CHESTPLATE
+                - IRON_CHESTPLATE
+                - LEATHER_CHESTPLATE
+            
+            
+            # Here you can specify what types of
+            # leggings mobs may spawn with:
+            
+            leggings:
+                - DIAMOND_LEGGINGS
+                - GOLDEN_LEGGINGS
+                - IRON_LEGGINGS
+                - LEATHER_LEGGINGS
+                
+            
+            # Here you can specify what types of
+            # boots mobs may spawn with:
+            
+            boots:
+                - DIAMOND_BOOTS
+                - GOLDEN_BOOTS
+                - IRON_BOOTS
+                - LEATHER_BOOTS

@@ -1,0 +1,13 @@
+
+main: com.ridablemub.Phuntum
+
+author: [Dashie]
+name: Phuntumz
+
+version: 1.0
+api-version: 1.13
+
+commands:
+    phuntums:
+        aliases: [mobs, phantom, phunt, phuntum]
+        description: ride a mub

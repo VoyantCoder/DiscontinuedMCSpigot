@@ -1,0 +1,104 @@
+# Author: Dashie
+# Version: 1.0
+#
+# This section allows you to enable the auto
+# relaod functionality, it makes it easier for
+# you to update the configuration of your plugin.
+startup-tweaks:
+  auto-reload: true
+  reload-interval: 5
+# Now, for this next part, it represents the
+# inventory configuration, you can specify whether
+# you want to simply prevent users from opening 
+# one of the following inventories or simply prevent 
+# them from storing specific items in one of these
+# inventories.
+core-tweaks:
+  ender-chest:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  chest:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  dispenser:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  dropper:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  player:
+    enabled: true
+    blacklist: 
+      - 'DIAMOND'
+  workbench:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  barrel:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  anvil:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  beacon:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  blast-furnace:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  brewing:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  cartography:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  crafting:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  enchanting:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  hopper:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  grindstone:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  lectern:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  merchant:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  shulker-box:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  smithing:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  smoker:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'
+  stonecutter:
+    enabled: true
+    blacklist:
+      - 'DIAMOND'      

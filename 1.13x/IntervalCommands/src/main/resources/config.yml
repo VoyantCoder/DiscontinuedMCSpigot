@@ -1,0 +1,16 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# All properties related to the main purpose
+# of this glorious plugin:
+command-execution:
+  # The permission that is required for using
+  # the main command that comes with this:
+  admin-permission: admin
+  # The delay between command executions:
+  interval: 16
+  # The commands that will be executed:
+  commands:
+    - 'lagg clear'
+    - 'broadcast All entities have been cleared!'

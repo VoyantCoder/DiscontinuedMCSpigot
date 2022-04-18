@@ -1,0 +1,9 @@
+# Author: Dashie
+# Version: 1.0
+name: Rewards
+version: ${project.version}
+main: com.kvinnekraft.Rewards
+api-version: 1.8
+authors: [Dashie]
+description: A lil sample
+website: https://pugpawz.com

@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.2
+
+main: dash.recoded.BCC
+
+api-version: 1.13
+version: 1.2
+
+name: BetterChatCooldowns
+author: [Dashie]
+
+commands:
+    betterchatcooldowns:
+        aliases: [bcc]

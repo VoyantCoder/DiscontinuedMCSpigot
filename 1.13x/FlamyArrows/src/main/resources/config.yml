@@ -1,0 +1,21 @@
+
+# Here are all of the properties related to the main
+# purpose of this plugin:
+flamy-arrows:
+    # Here you can specify the chance of arrows causing wood to
+    # catch on fire on a scale from one to a thousand:
+    burn-chance: 100
+    # Here you can specify what blocks will be considered flammable
+    # for the flaming arrow, keep in mind, the material must be 
+    # flammable or else errors will occur:
+    burnable-materials:
+        - 'OAK_LOG' 
+        - 'SPRUCE_LOG'
+        - 'OAK_PLANKS'
+        - 'SPRUCE_PLANKS'
+    # This is the permission that will be required for the above to
+    # take effect:
+    burn-permission: default
+    # This is the permission that will be required for commands like
+    # /flamyarrows reload:
+    admin-permission: admin

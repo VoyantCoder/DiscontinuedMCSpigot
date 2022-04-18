@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    sound-effects:
+        enabled: true
+        sound: ENTITY_SLIME_SQUISH    
+    messages:
+        - '&aMessage 1'
+        - '&aMessage 2'
+        - '&aMessage 3'
+        - '&aMessage 4'
+    announce-interval: 60
+    admin-permission: 'admin'

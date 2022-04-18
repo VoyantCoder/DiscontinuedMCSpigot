@@ -1,0 +1,8 @@
+
+main: biggerexplosions.BiggerExplosions
+
+name: DashBoom
+author: [Dashie]
+
+version: 1.0
+api-version: 1.13

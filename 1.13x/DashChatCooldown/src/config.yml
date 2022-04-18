@@ -1,0 +1,13 @@
+
+# Cuulduwn Confug 1.0
+
+admin-permission: "dashchatcooldown.admin"
+
+message-cooldowns: true
+command-cooldowns: true
+
+message-cooldown: 2
+command-cooldown: 2
+
+cooldown-bypass-permission: "dashchatcooldown.bypass" 
+cooldown-message: "&cTake a deep breath and repeat in {second} seconds."

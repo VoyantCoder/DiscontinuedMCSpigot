@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.dashwundz.MeowBawlz
+
+name: MeowBawlz
+author: [Dashie]
+    
+version: 1.0
+api-version: 1.13
+
+commands:
+    meowballs:
+        aliases: [meow, meowbawlz, meowbollz, meowballs, meowbolls, mb, meow, meowmeow, meowpurrpurr, meowmeowpurrpurr]

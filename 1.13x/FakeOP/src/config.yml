@@ -1,0 +1,10 @@
+
+# Author: Dashie
+# Version: 1.0
+
+# Should the Fake Op message be a DM or public chat?
+private-message: true
+# What should the Fake Op Message be?
+op-message: "&7[CONSOLE: %p% has been opped]"
+# What permission should be required for the Fake Op command?
+permission: 'fakeop.command'

@@ -1,0 +1,18 @@
+
+# Author: Dashie
+# Version: 1.2
+
+# All of the configurable options for the chat-cooldowns:
+chat-cooldowns:
+    # The cooldown (in seconds) in between of messages:
+    cooldown: 3
+    # The permission that allows a player to bypass the cooldown:
+    bypass-permission: 'bypass'
+    # The permission that allows you to use /bcc reload:
+    admin-permission: 'admin'
+    # The message sent to the player when on cooldown:
+    cooldown-message: '&cWait &a%seconds% &cseconds before doing this again!!'
+    # The maximum times a player may attempt to spam:
+    kick-when-tried: 3
+    # The message displayed when kicked because of exceeding the above:
+    kick-message: '&cYou have to watch your tone!'

@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.FireCrackers
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie, KvinneKraft, Ponies, Freya]
+name: FireCrackers
+
+commands:
+    firecracker:
+        aliases: [fireworks, fw, fc, firecracker, firework]
+        description: "Majestic!"

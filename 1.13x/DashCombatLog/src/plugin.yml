@@ -1,0 +1,15 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: dash.recoded.CombatLog
+
+author: [Dashie]
+name: DashCombatLog
+
+api-version: 1.13
+version: 2.0
+
+commands:
+    combatlog:
+        aliases: [dcl, cl, dashcombatlog, dashlog, betterlog, combatl]

@@ -1,0 +1,11 @@
+main: dash.recoded.bandaids
+
+api-version: 1.13
+version: 1.0
+
+author: [Dashie]
+name: BetterBandaids
+
+commands:
+    betterbandaids:
+        aliases: [bb, bandaids, bandaid, betterbandaid]

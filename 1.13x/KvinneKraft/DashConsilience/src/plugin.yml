@@ -1,0 +1,31 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.philosophy.Consilience
+
+author: [Dashie]
+name: DashConsilience
+
+api-version: 1.13
+version: 1.0
+
+commands:
+    spawn:
+        aliases: [spon, worldspawn, spwn, sp]
+    github:
+        aliases: [dev, developer]
+    discord:
+        aliases: [disc]
+    shop:
+        aliases: [shp]
+    staff:
+        aliases: [ranks]
+    rules:
+        aliases: [laws]
+    bee:
+        aliases: [beething]
+    back:
+        aliases: [beck]    
+    whyvote:
+        aliases: [wv]

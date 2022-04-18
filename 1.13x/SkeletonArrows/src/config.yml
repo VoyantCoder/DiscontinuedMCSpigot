@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+properties:
+    # The potion effects that may be applied to a player when hit by 
+    # a skeleton its arrow:
+    possibilities:
+        - 'WITHER 2 16'
+        - 'POISON 2 16'
+        - 'SLOW 2 16'
+        - 'CONFUSION 2 16'
+        - 'HUNGER 2 16'
+    # The probability that one of the above effects may be chosen to be
+    # applied to the enemy of that skeleton (1 - 100):
+    probability: 50

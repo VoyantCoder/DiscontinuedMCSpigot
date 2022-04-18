@@ -1,0 +1,13 @@
+
+main: com.dashchat.DashChatCooldown
+
+version: 1.0
+api-version: 1.13
+
+name: DashChatCooldown
+author: [Dashie]
+
+commands:
+    dashcooldown:
+        aliases: [dashcooldown, dashchatcooldown, chatcooldown]
+        description: The main command for the Dash Chat Cooldown plugin.       

@@ -1,0 +1,16 @@
+
+# Author: Dashie
+# Version: 1.0
+
+main: com.kvinnekraft.DropperDrops
+
+version: 1.0
+api-version: 1.13
+
+author: [Dashie, KvinneKraft, ME]
+name: DropperDrops
+
+commands:
+  dropperdrops:
+    aliases: [dd, dropdrops, dropdrop, dropperds]
+    description: Dropper Drops by KvinneKraft.

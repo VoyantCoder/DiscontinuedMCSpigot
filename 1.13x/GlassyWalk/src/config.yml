@@ -1,0 +1,23 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# Here are the modifiable permissions:  
+permissions:
+    # The permission that will be required for breaking any
+    # of the specified blocks if conditions are met:
+    to-break-blocks: default
+    # The permission that will be required for reloading the
+    # plugin using /glassywalk reload:
+    to-reload-plugin: admin
+# Here are the modifiable properties that have something 
+# to do with the plugin its main functionality:
+glassy-walk:
+    # The chance of one of the specified blocks breaking on
+    # a scale of one all the way up to a thousand:
+    the-break-chance: 50
+    # The blocks that may be broken:
+    the-breakable-blocks:
+        - 'WHITE_STAINED_GLASS'
+        - 'GLASS_PANE'       
+        - 'GLASS'

@@ -1,0 +1,60 @@
+#
+# Author: Dashie
+# Version: 1.0
+#
+# You can find all of the modifiable settings
+# in this block of configuration:
+word-scramble:
+  #
+  # Here are some of the modifiable permissions
+  # that come with this plugin:
+  permissions:
+    #
+    # The permission that will be required for the
+    # commands of this plugin (/wordscramble):
+    plugin-control-permission: admin
+    #
+    # The permission that will be required for actually
+    # being able to solve the scrambled word:
+    scramble-permission: default
+  #
+  # Here is all of the configuration that
+  # is related to the core of the plugin:
+  configuration:
+    #
+    # The amount of time before broadcasting
+    # another scrambled word in chat:
+    broadcast-interval: 240
+    #
+    # The amount of time before players can
+    # no longer solve the word:
+    scramble-timeout: 240
+    #
+    # The message format for when a new scrambled
+    # word is being sent in chat:
+    scramble-broadcast-format: '&eTry scrambling this word: &6%scrambled% &e!'
+    #
+    # The message format for when a scrambled
+    # word has been solved:
+    scramble-success-format: '&eThe player &6%successor% &ehas solved the word &6%scrambled%&e, it was &6%solved%&e!'
+    #
+    # The message format for when a scrambled
+    # word was not solved in-time:
+    scramble-timeout-format: '&eThe word &6%scrambled% &ewas not solved in-time! The correct word was &6%solved%&e!'
+    #
+    # The words that will be randomly chosen
+    # per one some interval:
+    scramble-list:
+      - 'DashIsTheBest'
+      - 'Revelation'
+      - 'Engineering'
+      - 'Interpretative'
+      - 'Metaphorical'
+    #
+    # Do not send the player message when the player
+    # solves one of the scrambles:
+    scramble-stop-chat: true
+    #
+    # [LOWKEY] I came back a few weeks later because I had
+    # a busy schedule, excuse the horrible config format as
+    # of now, it will be prettified in the future.

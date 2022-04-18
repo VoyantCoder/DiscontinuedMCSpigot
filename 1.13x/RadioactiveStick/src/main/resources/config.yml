@@ -1,0 +1,7 @@
+# Author: Dashie
+# Version: 1.0
+properties:
+  use-requires-op: true
+  get-requires-op: true
+  auto-reload: true
+# Command: /radstick
